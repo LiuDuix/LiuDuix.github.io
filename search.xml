@@ -1,42 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/05/12/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">$ hexo <span class="keyword">new</span> <span class="string">&quot;My New Post&quot;</span></span><br><span class="line">sadaw</span><br><span class="line">adwada</span><br><span class="line">awdada</span><br><span class="line">awdaw</span><br><span class="line">awdawdwa</span><br><span class="line">adawdawd</span><br><span class="line">adadawda</span><br><span class="line">adawdawda</span><br><span class="line">dadawdaw</span><br><span class="line">adawdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br><span class="line">awdawdaw</span><br></pre></td></tr></table></figure>
+    <title>博客静态资源加速</title>
+    <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
+    <content><![CDATA[<h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的好几个 jsdeliver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么事，陷入了恐慌😂；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p>
+<p>于是乎，我用了一个捷径，直接查看同类<code>Butterfly</code>类型的博客，直接<kbd>f12</kbd>在「network」一栏查看请求的同名文件地址😏，然后迅速一个<kbd>ctrl</kbd> + <kbd>c</kbd> ， <kbd>ctrl</kbd> + <kbd>v</kbd>换到文件中对应声明的地方，然后惊奇的发现，控制台不报错了；</p>
+<p>再仔细观察请求的地址，前缀都不太一样，但是<code>npm.elemecdn.com</code>最多，于是又跟着将其他请求不到资源的地址全部换为此前缀，最终效果就是博客正常加载了，但是博客依然加载很慢，<kbd>f12</kbd>查看「network」一栏发现主要是文字资源和图片龟速下载，于是乎准备冻手；在查看多篇文章后，决定写一写，以便不时之需，看完这篇文章，你将了解到</p>
+<ul>
+<li>什么是静态资源库</li>
+<li>CDN，UNPKG</li>
+<li>npm搭建</li>
+</ul>
+<h2 id="🚕CDN"><a href="#🚕CDN" class="headerlink" title="🚕CDN"></a>🚕CDN</h2><ul>
+<li>全名：<strong>Content Delivery Network</strong>，即内容分发网络；</li>
+<li>由麻省理工学院教授，<strong>Tim Berners-Lee</strong>博士带领研究生<strong>Danny C. Lewin</strong>和其他几位顶级研究人员开发的利用数学运算法则来处理内容的一种动态路由算法技术；</li>
+<li>解决：互联网爆炸式发展，用户越来越多，源服务器承受巨大压力，无法及时响应用户请求；</li>
+<li>原理：建立一个缓存服务器，将内容缓存到终端用户附近，可存放各种类型的资源，如：html、css、js、视频、图片</li>
+</ul>
+<p>详情请看原文：<a href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></p>
+<h2 id="📦NPM"><a href="#📦NPM" class="headerlink" title="📦NPM"></a>📦NPM</h2><ul>
+<li>全名：Node Package Manager，是 Node.js 官方默认程序包管理器</li>
+<li>一个巨大的远程存储库，通过命令行方式可对库中文件进行操作</li>
+<li>主体：<ul>
+<li>package：含有 package.json 文件并发布到 npm 仓库的文件或文件夹</li>
+<li>module：在 node_modules文件夹中能被 Node.js 的 require方法加载到的任何文件或文件夹</li>
+<li>含有 package.json 文件的 module 一定是 package</li>
+</ul>
+</li>
+</ul>
+<h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><p>主要属性：</p>
+<ul>
+<li>Scope：作用域、范围，用于指定发布的包的命名空间，防止与他人的包名冲突</li>
+<li>Accessibility：private 或者 public，与 github 类似</li>
+</ul>
+<h3 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h3><p><strong>前提</strong>：</p>
+<ul>
+<li>已安装 Node.js</li>
+<li>一个 npm 帐号，注册地址：<a href="https://www.npmjs.com/">npm官网</a></li>
+</ul>
+<p>此处只讨论如何发布 unscope 包，发布 scope 包默认是 private 且收费的，鉴于仅用于做资源加速使用，故不做大量篇幅介绍其他方式</p>
+<p><strong>发布</strong>：</p>
+<ol>
+<li><p>在本地新建一个文件夹，用于存放需要加速的文件，如：js、css、image</p>
+</li>
+<li><p>进入该文件夹中，然后输入<code>npm login</code>或者<code>npm adduser</code>登录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm login //npm adduser</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果已经切换 npm 为淘宝镜像源，需要把切换为原本的镜像源 ，否则无法登录</p>
+<p><code>npm config set registry https://www.npmjs.org</code></p>
+</blockquote>
+</li>
+<li><p>初始化本地仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>发布的包名不能与他人发布的包名重复，不然会发布失败</p>
+</blockquote>
+</li>
+<li><p>在文件夹中添加需要上传的文件，使用以下命令上传</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+<p>发布的板本为 1.0.0，发布成功后即可在 npm 官网登录帐号查看或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;@version/</span><br><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>默认不带板本号查看的板本是 1.0.0，但下载或使用的是最新板本</li>
+<li>可以直接使用 url 的方式使用仓库内文件，且速读很快，意为着可以实现资源访问加速</li>
+<li>板本更新24小时内允许删除</li>
+</ul>
+</li>
+</ol>
+<p><strong>迭代</strong>：</p>
+<p>如果添加、修改、删除仓库文件后要发布，需要修改 package.json 内的版本号（递增）再发布即可，每次更新独立，即以前版本的文件依然还在</p>
+<p><strong>废弃</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;@version &#x27;message&#x27; --force</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>被废弃的包代表此包已不再维护，但是包内文件依然可以使用和安装</p>
+</blockquote>
+<p><strong>删除</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure>
+
+<p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p>
+<p><strong>参考</strong>：</p>
+<ul>
+<li><a href="https://juejin.cn/post/7076724865083899935">收藏了！国内高速前端 Unpkg CDN 替代方案</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></li>
+<li><a href="https://segmentfault.com/a/1190000017461666">npm发布包教程</a></li>
+<li><a href="https://imbhj.com/4fb1ec61/">使用 npm 搭建一个简易图床</a></li>
+</ul>
 ]]></content>
-  </entry>
-  <entry>
-    <title></title>
-    <url>/2022/03/18/%E6%88%91%E7%9A%84%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[]]></content>
       <categories>
-        <category>测试</category>
-        <category>PlayStation</category>
-        <category>Games</category>
-        <category>Life</category>
+        <category>Hexo</category>
+        <category>静态资源加速</category>
       </categories>
       <tags>
         <tag>hexo</tag>
-        <tag>主题</tag>
         <tag>教程</tag>
+        <tag>npm</tag>
+        <tag>cdn</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>测试</title>
-    <url>/2022/05/12/%E6%B5%8B%E8%AF%95/</url>
-    <content><![CDATA[]]></content>
   </entry>
 </search>

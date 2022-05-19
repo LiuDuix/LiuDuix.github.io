@@ -1394,7 +1394,7 @@ input::placeholder {
   z-index: -999;
   width: 100%;
   height: 100%;
-  background: url('/img/fxxx.jpg');
+  background: url('https://npm.elemecdn.com/liuduix-test1/img/bg/bg01.jpg');
   background-attachment: local;
   background-position: center;
   -webkit-background-size: cover;
@@ -5759,7 +5759,7 @@ div#category {
 
 @font-face {
     font-family: 'ZhuZiAYuanB';
-    src: url('/fonts/ZhuZiAYuanB.ttf') format('truetype');
+    src: url('https://npm.elemecdn.com/liuduix-test1/fonts/ZhuZiAYuanB.ttf') format('truetype');
     font-display: swap;
 }
 
@@ -5902,6 +5902,7 @@ nav#pagination.pagination-post {
 #article-container .code-expand-btn {
     background: var(--hassan-transparent-white-deep);
 }
+
 .search-dialog {
   position: fixed;
   top: 10%;
