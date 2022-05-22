@@ -86,6 +86,8 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure>
 
 <p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p>
+<p>…………………….</p>
+<p>………………….</p>
 <p><strong>参考</strong>：</p>
 <ul>
 <li><a href="https://juejin.cn/post/7076724865083899935">收藏了！国内高速前端 Unpkg CDN 替代方案</a></li>
