@@ -1,1 +1,389 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"><title>博客静态资源加速 | Liu's Blog</title><meta name="keywords" content="hexo,教程"><meta name="author" content="Liu"><meta name="copyright" content="Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="🍕起因在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题butterfly源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在 1[BlogRoot]&#x2F;themes&#x2F;Butterfly&#x2F;source&#x2F;scripts&#x2F;events&#x2F;config.js  找到了相关声明，"><meta property="og:type" content="article"><meta property="og:title" content="博客静态资源加速"><meta property="og:url" content="http://liuduix.github.io/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/index.html"><meta property="og:site_name" content="Liu&#39;s Blog"><meta property="og:description" content="🍕起因在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题butterfly源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在 1[BlogRoot]&#x2F;themes&#x2F;Butterfly&#x2F;source&#x2F;scripts&#x2F;events&#x2F;config.js  找到了相关声明，"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg"><meta property="article:published_time" content="2022-05-19T13:10:35.000Z"><meta property="article:modified_time" content="2022-05-23T11:22:08.627Z"><meta property="article:author" content="Liu"><meta property="article:tag" content="hexo"><meta property="article:tag" content="教程"><meta property="article:tag" content="npm"><meta property="article:tag" content="cdn"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://liuduix.github.io/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"><link rel="preconnect" href="//busuanzi.ibruce.info"><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload='this.media="all"'><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.css" media="print" onload='this.media="all"'><script>const GLOBAL_CONFIG={root:"/",algolia:void 0,localSearch:{path:"/search.xml",preload:!1,languages:{hits_empty:"找不到您查询的内容：${query}"}},translate:void 0,noticeOutdate:void 0,highlight:{plugin:"highlighjs",highlightCopy:!0,highlightLang:!0,highlightHeightLimit:190},copy:{success:"复制成功",error:"复制错误",noSupport:"浏览器不支持"},relativeDate:{homepage:!1,post:!1},runtime:"天",date_suffix:{just:"刚刚",min:"分钟前",hour:"小时前",day:"天前",month:"个月前"},copyright:void 0,lightbox:"fancybox",Snackbar:void 0,source:{justifiedGallery:{js:"https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js",css:"https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css"}},isPhotoFigcaption:!1,islazyload:!0,isAnchor:!1}</script><script id="config-diff">var GLOBAL_CONFIG_SITE={title:"博客静态资源加速",isPost:!0,isHome:!1,isHighlightShrink:!1,isToc:!0,postUpdate:"2022-05-23 19:22:08"}</script><noscript><style>#nav{opacity:1}.justified-gallery img{opacity:1}#post-meta time,#recent-posts time{display:inline!important}</style></noscript><script>(e=>{e.saveToLocal={set:function(e,t,o){if(0===o)return;const n=864e5*o,a={value:t,expiry:(new Date).getTime()+n};localStorage.setItem(e,JSON.stringify(a))},get:function(e){const t=localStorage.getItem(e);if(!t)return;const o=JSON.parse(t);if(!((new Date).getTime()>o.expiry))return o.value;localStorage.removeItem(e)}},e.getScript=e=>new Promise((t,o)=>{const n=document.createElement("script");n.src=e,n.async=!0,n.onerror=o,n.onload=n.onreadystatechange=function(){const e=this.readyState;e&&"loaded"!==e&&"complete"!==e||(n.onload=n.onreadystatechange=null,t())},document.head.appendChild(n)}),e.activateDarkMode=function(){document.documentElement.setAttribute("data-theme","dark"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#0d0d0d")},e.activateLightMode=function(){document.documentElement.setAttribute("data-theme","light"),null!==document.querySelector('meta[name="theme-color"]')&&document.querySelector('meta[name="theme-color"]').setAttribute("content","#ffffff")};const t=saveToLocal.get("theme");"dark"===t?activateDarkMode():"light"===t&&activateLightMode();const o=saveToLocal.get("aside-status");void 0!==o&&("hide"===o?document.documentElement.classList.add("hide-aside"):document.documentElement.classList.remove("hide-aside"));/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)&&document.documentElement.classList.add("apple")})(window)</script><link rel="stylesheet" href="https://npm.elemecdn.com/liuduix-test1@1.0.2/css/clock.min.css"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload='this.media="all"'><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload='this.media="all"'><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avatar01.webp" onerror='onerror=null,src="/img/friend_404.gif"' alt="avatar"></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i> <span>首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i> <span>标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i> <span>留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i> <span>友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i> <span>关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Liu's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i> <span>搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i> <span>首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i> <span>标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i> <span>留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i> <span>友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i> <span>关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">博客静态资源加速</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-19T13:10:35.000Z" title="发表于 2022-05-19 21:10:35">2022-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-23T11:22:08.627Z" title="更新于 2022-05-23 19:22:08">2022-05-23</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/">静态资源加速</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span data-flag-title="博客静态资源加速"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure><p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p><p>于是乎，我用了一个捷径，直接查看同类<code>Butterfly</code>类型的博客，直接<kbd>f12</kbd>在「network」一栏查看请求的同名文件地址，然后迅速<kbd>ctrl</kbd> + <kbd>c</kbd> ， <kbd>ctrl</kbd> + <kbd>v</kbd>换到文件中对应声明的地方，然后控制台不报错了；</p><p>再仔细观察请求的地址，前缀都不太一样，但是<code>npm.elemecdn.com</code>最多，于是又跟着将其他请求不到资源的地址全部换为此前缀，最终效果博客正常加载，但是加载速度很慢，<kbd>f12</kbd>查看「network」一栏发现主要是文字资源和图片龟速下载，于是乎准备冻手；在查看多篇文章后，决定写一写，以便不时之需，看完这篇文章，你将了解到</p><ul><li>什么是静态资源库</li><li>CDN，UNPKG</li><li>npm搭建</li></ul><h2 id="🚕CDN"><a href="#🚕CDN" class="headerlink" title="🚕CDN"></a>🚕CDN</h2><ul><li>全名：<strong>Content Delivery Network</strong>，即内容分发网络；</li><li>由麻省理工学院教授，<strong>Tim Berners-Lee</strong>博士带领研究生<strong>Danny C. Lewin</strong>和其他几位顶级研究人员开发的利用数学运算法则来处理内容的一种动态路由算法技术；</li><li>解决：互联网爆炸式发展，用户越来越多，源服务器承受巨大压力，无法及时响应用户请求；</li><li>原理：建立一个缓存服务器，将内容缓存到终端用户附近，可存放各种类型的资源，如：html、css、js、视频、图片</li></ul><p>详情请看原文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></p><h2 id="📦NPM"><a href="#📦NPM" class="headerlink" title="📦NPM"></a>📦NPM</h2><ul><li>全名：Node Package Manager，是 Node.js 官方默认程序包管理器</li><li>一个巨大的远程存储库，通过命令行方式可对库中文件进行操作</li><li>主体：<ul><li>package：含有 package.json 文件并发布到 npm 仓库的文件或文件夹</li><li>module：在 node_modules文件夹中能被 Node.js 的 require方法加载到的任何文件或文件夹</li><li>含有 package.json 文件的 module 一定是 package</li></ul></li></ul><h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><p>主要属性：</p><ul><li>Scope：作用域、范围，用于指定发布的包的命名空间，防止与他人的包名冲突</li><li>Accessibility：private 或者 public，与 github 类似</li></ul><h3 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h3><p><strong>前提</strong>：</p><ul><li>已安装 Node.js</li><li>一个 npm 帐号，注册地址：<a target="_blank" rel="noopener" href="https://www.npmjs.com/">npm官网</a></li></ul><p>此处只讨论如何发布 unscope 包，发布 scope 包默认是 private 且收费的，鉴于仅用于做资源加速使用，故不做大量篇幅介绍其他方式</p><p><strong>发布</strong>：</p><ol><li><p>在本地新建一个文件夹，用于存放需要加速的文件，如：js、css、image</p></li><li><p>进入该文件夹中，然后输入<code>npm login</code>或者<code>npm adduser</code>登录</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm login //npm adduser</span><br></pre></td></tr></table></figure><blockquote><p>如果已经切换 npm 为淘宝镜像源，需要把切换为原本的镜像源 ，否则无法登录</p><p><code>npm config set registry https://www.npmjs.org</code></p></blockquote></li><li><p>初始化本地仓库</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure><blockquote><p>发布的包名不能与他人发布的包名重复，不然会发布失败</p></blockquote></li><li><p>在文件夹中添加需要上传的文件，使用以下命令上传</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure><p>发布的板本为 1.0.0，发布成功后即可在 npm 官网登录帐号查看或者</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;@version/</span><br><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;/</span><br></pre></td></tr></table></figure><ul><li>默认不带板本号查看的板本是 1.0.0，但下载或使用的是最新板本</li><li>可以直接使用 url 的方式使用仓库内文件，且速读很快，意为着可以实现资源访问加速</li><li>板本更新24小时内允许删除</li></ul></li></ol><p><strong>迭代</strong>：</p><p>如果添加、修改、删除仓库文件后要发布，需要修改 package.json 内的版本号（递增）再发布即可，每次更新独立，即以前版本的文件依然还在</p><p><strong>废弃</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;@version &#x27;message&#x27; --force</span><br></pre></td></tr></table></figure><blockquote><p>被废弃的包代表此包已不再维护，但是包内文件依然可以使用和安装</p></blockquote><p><strong>删除</strong></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure><p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p><p><strong>参考</strong>：</p><ul><li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7076724865083899935">收藏了！国内高速前端 Unpkg CDN 替代方案</a></li><li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></li><li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017461666">npm发布包教程</a></li><li><a target="_blank" rel="noopener" href="https://imbhj.com/4fb1ec61/">使用 npm 搭建一个简易图床</a></li></ul></article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>博客静态资源加速</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://liuduix.github.io/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/">http://liuduix.github.io/2022/05/19/博客静态资源加速/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>LiuDuix</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-05-19</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-05-23</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/npm/">npm</a><a class="post-meta__tags" href="/tags/cdn/">cdn</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/social-share.js/dist/css/share.min.css" media="print" onload='this.media="all"'><script src="https://npm.elemecdn.com/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/06/21/%E6%B5%8B%E8%AF%95/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror='onerror=null,src="https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif"' alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">测试</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/%E6%B5%8B%E8%AF%95/" title="测试"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">测试</div></div></a></div></div></div><hr><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i> <span>评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avatar01.webp" onerror='this.onerror=null,this.src="/img/friend_404.gif"' alt="avatar"></div><div class="author-info__name">Liu</div><div class="author-info__description">平安喜乐 四季如春</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">2</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LiuDuix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/liuduix" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:immaster74@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8D%95%E8%B5%B7%E5%9B%A0"><span class="toc-text">🍕起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%95CDN"><span class="toc-text">🚕CDN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A6NPM"><span class="toc-text">📦NPM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Package"><span class="toc-text">Package</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8C%85"><span class="toc-text">发布包</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/21/%E6%B5%8B%E8%AF%95/" title="测试"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror='this.onerror=null,this.src="https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif"' alt="测试"></a><div class="content"><a class="title" href="/2022/06/21/%E6%B5%8B%E8%AF%95/" title="测试">测试</a><time datetime="2022-06-21T07:19:20.000Z" title="发表于 2022-06-21 15:19:20">2022-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/" title="博客静态资源加速"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror='this.onerror=null,this.src="https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif"' alt="博客静态资源加速"></a><div class="content"><a class="title" href="/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/" title="博客静态资源加速">博客静态资源加速</a><time datetime="2022-05-19T13:10:35.000Z" title="发表于 2022-05-19 21:10:35">2022-05-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Liu</div><div class="footer_custom_text"><p><a style="margin-inline:5px" target="_blank" href="https://hexo.io/"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"></a>&nbsp; <a style="margin-inline:5px" target="_blank" href="https://butterfly.js.org/"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"></a>&nbsp; <a style="margin-inline:5px" target="_blank" href="https://github.com/"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"></a>&nbsp; <a style="margin-inline:5px" target="_blank" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"></a></p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i> <span>数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"></div></div><hr><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader={endLoading:()=>{document.body.style.overflow="auto",document.getElementById("loading-box").classList.add("loaded")},initLoading:()=>{document.body.style.overflow="",document.getElementById("loading-box").classList.remove("loaded")}};window.addEventListener("load",preloader.endLoading()),setTimeout((function(){preloader.endLoading()}),2e3)</script><div class="js-pjax"><script>(()=>{const o=()=>{twikoo.init(Object.assign({el:"#twikoo-wrap",envId:"https://twikoo-seven-khaki.vercel.app/",region:"ap-shanghai",onCommentLoaded:function(){btf.loadLightbox(document.querySelectorAll("#twikoo .tk-content img:not(.tk-owo-emotion)"))}},null))},t=()=>{"object"!=typeof twikoo?getScript("https://npm.elemecdn.com/twikoo@1.5.11/dist/twikoo.all.min.js").then(o):setTimeout(o,0)};t()})()</script></div><div class="aplayer no-destroy no-reload aplayer-withlist aplayer-fixed" data-id="7464902660" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-order="random" muted></div><link rel="stylesheet" href="https://npm.elemecdn.com/aplayer@1/dist/APlayer.min.css" media="print" onload='this.media="all"'><script src="https://npm.elemecdn.com/aplayer@1/dist/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@1.2/dist/Meting.min.js"></script><script src="https://npm.elemecdn.com/pjax/pjax.min.js"></script><script>let pjaxSelectors=["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"];var pjax=new Pjax({elements:'a:not([target="_blank"])',selectors:pjaxSelectors,cacheBust:!1,analytics:!1,scrollRestoration:!1});document.addEventListener("pjax:send",(function(){if(window.tocScrollFn&&window.removeEventListener("scroll",window.tocScrollFn),window.scrollCollect&&window.removeEventListener("scroll",scrollCollect),"object"==typeof preloader&&preloader.initLoading(),document.getElementById("rightside").style.cssText="opacity: ''; transform: ''",window.aplayers)for(let e=0;e<window.aplayers.length;e++)window.aplayers[e].options.fixed||window.aplayers[e].destroy();"object"==typeof typed&&typed.destroy();const e=document.body.classList;e.contains("read-mode")&&e.remove("read-mode")})),document.addEventListener("pjax:complete",(function(){window.refreshFn(),document.querySelectorAll("script[data-pjax]").forEach(e=>{const t=document.createElement("script"),o=e.text||e.textContent||e.innerHTML||"";Array.from(e.attributes).forEach(e=>t.setAttribute(e.name,e.value)),t.appendChild(document.createTextNode(o)),e.parentNode.replaceChild(t,e)}),GLOBAL_CONFIG.islazyload&&window.lazyLoadInstance.update(),"function"==typeof chatBtnFn&&chatBtnFn(),"function"==typeof panguInit&&panguInit(),"function"==typeof gtag&&gtag("config","",{page_path:window.location.pathname}),"object"==typeof _hmt&&_hmt.push(["_trackPageview",window.location.pathname]),"function"==typeof loadMeting&&document.getElementsByClassName("aplayer").length&&loadMeting(),"object"==typeof Prism&&Prism.highlightAll(),"object"==typeof preloader&&preloader.endLoading()})),document.addEventListener("pjax:error",e=>{404===e.request.status&&pjax.loadUrl("/404.html")})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script data-pjax>function butterfly_clock_injector_config(){var a=document.getElementsByClassName("sticky_layout")[0];console.log("已挂载butterfly_clock"),a.insertAdjacentHTML("afterbegin",'<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>')}for(var elist="/posts/,/about/".split(","),cpage=location.pathname,epage="all",flag=0,i=0;i<elist.length;i++)cpage.includes(elist[i])&&flag++;("all"===epage&&0==flag||epage===cpage)&&butterfly_clock_injector_config()</script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{jsonPath:"/live2dw/assets/hijiki.model.json"},display:{position:"left",width:150,height:300,hOffset:1,vOffset:-15},mobile:{show:!0},react:{opacity:1},log:!1})</script></body></html>
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>博客静态资源加速 | Liu's Blog</title><meta name="keywords" content="hexo,教程"><meta name="author" content="Liu"><meta name="copyright" content="Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="🍕起因在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题butterfly源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在 1[BlogRoot]&#x2F;themes&#x2F;Butterfly&#x2F;source&#x2F;scripts&#x2F;events&#x2F;config.js  找到了相关声明，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="博客静态资源加速">
+<meta property="og:url" content="http://liuduix.github.io/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/index.html">
+<meta property="og:site_name" content="Liu&#39;s Blog">
+<meta property="og:description" content="🍕起因在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题butterfly源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在 1[BlogRoot]&#x2F;themes&#x2F;Butterfly&#x2F;source&#x2F;scripts&#x2F;events&#x2F;config.js  找到了相关声明，">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg">
+<meta property="article:published_time" content="2022-05-19T21:10:35.000Z">
+<meta property="article:modified_time" content="2022-06-21T07:37:49.408Z">
+<meta property="article:author" content="Liu">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="教程">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="cdn">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://liuduix.github.io/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.elemecdn.com/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":190},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '博客静态资源加速',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-06-21 07:37:49'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/liuduix-test1@1.0.2/css/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="wizard-scene"><div class="wizard-objects"><div class="wizard-square"></div><div class="wizard-circle"></div><div class="wizard-triangle"></div></div><div class="wizard"><div class="wizard-body"></div><div class="wizard-right-arm"><div class="wizard-right-hand"></div></div><div class="wizard-left-arm"><div class="wizard-left-hand"></div></div><div class="wizard-head"><div class="wizard-beard"></div><div class="wizard-face"><div class="wizard-adds"></div></div><div class="wizard-hat"><div class="wizard-hat-of-the-hat"></div><div class="wizard-four-point-star --first"></div><div class="wizard-four-point-star --second"></div><div class="wizard-four-point-star --third"></div></div></div></div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avatar01.webp" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Liu's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">博客静态资源加速</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-05-19T21:10:35.000Z" title="发表于 2022-05-19 21:10:35">2022-05-19</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-06-21T07:37:49.408Z" title="更新于 2022-06-21 07:37:49">2022-06-21</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/">Hexo</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo/%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/">静态资源加速</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>3分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="博客静态资源加速"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure>
+
+<p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p>
+<p>于是乎，我用了一个捷径，直接查看同类<code>Butterfly</code>类型的博客，直接<kbd>f12</kbd>在「network」一栏查看请求的同名文件地址，然后迅速<kbd>ctrl</kbd> + <kbd>c</kbd> ， <kbd>ctrl</kbd> + <kbd>v</kbd>换到文件中对应声明的地方，然后控制台不报错了；</p>
+<p>再仔细观察请求的地址，前缀都不太一样，但是<code>npm.elemecdn.com</code>最多，于是又跟着将其他请求不到资源的地址全部换为此前缀，最终效果博客正常加载，但是加载速度很慢，<kbd>f12</kbd>查看「network」一栏发现主要是文字资源和图片龟速下载，于是乎准备冻手；在查看多篇文章后，决定写一写，以便不时之需，看完这篇文章，你将了解到</p>
+<ul>
+<li>什么是静态资源库</li>
+<li>CDN，UNPKG</li>
+<li>npm搭建</li>
+</ul>
+<h2 id="🚕CDN"><a href="#🚕CDN" class="headerlink" title="🚕CDN"></a>🚕CDN</h2><ul>
+<li>全名：<strong>Content Delivery Network</strong>，即内容分发网络；</li>
+<li>由麻省理工学院教授，<strong>Tim Berners-Lee</strong>博士带领研究生<strong>Danny C. Lewin</strong>和其他几位顶级研究人员开发的利用数学运算法则来处理内容的一种动态路由算法技术；</li>
+<li>解决：互联网爆炸式发展，用户越来越多，源服务器承受巨大压力，无法及时响应用户请求；</li>
+<li>原理：建立一个缓存服务器，将内容缓存到终端用户附近，可存放各种类型的资源，如：html、css、js、视频、图片</li>
+</ul>
+<p>详情请看原文：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></p>
+<h2 id="📦NPM"><a href="#📦NPM" class="headerlink" title="📦NPM"></a>📦NPM</h2><ul>
+<li>全名：Node Package Manager，是 Node.js 官方默认程序包管理器</li>
+<li>一个巨大的远程存储库，通过命令行方式可对库中文件进行操作</li>
+<li>主体：<ul>
+<li>package：含有 package.json 文件并发布到 npm 仓库的文件或文件夹</li>
+<li>module：在 node_modules文件夹中能被 Node.js 的 require方法加载到的任何文件或文件夹</li>
+<li>含有 package.json 文件的 module 一定是 package</li>
+</ul>
+</li>
+</ul>
+<h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><p>主要属性：</p>
+<ul>
+<li>Scope：作用域、范围，用于指定发布的包的命名空间，防止与他人的包名冲突</li>
+<li>Accessibility：private 或者 public，与 github 类似</li>
+</ul>
+<h3 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h3><p><strong>前提</strong>：</p>
+<ul>
+<li>已安装 Node.js</li>
+<li>一个 npm 帐号，注册地址：<a target="_blank" rel="noopener" href="https://www.npmjs.com/">npm官网</a></li>
+</ul>
+<p>此处只讨论如何发布 unscope 包，发布 scope 包默认是 private 且收费的，鉴于仅用于做资源加速使用，故不做大量篇幅介绍其他方式</p>
+<p><strong>发布</strong>：</p>
+<ol>
+<li><p>在本地新建一个文件夹，用于存放需要加速的文件，如：js、css、image</p>
+</li>
+<li><p>进入该文件夹中，然后输入<code>npm login</code>或者<code>npm adduser</code>登录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm login //npm adduser</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果已经切换 npm 为淘宝镜像源，需要把切换为原本的镜像源 ，否则无法登录</p>
+<p><code>npm config set registry https://www.npmjs.org</code></p>
+</blockquote>
+</li>
+<li><p>初始化本地仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>发布的包名不能与他人发布的包名重复，不然会发布失败</p>
+</blockquote>
+</li>
+<li><p>在文件夹中添加需要上传的文件，使用以下命令上传</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+
+<p>发布的板本为 1.0.0，发布成功后即可在 npm 官网登录帐号查看或者</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;@version/</span><br><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;/</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>默认不带板本号查看的板本是 1.0.0，但下载或使用的是最新板本</li>
+<li>可以直接使用 url 的方式使用仓库内文件，且速读很快，意为着可以实现资源访问加速</li>
+<li>板本更新24小时内允许删除</li>
+</ul>
+</li>
+</ol>
+<p><strong>迭代</strong>：</p>
+<p>如果添加、修改、删除仓库文件后要发布，需要修改 package.json 内的版本号（递增）再发布即可，每次更新独立，即以前版本的文件依然还在</p>
+<p><strong>废弃</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;@version &#x27;message&#x27; --force</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>被废弃的包代表此包已不再维护，但是包内文件依然可以使用和安装</p>
+</blockquote>
+<p><strong>删除</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure>
+
+<p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p>
+<p><strong>参考</strong>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7076724865083899935">收藏了！国内高速前端 Unpkg CDN 替代方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000017461666">npm发布包教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://imbhj.com/4fb1ec61/">使用 npm 搭建一个简易图床</a></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>博客静态资源加速</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://liuduix.github.io/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/">http://liuduix.github.io/2022/05/19/博客静态资源加速/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>LiuDuix</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2022-05-19</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2022-06-21</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/hexo/">hexo</a><a class="post-meta__tags" href="/tags/%E6%95%99%E7%A8%8B/">教程</a><a class="post-meta__tags" href="/tags/npm/">npm</a><a class="post-meta__tags" href="/tags/cdn/">cdn</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/06/21/%E6%B5%8B%E8%AF%95/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror="onerror=null;src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">测试</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/06/21/%E6%B5%8B%E8%AF%95/" title="测试"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">测试</div></div></a></div><div><a href="/2022/06/21/%E6%B5%8B%E8%AF%952/" title="测试2"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-06-21</div><div class="title">测试2</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avatar01.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">Liu</div><div class="author-info__description">平安喜乐 四季如春</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">3</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">4</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LiuDuix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/liuduix" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:immaster74@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8D%95%E8%B5%B7%E5%9B%A0"><span class="toc-text">🍕起因</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%95CDN"><span class="toc-text">🚕CDN</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A6NPM"><span class="toc-text">📦NPM</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Package"><span class="toc-text">Package</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%91%E5%B8%83%E5%8C%85"><span class="toc-text">发布包</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/06/21/%E6%B5%8B%E8%AF%952/" title="测试2"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="测试2"/></a><div class="content"><a class="title" href="/2022/06/21/%E6%B5%8B%E8%AF%952/" title="测试2">测试2</a><time datetime="2022-06-21T15:35:46.000Z" title="发表于 2022-06-21 15:35:46">2022-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/21/%E6%B5%8B%E8%AF%95/" title="测试"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="测试"/></a><div class="content"><a class="title" href="/2022/06/21/%E6%B5%8B%E8%AF%95/" title="测试">测试</a><time datetime="2022-06-21T15:19:20.000Z" title="发表于 2022-06-21 15:19:20">2022-06-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/" title="博客静态资源加速"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/cover/cover01.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="博客静态资源加速"/></a><div class="content"><a class="title" href="/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/" title="博客静态资源加速">博客静态资源加速</a><time datetime="2022-05-19T21:10:35.000Z" title="发表于 2022-05-19 21:10:35">2022-05-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 By Liu</div><div class="footer_custom_text"><p> <a style="margin-inline:5px"target="_blank" href="https://hexo.io/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"> </a>&nbsp; <a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"> </a>&nbsp; <a style="margin-inline:5px"target="_blank" href="https://github.com/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"> </a>&nbsp; <a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"> </a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.umd.js"></script><script src="https://npm.elemecdn.com/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())
+setTimeout(function(){preloader.endLoading();}, 2000);</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-seven-khaki.vercel.app/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-seven-khaki.vercel.app/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      document.getElementById('twikoo-count').innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.5.11/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><div class="aplayer no-destroy no-reload aplayer-withlist aplayer-fixed" data-id="7464902660" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-order="random" muted></div><link rel="stylesheet" href="https://npm.elemecdn.com/aplayer@1/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/aplayer@1/dist/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@1.2/dist/Meting.min.js"></script><script src="https://npm.elemecdn.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = '/posts/,/about/'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":1,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body></html>
