@@ -3,7 +3,7 @@
   <entry>
     <title>博客静态资源加速</title>
     <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
-    <content><![CDATA[<h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure>
 
 <p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p>
