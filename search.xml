@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>frp 内网穿透</title>
+    <url>/2022/06/30/frp/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>官网文档地址：<a href="https://gofrp.org/docs/overview/">https://gofrp.org/docs/overview/</a></p>
+<p>GitHub：<a href="https://github.com/fatedier/frp/releases">https://github.com/fatedier/frp/releases</a></p>
+<p>frp 是一个专注于内网穿透的高性能的反向代理应用，支持 TCP、UDP、HTTP、HTTPS 等多种协议。可以将内网服务以安全、便捷的方式通过具有公网 IP 节点的中转暴露到公网；</p>
+<h2 id="systemd-后台启动及开机自启"><a href="#systemd-后台启动及开机自启" class="headerlink" title="systemd 后台启动及开机自启"></a>systemd 后台启动及开机自启</h2><p>环境：</p>
+<ul>
+<li>云服务器：centOS 7.9；</li>
+<li>被穿透主机（本机）：windows 10 64；</li>
+</ul>
+<p>步骤：</p>
+<ol>
+<li><p>服务端下载文件<code>frp_0.43.0_linux_amd64.tar.gz</code>，解压到<code>/usr/local/frp</code>文件夹下，并删除<code>frpc</code>开头的文件（服务端不需要）；</p>
+</li>
+<li><p>如果Linux服务端上没有安装 <code>systemd</code>，可以使用 <code>yum</code> 或 <code>apt</code> 等命令安装 <code>systemd</code>；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># yum</span><br><span class="line">yum install systemd</span><br><span class="line"># apt</span><br><span class="line">apt install systemd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑 <code>frps.service</code> 文件，修改配置中的 frp 安装路径；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/systemd/system/frps.service</span><br></pre></td></tr></table></figure>
+
+<p>内容：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line"># 服务名称，可自定义</span><br><span class="line">Description = frp server</span><br><span class="line">After = network.target syslog.target</span><br><span class="line">Wants = network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type = simple</span><br><span class="line"># 启动frps的命令，需修改为您的frps的安装路径</span><br><span class="line">ExecStart = /usr/local/frp/frps -c /usr/local/frp/frps.ini</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy = multi-user.target</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>大功告成，现在可以使用命令管理 frps；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动frp</span><br><span class="line">systemctl start frps</span><br><span class="line"># 停止frp</span><br><span class="line">systemctl stop frps</span><br><span class="line"># 重启frp</span><br><span class="line">systemctl restart frps</span><br><span class="line"># 查看frp状态</span><br><span class="line">systemctl status frps</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="远程访问-windows-桌面"><a href="#远程访问-windows-桌面" class="headerlink" title="远程访问 windows 桌面"></a>远程访问 windows 桌面</h2><ol>
+<li><p>客户端下载<code>frp_0.43.0_windows_amd64.zip</code>，解压到任意目录，删除<code>frps</code>开头的文件；</p>
+</li>
+<li><p>修改服务端的 frps.ini 文件，设置 frp 服务器用户接收客户端连接的端口；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">bind_port = 7000 //服务器监听端口，需要开启安全组和防火墙</span><br><span class="line">token = 123456789 //用于验证客户端</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在需要被访问的内网机器上（SSH 服务通常监听在 22 端口）部署 frpc，修改 frpc.ini 文件，修改「server_addr」为服务器地址：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = x.x.x.x</span><br><span class="line">server_port = 7000</span><br><span class="line">token = 123456789 //需要与上面服务器端配置的 token 一致，用于安全验证</span><br><span class="line"></span><br><span class="line">[ssh]</span><br><span class="line">type = tcp</span><br><span class="line">local_ip = 127.0.0.1</span><br><span class="line">local_port = 3389 //windows 远程桌面端口，需要被访问主机防火墙开启 3389 端口，linux 的端口为 22</span><br><span class="line">remote_port = 6000 //访问端口，需要开启安全组和防火墙</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分别开启服务端和客户端；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">nohup /etc/frp/frps -c /etc/frp/frps.ini &amp; //服务端后台启动</span><br><span class="line">systemctl start frps //或者以这种方式后台运行 frps</span><br><span class="line">./frpc.exe -c ./frpc.ini //运行客户端程序</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程连接输入<code>xxx.xxx.xxx.xxx:6000</code>端口访问；</p>
+</li>
+</ol>
+<p>注意：</p>
+<ol>
+<li>云服务器需要开放 6000 和 7000 端口的安全组和防火墙；</li>
+<li>被穿透的 windows 主机需要开启防火墙的 3389 端口；</li>
+<li>被穿透的主机需要开启远程左桌面服务（设置→系统→远程桌面）；</li>
+</ol>
+<h3 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h3><blockquote>
+<p>访问主机时，密码正确但是却提示「你的凭据不工作」</p>
+</blockquote>
+<p>解决方案：</p>
+<p>找到</p>
+<p>组策略→计算机配置→管理模板→windows组件→远程桌面服务→远程桌面会话主机→安全</p>
+<p>更改<code>远程（rdp）连接要求使用指定的安全层</code>为启用 RDP；</p>
+<p>参考来源：</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_38004638/article/details/82290796">远程桌面失败：你的凭据不工作</a></li>
+</ul>
+<h2 id="访问内网web"><a href="#访问内网web" class="headerlink" title="访问内网web"></a>访问内网web</h2><ol>
+<li><p>服务器端修改 frps.ini 文件，设置监听 HTTP 请求端口为 4001；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">...</span><br><span class="line">vhost_http_port = 4001</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>服务器安全组和防火墙放行 4001 端口；</p>
+</li>
+<li><p>被穿透端修改 frpc.ini 文件，添加 web 节点，可以指定多个；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">server_addr = x.x.x.x</span><br><span class="line">server_port = 7000</span><br><span class="line"></span><br><span class="line">[web]</span><br><span class="line">type = http</span><br><span class="line">local_port = 4000</span><br><span class="line">custom_domains = www.hahai.com //如果没有域名可以填写云服务器 ip 地址</span><br><span class="line"></span><br><span class="line">[web2]</span><br><span class="line">type = http</span><br><span class="line">local_port = 8080</span><br><span class="line">custom_domains = www.yourdomain2.com</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>本地防火墙开放端口 4000，启动 web 应用映射到 4000 端口；</p>
+</li>
+<li><p>修改本机 host 记录，添加如下一行；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">xxx.xxx.xxx.xxx www.hahai.com // xxx.xxx.xxx.xxx 为服务器地址</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>分别启动 frps 和 frpc 后，即可通过 域名:端口 访问；</p>
+</li>
+</ol>
+<h2 id="为本地HTTP服务启动HTTPS"><a href="#为本地HTTP服务启动HTTPS" class="headerlink" title="为本地HTTP服务启动HTTPS"></a>为本地HTTP服务启动HTTPS</h2><p>服务端修改 frps.ini；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">...</span><br><span class="line">vhost_https_port = 443</span><br></pre></td></tr></table></figure>
+
+<p>被穿透端修改 frpc.ini（需要提前准备好 SSL 证书，即 server.crt，server.key）；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">[httpsweb]</span><br><span class="line">type = https</span><br><span class="line">local_port = 4000</span><br><span class="line">custom_domains = www.hahai.com</span><br><span class="line"></span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 127.0.0.1:4000</span><br><span class="line"></span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = D:/Frp/server.crt</span><br><span class="line">plugin_key_path = D:/Frp/server.key</span><br><span class="line">plugin_host_header_rewrite = 127.0.0.1</span><br><span class="line">plugin_header_X-From-Where = frp</span><br></pre></td></tr></table></figure>
+
+<p>分别启动 frps 和 frpc 即可实现 https 访问；</p>
+]]></content>
+      <categories>
+        <category>frp</category>
+      </categories>
+      <tags>
+        <tag>frp</tag>
+        <tag>内网穿透</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客静态资源加速</title>
     <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
