@@ -169,7 +169,7 @@
 </ul>
 </blockquote>
 </li>
-<li><p>验证，在 master 数据库中创建数据，查看 slave 中是否存在相同的数据</p>
+<li><p>验证，在 master 数据库中创建数据，查看 slave 中是否存在相同的数据；</p>
 </li>
 </ol>
 ]]></content>
