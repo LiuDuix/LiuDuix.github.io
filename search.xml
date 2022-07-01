@@ -93,6 +93,96 @@
       </tags>
   </entry>
   <entry>
+    <title>Docker下的MYSQL主从复制</title>
+    <url>/2022/07/01/rH4YuaYi2C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>阿里云服务器：CentOS 7.9</p>
+<p>本地：Windows 10 64</p>
+<p>MYSQL：8.0.x</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>创建 msyql 实例 master，映射端口 3307；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3307:3306 --name=&quot;mysql-master&quot; \</span><br><span class="line">-v /mydata/mysql-master/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-master/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-master/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>启动错误：WARNING: IPv4 forwarding is disabled. Networking will not work</p>
+<p>没有开启转发,<a href="https://so.csdn.net/so/search?q=docker&spm=1001.2101.3001.7020">docker</a>网桥配置完后，需要开启转发，不然容器启动后，就会没有网络；</p>
+<p>解决方案：</p>
+<ol>
+<li><p>vim &#x2F;etc&#x2F;sysctl.conf</p>
+<p>添加如下配置项；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 network 和 docker 服务；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart network &amp;&amp; systemctl restart docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否修改成功；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.ip_forward</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>参考来源：<a href="https://blog.csdn.net/cljdsc/article/details/115207336">https://blog.csdn.net/cljdsc/article/details/115207336</a></p>
+</blockquote>
+</li>
+<li><p>进入<code>/mydata/mysql-master/conf</code>目录下新建文件<code>my.cnf</code>；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 设置server_id，同一局域网中需要唯一</span><br><span class="line">server_id=101</span><br><span class="line">## 指定不需要同步的数据库名称</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">## 开启二进制日志功能</span><br><span class="line">log-bin=mall-mysql-bin</span><br><span class="line">## 设置二进制日志使用内存大小(事务)</span><br><span class="line">binlog_cache_size=1M</span><br><span class="line">## 设置使用的二进制日志格式(mixed, statement, row)</span><br><span class="line">binlog_format=mixed</span><br><span class="line">## 二进制日志过期清理时间。默认值为0,表示不自动清理</span><br><span class="line">expire_logs_days=7</span><br><span class="line">## 跳过主从复制中遇到的所有错误或指定类型的错误,避免slave端复制中断。</span><br><span class="line">## 如: 1062错误是指一些主键重复,1032错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 mysql；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart mysql-master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 mysql-master，在 master 容器实例内创建数据同步用户；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;slave&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br><span class="line">GRANT REPLICATION SLAVE,REPLICATION CLIENT ON *.* TO &#x27;slave&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;; #修改验证方式</span><br><span class="line">flush privileges; #刷新权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建从服务器 3308；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3308:3306 --name=&quot;mysql-slave&quot; \</span><br><span class="line">-v /mydata/mysql-slave/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-slave/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-slave/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入<code>/mydata/mysql-slave/conf</code>目录下新建文件<code>my.cnf</code>；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">##设置server_id,同一局域网中需要唯一</span><br><span class="line">server_id=102</span><br><span class="line">##指定不需要同步的数据库名称</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">##开启二进制日志功能,以备Slave作为其它数据库实例的Master时使用</span><br><span class="line">log-bin=mall-mysql-slave1-bin</span><br><span class="line">##设置二进制日志使用内存大小(事务)</span><br><span class="line">binlog_cache_size=1M</span><br><span class="line">##设置使用的二进制日志格式(mixed, statement, row)</span><br><span class="line">binlog_format=mixed</span><br><span class="line">##二进制日志过期清理时间。默认值为0,表示不自动清理,</span><br><span class="line">expire_logs_days=7</span><br><span class="line">##跳过主从复制中遇到的所有错误或指定类型的错误,避免slave端复制中断。</span><br><span class="line">## 如: 1062错误是指一些主键重复,1032错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br><span class="line">## relay_log配置中继日志</span><br><span class="line">relay_log=mall-mysql-relay-bin</span><br><span class="line">## log_slave_updates表示slave将复制事件写进自己的二进制目志</span><br><span class="line">log_slave_updates=1</span><br><span class="line">## slave设置为只读(具有super权限的用户除外)</span><br><span class="line">read_only=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 slaver 实例；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart mysql-slave</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 master 数据库，查看主数据库中主从同步状态；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show master status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 slave 数据库，配置主从复制；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在从数据库中查看主从同步状态；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show slave status \G</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从数据库中开启主从同步；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">start slave;</span><br></pre></td></tr></table></figure>
+
+<p>再次查看主从同步状态中的下面两项是否变为「YES」；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Slave_IO_Running: Connecting // 值应该为YES</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>出现错误：</p>
+<p>Authentication plugin ‘caching_sha2_password’ reported error: Authentication requires secure connection</p>
+<p>原因：</p>
+<p>MYSQL 8.0.x 修改了验证方式，无法在 slave 中使用 master 帐号通过 3307 端口登录主数据库，需要改回原本的验证方式；</p>
+<p>ALTER USER ‘root’ IDENTIFIED WITH mysql_native_password BY ‘123456’;</p>
+<p>注意是修改 master 数据库的帐号验证方式和密码（<font color=red>一定要仔细核对</font>）；</p>
+<p>核对完成后再在 slave 中重建主从配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stop slave;</span><br><span class="line">reset slave;</span><br><span class="line"></span><br><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
+
+<p>参考文章：</p>
+<ul>
+<li><a href="https://blog.csdn.net/panrenjun/article/details/114219097">https://blog.csdn.net/panrenjun/article/details/114219097</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>验证，在 master 数据库中创建数据，查看 slave 中是否存在相同的数据</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>MYSQL</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>MYSQL</tag>
+        <tag>主从复制</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>博客静态资源加速</title>
     <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
