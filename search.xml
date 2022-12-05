@@ -1,6 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>idea 完全迁移</title>
+    <url>/2022/12/05/ZvjgayamzL/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><ol>
+<li><p>将 idea 的配置导出到一个目录备份</p>
+<p>File-&gt;Manage IDE Settings-&gt;Export Settings，弹出对话框保存 settings.zip 文件</p>
+<img src="\img\postimg\image-20221205115142179.png" style="zoom:70%"/>
+</li>
+<li><p>将 idea 的插件目录 myplugins 复制备份（插件目录名不能是 plugins）</p>
+</li>
+</ol>
+<h2 id="迁移"><a href="#迁移" class="headerlink" title="迁移"></a>迁移</h2><p>在重新安装 idea 时，有时会弹出「使用已有的配置」打开，还是自己设置，这一步选择自己设置，完成安装后关闭 idea</p>
+<ol>
+<li><p>将上面保存的插件目录 myplugins 复制到 idea 安装目录下</p>
+<blockquote>
+<p>idea 原本的安装路径中有一个 plugins 文件夹，这是 idea 自带的绑定的插件目录，不要将自己下载的插件放在这儿，如果你没有修改过 idea 存储插件的位置，那么默认下载的插件位置可查看 idea bin 目录下 idea.properties 中的「idea.plugins.path」</p>
+</blockquote>
+</li>
+<li><p>修改 idea bin 目录下 idea.properties，添加或修改如下内容，修改默认的配置、缓存、插件、日志目录</p>
+<figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">idea.config.path</span>=<span class="string">D:/Program/JetBrains/.IntelliJIdea/config</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the caches directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.system.path</span>=<span class="string">D:/Program/JetBrains/.IntelliJIdea/system</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the user-installed plugins directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.plugins.path</span>=<span class="string">D:/Idea/IntelliJ IDEA 2021.2.2/myplugins</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the logs directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.log.path</span>=<span class="string">$&#123;idea.system.path&#125;/log</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 idea，导入配置文件 settings.zip</p>
+<img src="\img\postimg\image-20221205122736003.png" style="zoom:70%"/>
+</li>
+<li><p>检查插件和插件配置是否导入成功，查看设置中是否存在其他插件的配置</p>
+<img src="\img\postimg\image-20221205123217392.png" style="zoom:70%"/>
+
+<blockquote>
+<p>如果进行了 idea 的板本升级，控制台可能报部份插件兼容问题，在插件中心卸载，或者下载新板本的覆盖即可</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>idea</category>
+      </categories>
+      <tags>
+        <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>frp 内网穿透</title>
     <url>/2022/06/30/frp/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>官网文档地址：<a href="https://gofrp.org/docs/overview/">https://gofrp.org/docs/overview/</a></p>
