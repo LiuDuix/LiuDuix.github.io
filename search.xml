@@ -154,6 +154,7 @@
 <blockquote>
 <p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
 </blockquote>
+<p>来源：<a href="https://blog.csdn.net/chrisy521/article/details/121982044">https://blog.csdn.net/chrisy521/article/details/121982044</a></p>
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
 <li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
 <p>解决：手动刷新一下 Maven 工程</p>
