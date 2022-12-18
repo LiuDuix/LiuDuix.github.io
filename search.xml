@@ -1,6 +1,259 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>函数式编程学习</title>
+    <url>/2022/12/18/A8pseyMAQD/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1. 介绍"></a>1. 介绍</h2><h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><ul>
+<li>函数式编程是一种抽象度很高的「编程范式」，属于「结构化编程」的一种，除它之外，还有命令式编程，声明式编程；</li>
+<li>函数式编程像是“流水线”，允许我们将数据和处理逻辑封装到函数中，<font color="#df5555">将函数作为基本运算单元</font>，并且将这个函数本身作为参数传入另外一个函数的同时还返回一个函数（balalala）；</li>
+<li>函数式编程的基础是 lambda 计算，它的关注点是运算过程，也就是对数据做了什么操作；</li>
+<li>我们经常把支持函数式编程的编码风格称为 Lambda 表达式，Java平台从 Java 8 开始，引入了 lambda 表达式 和 Stream API。</li>
+</ul>
+<h3 id="1-2-特点"><a href="#1-2-特点" class="headerlink" title="1.2 特点"></a>1.2 特点</h3><ul>
+<li><p><strong>闭包和高阶函数</strong>：函数式编程支持将函数作为第一类对象（函数本身与其他数据类型一样，可以赋值给其他变量，也可以将其作为参数传递给其他函数），在某些情况下甚至<font color="#df5555">允许返回一个函数作为其参数</font>；</p>
+</li>
+<li><p><strong>惰性计算</strong>：也叫惰性求值、延迟求值，是一种软件设计和架构设计思想，核心：少做无用功，等真正需要的时候才计算，节约内存开支，提升性能；</p>
+</li>
+<li><p><strong>递归</strong>：函数式编程用用递归做为控制流程的机制，递归算法是一种典型的函数式编程案例；</p>
+<p>举个栗子：已知数列 1、1、2、3、5、8…，求第 n 项的值</p>
+<p>规律：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">f(n)=f(n-1)+f(n-2)</span><br></pre></td></tr></table></figure>
+
+<p>代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getResult</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">    <span class="comment">//边界判断</span></span><br><span class="line">    <span class="keyword">if</span> (num&lt;=<span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> getResult(num - <span class="number">1</span>) + getResult(num - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个 f(n) 就是递归函数</p>
+<p>来源：<a href="https://blog.csdn.net/haohaounique/article/details/117573671">https://blog.csdn.net/haohaounique/article/details/117573671</a></p>
+</li>
+<li><p><strong>只用「表达式」，不用「语句」</strong>：函数式编程要求函数必须有返回值；</p>
+</li>
+<li><p><strong>没有「副作用」</strong>：函数式编程强调没有”副作用”，变量值一旦被指派就永远不会改变，意味着函数要保持独立，所有功能就是返回一个新的值，没有其他行为，尤其是不得修改外部变量的值；</p>
+</li>
+<li><p><strong>引用透明性</strong>：如果提供同样的输入，函数总是返回同样的结果；</p>
+</li>
+</ul>
+<p>来源：百度百科、廖雪峰的官方网站</p>
+<h2 id="2-Lambda-表达式"><a href="#2-Lambda-表达式" class="headerlink" title="2. Lambda 表达式"></a>2. Lambda 表达式</h2><p>Lambda 表达式 是 JDK8 中的语法糖。使用 Lambda 表达式可以对某些匿名内部类的写法进行简化。它是函数式编程思想的一个重要体现。让我们不用关注是什么对象，而是关注对数据进行了什么操作。</p>
+<h3 id="2-1-基本格式"><a href="#2-1-基本格式" class="headerlink" title="2.1 基本格式"></a>2.1 基本格式</h3><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">(参数列表)-&gt;&#123;代码&#125;</span><br></pre></td></tr></table></figure>
+
+<p>例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;我在执行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+<p>使用 Lambda 表达式</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我在执行&quot;</span>);</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
+
+<p>Idea 中光标移动到匿名内部类，按下 Alt+Enter，只要可以简化为 Lambda 表达式就会出现<code>Replace with lamdbda</code></p>
+<p><img src="/%5Cimg%5Cpostimg%5Cimage-20221217022833533.png" alt="image-20221217022833533"></p>
+<p>转回普通写法</p>
+<p><img src="/%5Cimg%5Cpostimg%5Cimage-20221217023214496.png" alt="image-20221217023214496"></p>
+<h3 id="2-2-省略规则"><a href="#2-2-省略规则" class="headerlink" title="2.2 省略规则"></a>2.2 省略规则</h3><ul>
+<li>参数类型可省略（可通过上下文推断出参数类型）；</li>
+<li>方法体只有一句代码时，大括号、return、结尾分号可省略；</li>
+<li>方法只有一个参数时可以省略。</li>
+</ul>
+<blockquote>
+<p>lambda 表达式只能引用标记了 final 的外层局部变量，不能在 lambda 表达式内部修改定义在外部的局部变量，否则编译错误</p>
+</blockquote>
+<h2 id="3-Stream-流"><a href="#3-Stream-流" class="headerlink" title="3. Stream 流"></a>3. Stream 流</h2><h3 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h3><p>JDK8 中的 Stream API 不同于 java.io 包中的 InputStream 和 OutputStream，它使用的是函数式的编程方式，对数据源（可以来自集合，数组，I&#x2F;O channel， 产生器 generator等）进行链状流式操作；我们可以把我们的需要处理的集合或数组看为「原材料」，把这个「原材料」放在 Stream API 提供的各种操作（如：filter、sorted、map、……）对其进行加工，最后得到我们想要的产品。</p>
+<h3 id="3-2-创建流"><a href="#3-2-创建流" class="headerlink" title="3.2 创建流"></a>3.2 创建流</h3><h4 id="3-2-1-stream-串行流"><a href="#3-2-1-stream-串行流" class="headerlink" title="3.2.1 stream() 串行流"></a>3.2.1 stream() 串行流</h4><blockquote>
+<p>stream() 是线程安全的，数据量少且业务简单用串行</p>
+</blockquote>
+<p>单列集合：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.stream();</span><br><span class="line">set.stream();</span><br></pre></td></tr></table></figure>
+
+<p>双列集合：先转换为单列集合</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String,String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">Stream&lt;Map.Entry&lt;String,String&gt;&gt; stream = map.entrySet().stream();</span><br></pre></td></tr></table></figure>
+
+<p>数组：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">Stream&lt;Integer&gt; stream = Arrays.stream(arr);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">Stream&lt;Integer&gt; stream = Stream.of(arr);</span><br></pre></td></tr></table></figure>
+
+<h4 id="3-2-2-parallelStream-并行流"><a href="#3-2-2-parallelStream-并行流" class="headerlink" title="3.2.2 parallelStream() 并行流"></a>3.2.2 parallelStream() 并行流</h4><blockquote>
+<p>线程不安全，parallelStream() 底层使用Fork&#x2F;Join框架实现，是多线程异步任务的一种实现；数据量大，且业务复杂，用并行</p>
+</blockquote>
+<p>使用方式：将上面的<code>stream()</code>换为<code>parallelStream()</code>即可</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.parallelStream()</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-中间操作"><a href="#3-3-中间操作" class="headerlink" title="3.3 中间操作"></a>3.3 中间操作</h3><p>中间操作都会返回流对象本身，这样多个操作可以串联成一个管道， 如同流式风格。</p>
+<h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>将一种操作映射到 Stream 中的每一个元素上，可自定义处理的返回值，最后返回一个新的 Stream。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer[] integers = <span class="keyword">new</span> <span class="title class_">Integer</span>[]&#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;;</span><br><span class="line">Stream&lt;Integer&gt; stream = Arrays.stream(integers).map(val -&gt; val % <span class="number">2</span> == <span class="number">0</span> ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p>对一个 Stream 的所有元素一一进行测试，不满足条件的就被“过滤掉”了，剩下的满足条件的元素就构成了一个新的 Stream。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt;strings = Arrays.asList(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="string">&quot;efg&quot;</span>, <span class="string">&quot;abcd&quot;</span>,<span class="string">&quot;&quot;</span>, <span class="string">&quot;jkl&quot;</span>);</span><br><span class="line"><span class="comment">// 获取空字符串的数量</span></span><br><span class="line"><span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> strings.stream().filter(string -&gt; string.isEmpty()).count();</span><br></pre></td></tr></table></figure>
+
+<h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><p>去除 Stream 中的相同元素（该方法依赖于 equals 方法）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">strings.stream().distinct()</span><br></pre></td></tr></table></figure>
+
+<h4 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h4><p>对 Stream 中元素进行排序，传入空参时，Stream 中的元素必须实现 Comparable 接口（也就是实现 compareTo 方法，告诉程序如何排序）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">integers.stream().sorted()</span><br></pre></td></tr></table></figure>
+
+<p>如果传入的是自定义对象，该对象必须实现 Comparable 接口，否则抛出<code>ClassCastException</code>异常。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">users.stream().sorted()</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="comment">// getter and setter</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(User u)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="type">byte</span>) <span class="built_in">this</span>.getName().charAt(<span class="number">0</span>) == (<span class="type">byte</span>) u.getName().charAt(<span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.age - u.getAge();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">byte</span>) u.getName().charAt(<span class="number">0</span>) - (<span class="type">byte</span>) <span class="built_in">this</span>.getName().charAt(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>又或者这样</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">users.stream().sorted((o1, o2) -&gt; o2.getAge() - o1.getAge())</span><br></pre></td></tr></table></figure>
+
+<h4 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h4><p>跳过 Stream 中的前 n 个元素，返回剩下元素组成的新的 Stream。</p>
+<h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h4><p>设置 Stream 的最大元素个数，超出部份会被抛弃。</p>
+<h4 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h4><p>map 只能把一个对象转变为另一个对象来作为新的元素，而 flatMap 可以将一个对象转换为多个对象作为 Stream 中的元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Stream&lt;List&lt;Integer&gt;&gt; s1 = Stream.of(</span><br><span class="line">        Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),</span><br><span class="line">        Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>),</span><br><span class="line">        Arrays.asList(<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>));</span><br><span class="line">Stream&lt;Integer&gt; s2 = s.flatMap(list -&gt; list.stream());</span><br></pre></td></tr></table></figure>
+
+<h4 id="parallel"><a href="#parallel" class="headerlink" title="parallel"></a>parallel</h4><p>返回并行的等效 Stream。可能会返回自身</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.stream(integers).parallel().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-4-终结操作"><a href="#3-4-终结操作" class="headerlink" title="3.4 终结操作"></a>3.4 终结操作</h3><p>惰性求值，<font color="#df5555">如果 Stream 没有终结操作，那么我们对 Stream 做的中间操作也不会执行<strong>，</strong>经过终结操作之后的 Stream 就不能再被使用</font>。</p>
+<p>如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">users.stream().sorted(); <span class="comment">//没有终结操作</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="/%5Cimg%5Cpostimg%5Cimage-20221217214637704.png" alt="image-20221217214637704"></p>
+<h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><p>遍历 Stream 中的每个元素。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; strings = Arrays.asList(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="string">&quot;efg&quot;</span>, <span class="string">&quot;abcd&quot;</span>,<span class="string">&quot;&quot;</span>, <span class="string">&quot;jkl&quot;</span>);</span><br><span class="line">strings.stream().forEach(System.out::println)</span><br></pre></td></tr></table></figure>
+
+<h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><p>返回 Stream 中元素的个数</p>
+<h4 id="min-amp-max"><a href="#min-amp-max" class="headerlink" title="min&amp;max"></a>min&amp;max</h4><p>返回 Stream 中元素的最值，返回值为 Optional 对象，与 sorted 类似，需要指定比较规则。</p>
+<h4 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h4><p>把 Stream 换成一个集合（List、Set、Map）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">strings.stream().distinct().collect(Collectors.toList())<span class="comment">// toSet(),toMap()</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch"></a>anyMatch</h4><p>判断 Stream 中是否有匹配条件的元素，返回 boolean 值。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//判断流中的用户是否存在年龄大于 20 的</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> users.stream().anyMatch(user -&gt; user.getAge() &gt; <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch"></a>allMatch</h4><p>判断所有的用户是否都是成年人。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> users.stream().allMatch(user -&gt; user.getAge() &gt;= <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
+
+<h4 id="noneMatch"><a href="#noneMatch" class="headerlink" title="noneMatch"></a>noneMatch</h4><p>判断 Stream 中的元素是否都不符合条件。</p>
+<h4 id="findAny"><a href="#findAny" class="headerlink" title="findAny"></a>findAny</h4><p>获取 Stream 中的任意一个元素。</p>
+<h4 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst"></a>findFirst</h4><p>获取 Stream 中的第一个元素。</p>
+<h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p>把 Stream 中的元素组合起来，我们可以传入一个初始值，并指定计算方式，它会按照这个计算方式从 Stream 中取出元素与初始值进行计算，计算的结果作为参数再与 Stream 中取出的元素进行后面的计算，通过这样指定方式累积计算的过程得出结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">T</span> <span class="variable">result</span> <span class="operator">=</span> identity;</span><br><span class="line"><span class="keyword">for</span>(T element : <span class="built_in">this</span> stream) &#123;</span><br><span class="line">    result = accumulator.apply(result, element); <span class="comment">// 执行具体数据操作</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
+
+<p>举个栗子：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer[] integers = <span class="keyword">new</span> <span class="title class_">Integer</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//计算 1+2+3+4+5+6 的值</span></span><br><span class="line"><span class="comment">//第一个参数为初始值，后面为对应的操作</span></span><br><span class="line"><span class="comment">//总和、最小值、最大值、平均值和字符串连接都是可以简化的特殊情况</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">sum</span> <span class="operator">=</span> integers.reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line"><span class="comment">//计算 最小值</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">reduce</span> <span class="operator">=</span> Arrays.stream(integers).reduce(Integer.MAX_VALUE, (a, b) -&gt; a &gt; b ? b : a);</span><br></pre></td></tr></table></figure>
+
+<p>单个参数的模式（不用指定初始值）</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Integer&gt; min = Arrays.stream(integers).reduce(Integer::min);</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-Optional"><a href="#4-Optional" class="headerlink" title="4. Optional"></a>4. Optional</h2><h3 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h3><p>很多情况下代码容易出现空指针异常，尤其对象的属性是另外一个对象的时候，这种情况下Java 8 引入了optional来避免空指针异常。</p>
+<h3 id="4-2-使用"><a href="#4-2-使用" class="headerlink" title="4.2 使用"></a>4.2 使用</h3><h4 id="4-2-1-创建-Optional-对象"><a href="#4-2-1-创建-Optional-对象" class="headerlink" title="4.2.1 创建 Optional 对象"></a>4.2.1 创建 Optional 对象</h4><p>Optional 就像是包装类，可以把我们的具体数据封装 Optional 对象内部， 然后我们去使用它内部封装好的方法操作封装进去的数据就可以很好的避免空指针异常。</p>
+<p>推荐使用<code>Optional.ofNullable</code>来把数据封装成一个optional对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Author</span> <span class="variable">author</span> <span class="operator">=</span> getAuthor(); </span><br><span class="line">Optional&lt;Author&gt; author = Optional.ofNullable(author);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果确定一个对象不是空的话就可以用<code>Optional.of</code>这个静态方法来把数据封装成 Optional 对象（如果传入为空还是会报空指针异常）。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Author&gt; author = Optional.of(author);</span><br></pre></td></tr></table></figure>
+
+
+
+<p>如果我们确定一个方法返回为 null，那么可以使用<code>Optional.empty()</code>来封装这个结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//代表这个值为 null</span></span><br><span class="line"><span class="type">return</span> <span class="variable">a</span> <span class="operator">=</span>= <span class="literal">null</span> ? Optional.empty() : Optional.of(author);</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-2-2-安全消费值"><a href="#4-2-2-安全消费值" class="headerlink" title="4.2.2 安全消费值"></a>4.2.2 安全消费值</h4><p>当我们获取到一个Optional对象的时候，可以用ifPresent方法来去消费其中的值， 这个方法会先去判断是否为空，不为空才会去执行消费代码，优雅避免空指针 <code>OptionalObject.ifPresent()</code>。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Author&gt; authorOptional = Optional.of(author);</span><br><span class="line">authorOptional.ifPresent(author-&gt;System.out.println(author));</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-2-3-安全获取值"><a href="#4-2-3-安全获取值" class="headerlink" title="4.2.3 安全获取值"></a>4.2.3 安全获取值</h4><p>可以使用 Optional 对象的 get 方法获取值，但如果 Optional 封装的数据为空时还是会发生异常。所以推荐使用以下方法。</p>
+<ul>
+<li><p>orElseGet</p>
+<p>获取数据并且设置数据为空时的默认值</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//若为空，返回一个默认对象</span></span><br><span class="line"><span class="type">Author</span> <span class="variable">author</span> <span class="operator">=</span> authorOptional.orElseGet(()-&gt;<span class="keyword">new</span> <span class="title class_">Author</span>())</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>orElseThrow</p>
+<p>如果 Optional 封装的数据为空，抛出一个自定义的异常（统一异常处理）</p>
+</li>
+</ul>
+<h4 id="4-2-4-过滤"><a href="#4-2-4-过滤" class="headerlink" title="4.2.4 过滤"></a>4.2.4 过滤</h4><p>我们可以使用 Optional 的<code>filter()</code>方法对数据进行过滤，如果原来是有数据的，但是不符合判断，也会变成一个无数据的 Optional 对象。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">userOptional.filter(u -&gt; u.getAge() &lt; <span class="number">0</span>).orElseThrow(()-&gt;<span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;数据为空&quot;</span>));</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="4-2-5-判断"><a href="#4-2-5-判断" class="headerlink" title="4.2.5 判断"></a>4.2.5 判断</h4><p>可以通过 Optionald的<code>isPresent()</code>判断数据是否存在，存在为 true，否则 false。</p>
+<h4 id="4-2-6-数据转换"><a href="#4-2-6-数据转换" class="headerlink" title="4.2.6 数据转换"></a>4.2.6 数据转换</h4><p>Optional 还提供<code>map()</code>方法对数据进行转换，转换得到的数据还是 Optional 包装好的，保证安全使用。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">userOptional.map(user -&gt; user.getPets())</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="5-函数式接口"><a href="#5-函数式接口" class="headerlink" title="5. 函数式接口"></a>5. 函数式接口</h2><h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><p><font color="#df5555">只有一个抽象方法的接口就是函数式接口</font>，JDK8  的函数式接口都加上了 @FunctionalInterface 注解进行标识，但是无论加不加该注解，只要接口中只有一个抽象方法，都是函数式接口。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.util.function</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-2-常见函数式接口"><a href="#5-2-常见函数式接口" class="headerlink" title="5.2 常见函数式接口"></a>5.2 常见函数式接口</h3><h4 id="Consumer-消费接口"><a href="#Consumer-消费接口" class="headerlink" title="Consumer 消费接口"></a>Consumer 消费接口</h4><p>可以对传入的参数进行消费操作。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Consumer</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(T t)</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Function-计算转换接口"><a href="#Function-计算转换接口" class="headerlink" title="Function 计算转换接口"></a>Function 计算转换接口</h4><p>对传入的参数计算或转换，把结果返回</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Function</span>&lt;T, R&gt; &#123;</span><br><span class="line">    R <span class="title function_">apply</span><span class="params">(T t)</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Predicate-判断接口"><a href="#Predicate-判断接口" class="headerlink" title="Predicate 判断接口"></a>Predicate 判断接口</h4><p>对传入的参数条件进行判断，返回判断结果。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Predicate</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(T t)</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h4 id="Supplier-生产接口"><a href="#Supplier-生产接口" class="headerlink" title="Supplier 生产接口"></a>Supplier 生产接口</h4><p>根据其处理的泛型创建对应的对象并返回。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Supplier</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">get</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="5-3-常用的默认方法"><a href="#5-3-常用的默认方法" class="headerlink" title="5.3 常用的默认方法"></a>5.3 常用的默认方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Predicate</span>&lt;T&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(T t)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">and</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; other)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">negate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; !test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">or</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; other)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) || other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; Predicate&lt;T&gt; <span class="title function_">isEqual</span><span class="params">(Object targetRef)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="literal">null</span> == targetRef)</span><br><span class="line">                ? Objects::isNull</span><br><span class="line">                : object -&gt; targetRef.equals(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>举个栗子：</p>
+<p>在使用 Predicate 接口的时候可能需要进行判断条件的拼接，而 and 方法相当于使用 &amp;&amp; 来拼接两个判断条件。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">authors.getAuthors().stream().filter(<span class="keyword">new</span> <span class="title class_">Predicate</span>&lt;Author&gt;(&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(Author author） &#123;</span></span><br><span class="line"><span class="params">        return author.getAge()</span> &gt; <span class="number">17</span></span><br><span class="line">    &#125;.and(<span class="keyword">new</span> <span class="title class_">Predicate</span>&lt;Author&gt;） &#123;</span><br><span class="line">        <span class="meta">@override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">test</span> <span class="params">(Author author）&#123;</span></span><br><span class="line"><span class="params">            return author.getName()</span>.Tength() &gt; <span class="number">1</span>:</span><br><span class="line">        &#125;</span><br><span class="line">&#125;)).forEach(author -&gt;System.out.println(author)):</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="6-方法引用"><a href="#6-方法引用" class="headerlink" title="6. 方法引用"></a>6. 方法引用</h2><p>我们在使用 lambda 时，如果方法体中只有一个方法的时候，包括构造方法，可以用方法引用进一步简化代码。</p>
+<h3 id="6-1-基本格式"><a href="#6-1-基本格式" class="headerlink" title="6.1 基本格式"></a>6.1 基本格式</h3><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名或对象名::方法名</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="6-2-引用规则"><a href="#6-2-引用规则" class="headerlink" title="6.2 引用规则"></a>6.2 引用规则</h3><ul>
+<li><p>引用类静态方法；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::方法名</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>如果我们在重写方法的时候，方法体中只有一行代码， 并且这行代码是调用了某个类的静态方法，并且我们把要重写的抽象方法中所有参数都按照顺序传入了这个静态方法中， 这个时候我们就可以引用类的静态方法。</p>
+</blockquote>
+</li>
+<li><p>引用对象的实例方法；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">对象名::方法名</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用前提：如果我们在重写方法的时候，方法体只有一行代码，并且这行代码是调用了某个对象的成员方法， 并且我们把要重写的抽象方法里面中所有的参数都按照顺序传入了这个成员方法(就是类的方法)中，这个时候我们就可以引用对象的实例方法。</p>
+</blockquote>
+</li>
+<li><p>引用类的实例方法</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::方法名</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>使用前提：如果我们在重写方法的时候，方法体中只有一行代码，并且这行代码是调用了第一个参数的成员方法， 并且我们把要重写的抽象方法中剩余的所有的参数都按照顺序传入了这个成员方法中，这个时候我们就可以引用类的实例方法。</p>
+</blockquote>
+</li>
+<li><p>构造器引用</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::new</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="7-其他"><a href="#7-其他" class="headerlink" title="7. 其他"></a>7. 其他</h2><p>基本数据类型优化：很多 Stream 方法由于都使用了泛型，所以涉及到的参数和返回值都是引用数据类型，即使我们操作的是 整数小数，实际使用还是他们的包装类，JDK5 中引入的自动装箱和自动拆箱让我们在使用对应的包装类时就好像使用基本数据类型一样方便， 但是你一定要知道装箱拆箱也是需要一定的时间的，虽然这个时间消耗很小，但是在大量数据的不断重复的情况下，就不能忽视这个时间损耗了， Stream 对这块内容进行了优化，提供很多针对基本数据类型的方法。 例如：mapToInt、mapToLong、mapToDouble、flatMapToInt…</p>
+<blockquote>
+<p>比如前面我们用的 map()，返回的是 Stream，如果用 mapToInt()，最后返回的就是 int 值。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>函数式编程</category>
+        <category>JDK8</category>
+      </categories>
+      <tags>
+        <tag>函数式编程</tag>
+        <tag>JDK8</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker部署Canal实践</title>
     <url>/2022/12/14/DACZKCX9iu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h2><p>官网地址：<a href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
