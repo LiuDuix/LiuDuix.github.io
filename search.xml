@@ -38,9 +38,9 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <p>使用 Lambda 表达式</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我在执行&quot;</span>);</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
 <p>Idea 中光标移动到匿名内部类，按下 Alt+Enter，只要可以简化为 Lambda 表达式就会出现<code>Replace with lamdbda</code></p>
-<p><img src="\img\postimg\image-20221217022833533.png" alt="image-20221217022833533"></p>
+<p><img src="/img/postimg/image-20221217022833533.png"/></p>
 <p>转回普通写法</p>
-<p><img src="\img\postimg\image-20221217023214496.png" alt="image-20221217023214496"></p>
+<p><img src="/img/postimg/image-20221217023214496.png"/></p>
 <h3 id="2-2-省略规则"><a href="#2-2-省略规则" class="headerlink" title="2.2 省略规则"></a>2.2 省略规则</h3><ul>
 <li>参数类型可省略（可通过上下文推断出参数类型）；</li>
 <li>方法体只有一句代码时，大括号、return、结尾分号可省略；</li>
@@ -87,7 +87,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <h3 id="3-4-终结操作"><a href="#3-4-终结操作" class="headerlink" title="3.4 终结操作"></a>3.4 终结操作</h3><p>惰性求值，<font color="#df5555">如果 Stream 没有终结操作，那么我们对 Stream 做的中间操作也不会执行，经过终结操作之后的 Stream 就不能再被使用</font>。</p>
 <p>如：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">users.stream().sorted(); <span class="comment">//没有终结操作</span></span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\image-20221217214637704.png" alt="image-20221217214637704"></p>
+<p><img src="/img/postimg/image-20221217214637704.png"/></p>
 <h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><p>遍历 Stream 中的每个元素。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; strings = Arrays.asList(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="string">&quot;efg&quot;</span>, <span class="string">&quot;abcd&quot;</span>,<span class="string">&quot;&quot;</span>, <span class="string">&quot;jkl&quot;</span>);</span><br><span class="line">strings.stream().forEach(System.out::println)</span><br></pre></td></tr></table></figure>
 <h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><p>返回 Stream 中元素的个数</p>
