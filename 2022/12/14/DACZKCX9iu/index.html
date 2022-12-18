@@ -1,13 +1,13 @@
-<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Docker部署Canal实践 | Liu's Blog</title><meta name="keywords" content="Canal,Docker"><meta name="author" content="Liu"><meta name="copyright" content="Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Canal官网地址：https:&#x2F;&#x2F;github.com&#x2F;alibaba&#x2F;canal 什么是 Canel官方介绍：  canal ，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费     Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用； Canal 基于binary log 增量订阅和消费">
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Docker部署Canal实践 | Liu's Blog</title><meta name="keywords" content="Canal,Docker"><meta name="author" content="Liu"><meta name="copyright" content="Liu"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="Canal官网地址：https:&#x2F;&#x2F;github.com&#x2F;alibaba&#x2F;canal 什么是 Canel官方介绍：  canal ，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费    Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用； Canal 基于binary log 增量订阅和消费； Canal 的数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker部署Canal实践">
 <meta property="og:url" content="http://liuduix.github.io/2022/12/14/DACZKCX9iu/index.html">
 <meta property="og:site_name" content="Liu&#39;s Blog">
-<meta property="og:description" content="Canal官网地址：https:&#x2F;&#x2F;github.com&#x2F;alibaba&#x2F;canal 什么是 Canel官方介绍：  canal ，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费     Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用； Canal 基于binary log 增量订阅和消费">
+<meta property="og:description" content="Canal官网地址：https:&#x2F;&#x2F;github.com&#x2F;alibaba&#x2F;canal 什么是 Canel官方介绍：  canal ，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供增量数据订阅和消费    Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用； Canal 基于binary log 增量订阅和消费； Canal 的数据">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://liuduix.github.io/img/postcover/wukong.png">
 <meta property="article:published_time" content="2022-12-14T13:14:22.000Z">
-<meta property="article:modified_time" content="2022-12-18T06:03:25.127Z">
+<meta property="article:modified_time" content="2022-12-18T09:00:21.512Z">
 <meta property="article:author" content="Liu">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Canal">
@@ -54,7 +54,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-12-18 06:03:25'
+  postUpdate: '2022-12-18 09:00:21'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -143,13 +143,12 @@
       }
     }
     detectApple()
-    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><link rel="stylesheet" href="https://npm.elemecdn.com/liuduix-test1@1.0.2/css/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/postcover/wukong.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Liu's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Docker部署Canal实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-14T13:14:22.000Z" title="发表于 2022-12-14 13:14:22">2022-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-18T06:03:25.127Z" title="更新于 2022-12-18 06:03:25">2022-12-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Docker/">Docker</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Docker/Canal/">Canal</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="Docker部署Canal实践"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h2><p>官网地址：<a target="_blank" rel="noopener" href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><link rel="stylesheet" href="https://npm.elemecdn.com/liuduix-test1@1.0.2/css/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">7</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">14</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">10</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/postcover/wukong.png')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Liu's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Docker部署Canal实践</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-12-14T13:14:22.000Z" title="发表于 2022-12-14 13:14:22">2022-12-14</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-12-18T09:00:21.512Z" title="更新于 2022-12-18 09:00:21">2022-12-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Docker/">Docker</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Docker/Canal/">Canal</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="Docker部署Canal实践"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h2><p>官网地址：<a target="_blank" rel="noopener" href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
 <h3 id="什么是-Canel"><a href="#什么是-Canel" class="headerlink" title="什么是 Canel"></a>什么是 Canel</h3><p>官方介绍：</p>
 <blockquote>
-<p>canal ，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供<strong>增量数据订阅和消费</strong></p>
+<p>canal ，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供<strong>增量数据订阅和消费</strong></p>
 </blockquote>
-<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="\img\postimg\image-20221214133313460.png"/>
-
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="\img\postimg\image-20221214133313460.png"/></p>
 <ul>
 <li>Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用；</li>
 <li>Canal 基于binary log 增量订阅和消费；</li>
@@ -185,7 +184,8 @@
 <blockquote>
 <p>以下使用 + 代表在该节点下新增一行</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#......</span><br><span class="line">+ default_authentication_plugin=mysql_native_password</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#......</span><br><span class="line">+ default_authentication_plugin=mysql_native_password</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>重启 msyql 实例；</p>
@@ -193,9 +193,8 @@
 </li>
 <li><p>查看是否重启成功；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>如果容器启动失败，使用 docker logs [容器名&#x2F;容器ID] 来查看错误日志</p>
+<p>如果容器启动失败，使用 docker logs [容器名/容器ID] 来查看错误日志</p>
 </blockquote>
 </li>
 </ol>
@@ -206,7 +205,6 @@
 <li><p>如果显示未开启则需要修改配置文件开启（Docker 中最新版 mysql 默认是开启的）；</p>
 <p><code>liuduix/mysql/conf/my.cnf</code></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#...</span><br><span class="line">+ log-bin=mysql-bin # 打开 binlog mysql-bin 为文件名</span><br><span class="line">+ binlog-format=ROW # 选择ROW(行)模式</span><br><span class="line">+ server_id=1 # 不要和 canal 的 slaveId 重复即可</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>binlog-format 三种模式</p>
 <ul>
@@ -218,16 +216,14 @@
 </li>
 <li><p>重启 mysql，查看是否开启 binlog 和配置是否成功；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart mysql</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">show variables like `log_bin`</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看 binlog 模式是否为行级模式</span></span><br><span class="line">show variables like <span class="string">&#x27;binlog_format&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Mysql master 中新建用于 canal 访问的账户；</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 新建用户 用户名：canal  密码：canal </span></span><br><span class="line">CREATE USER canal IDENTIFIED by <span class="string">&#x27;canal&#x27;</span>;</span><br><span class="line"><span class="comment"># 授权</span></span><br><span class="line">GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO <span class="string">&#x27;canal&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"><span class="comment"># 刷新MySQL的系统权限表</span></span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-
 <p>查看用户表（主要查看 Host 是否为 %，如果是 localhost 代表仅支持本地访问）；</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql-&gt;user</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql-&gt;user</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="Docker-安装-Canal"><a href="#Docker-安装-Canal" class="headerlink" title="Docker 安装 Canal"></a>Docker 安装 Canal</h3><ol>
 <li><p>拉取镜像；</p>
@@ -239,7 +235,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name canal -d canal/canal-server</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>复制出配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> canal:/home/admin/canal-server/conf/example/instance.properties /liuduix/canal/conf/</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> canal:/home/admin/canal-server/conf/example/instance.properties /liuduix/canal/conf/</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>修改该配置文件；</p>
@@ -250,7 +247,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker stop canal</span><br><span class="line">docker <span class="built_in">rm</span> canal</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建新的 canal 容器并挂载数据和配置；</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name canal -d -p 11111:11111 \</span><br><span class="line">-v /liuduix/canal/conf/instance.properties:/home/admin/canal-server/conf/example/instance.properties \</span><br><span class="line">canal/canal-server</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run --name canal -d -p 11111:11111 \</span><br><span class="line">-v /liuduix/canal/conf/instance.properties:/home/admin/canal-server/conf/example/instance.properties \</span><br><span class="line">canal/canal-server</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ol>
 <li><p>本地和远程 Mysql 的相同库中创建结构相同的表；</p>

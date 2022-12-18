@@ -17,11 +17,9 @@
 <li><p><strong>递归</strong>：函数式编程用用递归做为控制流程的机制，递归算法是一种典型的函数式编程案例；</p>
 <p>举个栗子：已知数列 1、1、2、3、5、8…，求第 n 项的值</p>
 <p>规律：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">f(n)=f(n-1)+f(n-2)</span><br></pre></td></tr></table></figure>
-
-<p>代码：</p>
+<script type="math/tex; mode=display">
+f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="type">int</span> <span class="title function_">getResult</span><span class="params">(<span class="type">int</span> num)</span>&#123;</span><br><span class="line">    <span class="comment">//边界判断</span></span><br><span class="line">    <span class="keyword">if</span> (num&lt;=<span class="number">2</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">return</span> getResult(num - <span class="number">1</span>) + getResult(num - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>这个 f(n) 就是递归函数</p>
 <p>来源：<a href="https://blog.csdn.net/haohaounique/article/details/117573671">https://blog.csdn.net/haohaounique/article/details/117573671</a></p>
 </li>
@@ -35,17 +33,14 @@
 <p>来源：百度百科、廖雪峰的官方网站</p>
 <h2 id="2-Lambda-表达式"><a href="#2-Lambda-表达式" class="headerlink" title="2. Lambda 表达式"></a>2. Lambda 表达式</h2><p>Lambda 表达式 是 JDK8 中的语法糖。使用 Lambda 表达式可以对某些匿名内部类的写法进行简化。它是函数式编程思想的一个重要体现。让我们不用关注是什么对象，而是关注对数据进行了什么操作。</p>
 <h3 id="2-1-基本格式"><a href="#2-1-基本格式" class="headerlink" title="2.1 基本格式"></a>2.1 基本格式</h3><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">(参数列表)-&gt;&#123;代码&#125;</span><br></pre></td></tr></table></figure>
-
 <p>例：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(<span class="keyword">new</span> <span class="title class_">Runnable</span>() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">run</span><span class="params">()</span> &#123;</span><br><span class="line">		System.out.println(<span class="string">&quot;我在执行&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
-
 <p>使用 Lambda 表达式</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="title class_">Thread</span>(() -&gt; &#123;</span><br><span class="line">    System.out.println(<span class="string">&quot;我在执行&quot;</span>);</span><br><span class="line">&#125;).start();</span><br></pre></td></tr></table></figure>
-
 <p>Idea 中光标移动到匿名内部类，按下 Alt+Enter，只要可以简化为 Lambda 表达式就会出现<code>Replace with lamdbda</code></p>
-<p><img src="/%5Cimg%5Cpostimg%5Cimage-20221217022833533.png" alt="image-20221217022833533"></p>
+<p><img src="\img\postimg\image-20221217022833533.png" alt="image-20221217022833533"></p>
 <p>转回普通写法</p>
-<p><img src="/%5Cimg%5Cpostimg%5Cimage-20221217023214496.png" alt="image-20221217023214496"></p>
+<p><img src="\img\postimg\image-20221217023214496.png" alt="image-20221217023214496"></p>
 <h3 id="2-2-省略规则"><a href="#2-2-省略规则" class="headerlink" title="2.2 省略规则"></a>2.2 省略规则</h3><ul>
 <li>参数类型可省略（可通过上下文推断出参数类型）；</li>
 <li>方法体只有一句代码时，大括号、return、结尾分号可省略；</li>
@@ -54,107 +49,74 @@
 <blockquote>
 <p>lambda 表达式只能引用标记了 final 的外层局部变量，不能在 lambda 表达式内部修改定义在外部的局部变量，否则编译错误</p>
 </blockquote>
-<h2 id="3-Stream-流"><a href="#3-Stream-流" class="headerlink" title="3. Stream 流"></a>3. Stream 流</h2><h3 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h3><p>JDK8 中的 Stream API 不同于 java.io 包中的 InputStream 和 OutputStream，它使用的是函数式的编程方式，对数据源（可以来自集合，数组，I&#x2F;O channel， 产生器 generator等）进行链状流式操作；我们可以把我们的需要处理的集合或数组看为「原材料」，把这个「原材料」放在 Stream API 提供的各种操作（如：filter、sorted、map、……）对其进行加工，最后得到我们想要的产品。</p>
+<h2 id="3-Stream-流"><a href="#3-Stream-流" class="headerlink" title="3. Stream 流"></a>3. Stream 流</h2><h3 id="3-1-概述"><a href="#3-1-概述" class="headerlink" title="3.1 概述"></a>3.1 概述</h3><p>JDK8 中的 Stream API 不同于 java.io 包中的 InputStream 和 OutputStream，它使用的是函数式的编程方式，对数据源（可以来自集合，数组，I/O channel， 产生器 generator等）进行链状流式操作；我们可以把我们的需要处理的集合或数组看为「原材料」，把这个「原材料」放在 Stream API 提供的各种操作（如：filter、sorted、map、……）对其进行加工，最后得到我们想要的产品。</p>
 <h3 id="3-2-创建流"><a href="#3-2-创建流" class="headerlink" title="3.2 创建流"></a>3.2 创建流</h3><h4 id="3-2-1-stream-串行流"><a href="#3-2-1-stream-串行流" class="headerlink" title="3.2.1 stream() 串行流"></a>3.2.1 stream() 串行流</h4><blockquote>
 <p>stream() 是线程安全的，数据量少且业务简单用串行</p>
 </blockquote>
 <p>单列集合：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.stream();</span><br><span class="line">set.stream();</span><br></pre></td></tr></table></figure>
-
 <p>双列集合：先转换为单列集合</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Map&lt;String,String&gt; map = <span class="keyword">new</span> <span class="title class_">HashMap</span>&lt;&gt;();</span><br><span class="line"><span class="comment">//...</span></span><br><span class="line">Stream&lt;Map.Entry&lt;String,String&gt;&gt; stream = map.entrySet().stream();</span><br></pre></td></tr></table></figure>
-
 <p>数组：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer[] arr = &#123;<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>&#125;;</span><br><span class="line">Stream&lt;Integer&gt; stream = Arrays.stream(arr);</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line">Stream&lt;Integer&gt; stream = Stream.of(arr);</span><br></pre></td></tr></table></figure>
-
 <h4 id="3-2-2-parallelStream-并行流"><a href="#3-2-2-parallelStream-并行流" class="headerlink" title="3.2.2 parallelStream() 并行流"></a>3.2.2 parallelStream() 并行流</h4><blockquote>
-<p>线程不安全，parallelStream() 底层使用Fork&#x2F;Join框架实现，是多线程异步任务的一种实现；数据量大，且业务复杂，用并行</p>
+<p>线程不安全，parallelStream() 底层使用Fork/Join框架实现，是多线程异步任务的一种实现；数据量大，且业务复杂，用并行</p>
 </blockquote>
 <p>使用方式：将上面的<code>stream()</code>换为<code>parallelStream()</code>即可</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">list.parallelStream()</span><br></pre></td></tr></table></figure>
-
 <h3 id="3-3-中间操作"><a href="#3-3-中间操作" class="headerlink" title="3.3 中间操作"></a>3.3 中间操作</h3><p>中间操作都会返回流对象本身，这样多个操作可以串联成一个管道， 如同流式风格。</p>
 <h4 id="map"><a href="#map" class="headerlink" title="map"></a>map</h4><p>将一种操作映射到 Stream 中的每一个元素上，可自定义处理的返回值，最后返回一个新的 Stream。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer[] integers = <span class="keyword">new</span> <span class="title class_">Integer</span>[]&#123;<span class="number">1</span>, <span class="number">23</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>&#125;;</span><br><span class="line">Stream&lt;Integer&gt; stream = Arrays.stream(integers).map(val -&gt; val % <span class="number">2</span> == <span class="number">0</span> ? <span class="string">&quot;Yes&quot;</span> : <span class="string">&quot;No&quot;</span>);</span><br></pre></td></tr></table></figure>
-
 <h4 id="filter"><a href="#filter" class="headerlink" title="filter"></a>filter</h4><p>对一个 Stream 的所有元素一一进行测试，不满足条件的就被“过滤掉”了，剩下的满足条件的元素就构成了一个新的 Stream。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt;strings = Arrays.asList(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="string">&quot;efg&quot;</span>, <span class="string">&quot;abcd&quot;</span>,<span class="string">&quot;&quot;</span>, <span class="string">&quot;jkl&quot;</span>);</span><br><span class="line"><span class="comment">// 获取空字符串的数量</span></span><br><span class="line"><span class="type">long</span> <span class="variable">count</span> <span class="operator">=</span> strings.stream().filter(string -&gt; string.isEmpty()).count();</span><br></pre></td></tr></table></figure>
-
 <h4 id="distinct"><a href="#distinct" class="headerlink" title="distinct"></a>distinct</h4><p>去除 Stream 中的相同元素（该方法依赖于 equals 方法）。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">strings.stream().distinct()</span><br></pre></td></tr></table></figure>
-
 <h4 id="sorted"><a href="#sorted" class="headerlink" title="sorted"></a>sorted</h4><p>对 Stream 中元素进行排序，传入空参时，Stream 中的元素必须实现 Comparable 接口（也就是实现 compareTo 方法，告诉程序如何排序）。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">integers.stream().sorted()</span><br></pre></td></tr></table></figure>
-
 <p>如果传入的是自定义对象，该对象必须实现 Comparable 接口，否则抛出<code>ClassCastException</code>异常。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">users.stream().sorted()</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">User</span> <span class="keyword">implements</span> <span class="title class_">Comparable</span>&lt;User&gt; &#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> Integer age;</span><br><span class="line">    <span class="comment">// getter and setter</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">int</span> <span class="title function_">compareTo</span><span class="params">(User u)</span> &#123;</span><br><span class="line">        <span class="keyword">if</span> ((<span class="type">byte</span>) <span class="built_in">this</span>.getName().charAt(<span class="number">0</span>) == (<span class="type">byte</span>) u.getName().charAt(<span class="number">0</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="built_in">this</span>.age - u.getAge();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> (<span class="type">byte</span>) u.getName().charAt(<span class="number">0</span>) - (<span class="type">byte</span>) <span class="built_in">this</span>.getName().charAt(<span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//......</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>又或者这样</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;User&gt; users = <span class="keyword">new</span> <span class="title class_">ArrayList</span>();</span><br><span class="line">users.stream().sorted((o1, o2) -&gt; o2.getAge() - o1.getAge())</span><br></pre></td></tr></table></figure>
-
 <h4 id="skip"><a href="#skip" class="headerlink" title="skip"></a>skip</h4><p>跳过 Stream 中的前 n 个元素，返回剩下元素组成的新的 Stream。</p>
 <h4 id="limit"><a href="#limit" class="headerlink" title="limit"></a>limit</h4><p>设置 Stream 的最大元素个数，超出部份会被抛弃。</p>
 <h4 id="flatMap"><a href="#flatMap" class="headerlink" title="flatMap"></a>flatMap</h4><p>map 只能把一个对象转变为另一个对象来作为新的元素，而 flatMap 可以将一个对象转换为多个对象作为 Stream 中的元素。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Stream&lt;List&lt;Integer&gt;&gt; s1 = Stream.of(</span><br><span class="line">        Arrays.asList(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>),</span><br><span class="line">        Arrays.asList(<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>),</span><br><span class="line">        Arrays.asList(<span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>));</span><br><span class="line">Stream&lt;Integer&gt; s2 = s.flatMap(list -&gt; list.stream());</span><br></pre></td></tr></table></figure>
-
 <h4 id="parallel"><a href="#parallel" class="headerlink" title="parallel"></a>parallel</h4><p>返回并行的等效 Stream。可能会返回自身</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Arrays.stream(integers).parallel().forEach(System.out::println);</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-4-终结操作"><a href="#3-4-终结操作" class="headerlink" title="3.4 终结操作"></a>3.4 终结操作</h3><p>惰性求值，<font color="#df5555">如果 Stream 没有终结操作，那么我们对 Stream 做的中间操作也不会执行<strong>，</strong>经过终结操作之后的 Stream 就不能再被使用</font>。</p>
+<h3 id="3-4-终结操作"><a href="#3-4-终结操作" class="headerlink" title="3.4 终结操作"></a>3.4 终结操作</h3><p>惰性求值，<font color="#df5555">如果 Stream 没有终结操作，那么我们对 Stream 做的中间操作也不会执行，经过终结操作之后的 Stream 就不能再被使用</font>。</p>
 <p>如：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">users.stream().sorted(); <span class="comment">//没有终结操作</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/%5Cimg%5Cpostimg%5Cimage-20221217214637704.png" alt="image-20221217214637704"></p>
+<p><img src="\img\postimg\image-20221217214637704.png" alt="image-20221217214637704"></p>
 <h4 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h4><p>遍历 Stream 中的每个元素。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">List&lt;String&gt; strings = Arrays.asList(<span class="string">&quot;abc&quot;</span>, <span class="string">&quot;&quot;</span>, <span class="string">&quot;bc&quot;</span>, <span class="string">&quot;efg&quot;</span>, <span class="string">&quot;abcd&quot;</span>,<span class="string">&quot;&quot;</span>, <span class="string">&quot;jkl&quot;</span>);</span><br><span class="line">strings.stream().forEach(System.out::println)</span><br></pre></td></tr></table></figure>
-
 <h4 id="count"><a href="#count" class="headerlink" title="count"></a>count</h4><p>返回 Stream 中元素的个数</p>
 <h4 id="min-amp-max"><a href="#min-amp-max" class="headerlink" title="min&amp;max"></a>min&amp;max</h4><p>返回 Stream 中元素的最值，返回值为 Optional 对象，与 sorted 类似，需要指定比较规则。</p>
 <h4 id="collect"><a href="#collect" class="headerlink" title="collect"></a>collect</h4><p>把 Stream 换成一个集合（List、Set、Map）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">strings.stream().distinct().collect(Collectors.toList())<span class="comment">// toSet(),toMap()</span></span><br></pre></td></tr></table></figure>
-
 <h4 id="anyMatch"><a href="#anyMatch" class="headerlink" title="anyMatch"></a>anyMatch</h4><p>判断 Stream 中是否有匹配条件的元素，返回 boolean 值。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//判断流中的用户是否存在年龄大于 20 的</span></span><br><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> users.stream().anyMatch(user -&gt; user.getAge() &gt; <span class="number">20</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="allMatch"><a href="#allMatch" class="headerlink" title="allMatch"></a>allMatch</h4><p>判断所有的用户是否都是成年人。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">boolean</span> <span class="variable">b</span> <span class="operator">=</span> users.stream().allMatch(user -&gt; user.getAge() &gt;= <span class="number">18</span>)</span><br></pre></td></tr></table></figure>
-
 <h4 id="noneMatch"><a href="#noneMatch" class="headerlink" title="noneMatch"></a>noneMatch</h4><p>判断 Stream 中的元素是否都不符合条件。</p>
 <h4 id="findAny"><a href="#findAny" class="headerlink" title="findAny"></a>findAny</h4><p>获取 Stream 中的任意一个元素。</p>
 <h4 id="findFirst"><a href="#findFirst" class="headerlink" title="findFirst"></a>findFirst</h4><p>获取 Stream 中的第一个元素。</p>
 <h4 id="reduce"><a href="#reduce" class="headerlink" title="reduce"></a>reduce</h4><p>把 Stream 中的元素组合起来，我们可以传入一个初始值，并指定计算方式，它会按照这个计算方式从 Stream 中取出元素与初始值进行计算，计算的结果作为参数再与 Stream 中取出的元素进行后面的计算，通过这样指定方式累积计算的过程得出结果。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">T</span> <span class="variable">result</span> <span class="operator">=</span> identity;</span><br><span class="line"><span class="keyword">for</span>(T element : <span class="built_in">this</span> stream) &#123;</span><br><span class="line">    result = accumulator.apply(result, element); <span class="comment">// 执行具体数据操作</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">return</span> result;</span><br></pre></td></tr></table></figure>
-
 <p>举个栗子：</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Integer[] integers = <span class="keyword">new</span> <span class="title class_">Integer</span>[]&#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;;</span><br><span class="line"><span class="comment">//计算 1+2+3+4+5+6 的值</span></span><br><span class="line"><span class="comment">//第一个参数为初始值，后面为对应的操作</span></span><br><span class="line"><span class="comment">//总和、最小值、最大值、平均值和字符串连接都是可以简化的特殊情况</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">sum</span> <span class="operator">=</span> integers.reduce(<span class="number">0</span>, Integer::sum);</span><br><span class="line"><span class="comment">//计算 最小值</span></span><br><span class="line"><span class="type">Integer</span> <span class="variable">reduce</span> <span class="operator">=</span> Arrays.stream(integers).reduce(Integer.MAX_VALUE, (a, b) -&gt; a &gt; b ? b : a);</span><br></pre></td></tr></table></figure>
-
 <p>单个参数的模式（不用指定初始值）</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Integer&gt; min = Arrays.stream(integers).reduce(Integer::min);</span><br></pre></td></tr></table></figure>
-
 <h2 id="4-Optional"><a href="#4-Optional" class="headerlink" title="4. Optional"></a>4. Optional</h2><h3 id="4-1-概述"><a href="#4-1-概述" class="headerlink" title="4.1 概述"></a>4.1 概述</h3><p>很多情况下代码容易出现空指针异常，尤其对象的属性是另外一个对象的时候，这种情况下Java 8 引入了optional来避免空指针异常。</p>
 <h3 id="4-2-使用"><a href="#4-2-使用" class="headerlink" title="4.2 使用"></a>4.2 使用</h3><h4 id="4-2-1-创建-Optional-对象"><a href="#4-2-1-创建-Optional-对象" class="headerlink" title="4.2.1 创建 Optional 对象"></a>4.2.1 创建 Optional 对象</h4><p>Optional 就像是包装类，可以把我们的具体数据封装 Optional 对象内部， 然后我们去使用它内部封装好的方法操作封装进去的数据就可以很好的避免空指针异常。</p>
 <p>推荐使用<code>Optional.ofNullable</code>来把数据封装成一个optional对象。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">Author</span> <span class="variable">author</span> <span class="operator">=</span> getAuthor(); </span><br><span class="line">Optional&lt;Author&gt; author = Optional.ofNullable(author);</span><br></pre></td></tr></table></figure>
-
-
-
 <p>如果确定一个对象不是空的话就可以用<code>Optional.of</code>这个静态方法来把数据封装成 Optional 对象（如果传入为空还是会报空指针异常）。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Author&gt; author = Optional.of(author);</span><br></pre></td></tr></table></figure>
-
-
-
 <p>如果我们确定一个方法返回为 null，那么可以使用<code>Optional.empty()</code>来封装这个结果。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//代表这个值为 null</span></span><br><span class="line"><span class="type">return</span> <span class="variable">a</span> <span class="operator">=</span>= <span class="literal">null</span> ? Optional.empty() : Optional.of(author);</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="4-2-2-安全消费值"><a href="#4-2-2-安全消费值" class="headerlink" title="4.2.2 安全消费值"></a>4.2.2 安全消费值</h4><p>当我们获取到一个Optional对象的时候，可以用ifPresent方法来去消费其中的值， 这个方法会先去判断是否为空，不为空才会去执行消费代码，优雅避免空指针 <code>OptionalObject.ifPresent()</code>。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Optional&lt;Author&gt; authorOptional = Optional.of(author);</span><br><span class="line">authorOptional.ifPresent(author-&gt;System.out.println(author));</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="4-2-3-安全获取值"><a href="#4-2-3-安全获取值" class="headerlink" title="4.2.3 安全获取值"></a>4.2.3 安全获取值</h4><p>可以使用 Optional 对象的 get 方法获取值，但如果 Optional 封装的数据为空时还是会发生异常。所以推荐使用以下方法。</p>
 <ul>
 <li><p>orElseGet</p>
@@ -167,77 +129,47 @@
 </ul>
 <h4 id="4-2-4-过滤"><a href="#4-2-4-过滤" class="headerlink" title="4.2.4 过滤"></a>4.2.4 过滤</h4><p>我们可以使用 Optional 的<code>filter()</code>方法对数据进行过滤，如果原来是有数据的，但是不符合判断，也会变成一个无数据的 Optional 对象。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">userOptional.filter(u -&gt; u.getAge() &lt; <span class="number">0</span>).orElseThrow(()-&gt;<span class="keyword">new</span> <span class="title class_">RuntimeException</span>(<span class="string">&quot;数据为空&quot;</span>));</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="4-2-5-判断"><a href="#4-2-5-判断" class="headerlink" title="4.2.5 判断"></a>4.2.5 判断</h4><p>可以通过 Optionald的<code>isPresent()</code>判断数据是否存在，存在为 true，否则 false。</p>
 <h4 id="4-2-6-数据转换"><a href="#4-2-6-数据转换" class="headerlink" title="4.2.6 数据转换"></a>4.2.6 数据转换</h4><p>Optional 还提供<code>map()</code>方法对数据进行转换，转换得到的数据还是 Optional 包装好的，保证安全使用。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">userOptional.map(user -&gt; user.getPets())</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="5-函数式接口"><a href="#5-函数式接口" class="headerlink" title="5. 函数式接口"></a>5. 函数式接口</h2><h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><p><font color="#df5555">只有一个抽象方法的接口就是函数式接口</font>，JDK8  的函数式接口都加上了 @FunctionalInterface 注解进行标识，但是无论加不加该注解，只要接口中只有一个抽象方法，都是函数式接口。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">java.util.function</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="5-2-常见函数式接口"><a href="#5-2-常见函数式接口" class="headerlink" title="5.2 常见函数式接口"></a>5.2 常见函数式接口</h3><h4 id="Consumer-消费接口"><a href="#Consumer-消费接口" class="headerlink" title="Consumer 消费接口"></a>Consumer 消费接口</h4><p>可以对传入的参数进行消费操作。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Consumer</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="keyword">void</span> <span class="title function_">accept</span><span class="params">(T t)</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="Function-计算转换接口"><a href="#Function-计算转换接口" class="headerlink" title="Function 计算转换接口"></a>Function 计算转换接口</h4><p>对传入的参数计算或转换，把结果返回</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Function</span>&lt;T, R&gt; &#123;</span><br><span class="line">    R <span class="title function_">apply</span><span class="params">(T t)</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="Predicate-判断接口"><a href="#Predicate-判断接口" class="headerlink" title="Predicate 判断接口"></a>Predicate 判断接口</h4><p>对传入的参数条件进行判断，返回判断结果。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Predicate</span>&lt;T&gt; &#123;</span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(T t)</span>;</span><br><span class="line">    <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h4 id="Supplier-生产接口"><a href="#Supplier-生产接口" class="headerlink" title="Supplier 生产接口"></a>Supplier 生产接口</h4><p>根据其处理的泛型创建对应的对象并返回。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Supplier</span>&lt;T&gt; &#123;</span><br><span class="line">    T <span class="title function_">get</span><span class="params">()</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="5-3-常用的默认方法"><a href="#5-3-常用的默认方法" class="headerlink" title="5.3 常用的默认方法"></a>5.3 常用的默认方法</h3><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">interface</span> <span class="title class_">Predicate</span>&lt;T&gt; &#123;</span><br><span class="line">    </span><br><span class="line">    <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(T t)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">and</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; other)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">negate</span><span class="params">()</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; !test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span> Predicate&lt;T&gt; <span class="title function_">or</span><span class="params">(Predicate&lt;? <span class="built_in">super</span> T&gt; other)</span> &#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) || other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; Predicate&lt;T&gt; <span class="title function_">isEqual</span><span class="params">(Object targetRef)</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="literal">null</span> == targetRef)</span><br><span class="line">                ? Objects::isNull</span><br><span class="line">                : object -&gt; targetRef.equals(object);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 <p>举个栗子：</p>
 <p>在使用 Predicate 接口的时候可能需要进行判断条件的拼接，而 and 方法相当于使用 &amp;&amp; 来拼接两个判断条件。</p>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">authors.getAuthors().stream().filter(<span class="keyword">new</span> <span class="title class_">Predicate</span>&lt;Author&gt;(&#123;</span><br><span class="line">    <span class="meta">@override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">test</span><span class="params">(Author author） &#123;</span></span><br><span class="line"><span class="params">        return author.getAge()</span> &gt; <span class="number">17</span></span><br><span class="line">    &#125;.and(<span class="keyword">new</span> <span class="title class_">Predicate</span>&lt;Author&gt;） &#123;</span><br><span class="line">        <span class="meta">@override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="type">boolean</span> <span class="title function_">test</span> <span class="params">(Author author）&#123;</span></span><br><span class="line"><span class="params">            return author.getName()</span>.Tength() &gt; <span class="number">1</span>:</span><br><span class="line">        &#125;</span><br><span class="line">&#125;)).forEach(author -&gt;System.out.println(author)):</span><br></pre></td></tr></table></figure>
-
-
-
 <h2 id="6-方法引用"><a href="#6-方法引用" class="headerlink" title="6. 方法引用"></a>6. 方法引用</h2><p>我们在使用 lambda 时，如果方法体中只有一个方法的时候，包括构造方法，可以用方法引用进一步简化代码。</p>
 <h3 id="6-1-基本格式"><a href="#6-1-基本格式" class="headerlink" title="6.1 基本格式"></a>6.1 基本格式</h3><figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名或对象名::方法名</span><br></pre></td></tr></table></figure>
-
-
-
 <h3 id="6-2-引用规则"><a href="#6-2-引用规则" class="headerlink" title="6.2 引用规则"></a>6.2 引用规则</h3><ul>
 <li><p>引用类静态方法；</p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::方法名</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>如果我们在重写方法的时候，方法体中只有一行代码， 并且这行代码是调用了某个类的静态方法，并且我们把要重写的抽象方法中所有参数都按照顺序传入了这个静态方法中， 这个时候我们就可以引用类的静态方法。</p>
 </blockquote>
 </li>
 <li><p>引用对象的实例方法；</p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">对象名::方法名</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>使用前提：如果我们在重写方法的时候，方法体只有一行代码，并且这行代码是调用了某个对象的成员方法， 并且我们把要重写的抽象方法里面中所有的参数都按照顺序传入了这个成员方法(就是类的方法)中，这个时候我们就可以引用对象的实例方法。</p>
 </blockquote>
 </li>
 <li><p>引用类的实例方法</p>
 <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::方法名</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>使用前提：如果我们在重写方法的时候，方法体中只有一行代码，并且这行代码是调用了第一个参数的成员方法， 并且我们把要重写的抽象方法中剩余的所有的参数都按照顺序传入了这个成员方法中，这个时候我们就可以引用类的实例方法。</p>
 </blockquote>
 </li>
 <li><p>构造器引用</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::new</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">类名::new</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 <h2 id="7-其他"><a href="#7-其他" class="headerlink" title="7. 其他"></a>7. 其他</h2><p>基本数据类型优化：很多 Stream 方法由于都使用了泛型，所以涉及到的参数和返回值都是引用数据类型，即使我们操作的是 整数小数，实际使用还是他们的包装类，JDK5 中引入的自动装箱和自动拆箱让我们在使用对应的包装类时就好像使用基本数据类型一样方便， 但是你一定要知道装箱拆箱也是需要一定的时间的，虽然这个时间消耗很小，但是在大量数据的不断重复的情况下，就不能忽视这个时间损耗了， Stream 对这块内容进行了优化，提供很多针对基本数据类型的方法。 例如：mapToInt、mapToLong、mapToDouble、flatMapToInt…</p>
 <blockquote>
@@ -259,10 +191,9 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h2><p>官网地址：<a href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
 <h3 id="什么是-Canel"><a href="#什么是-Canel" class="headerlink" title="什么是 Canel"></a>什么是 Canel</h3><p>官方介绍：</p>
 <blockquote>
-<p>canal ，译意为水道&#x2F;管道&#x2F;沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供<strong>增量数据订阅和消费</strong></p>
+<p>canal ，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供<strong>增量数据订阅和消费</strong></p>
 </blockquote>
-<img src="\img\postimg\image-20221214133313460.png"/>
-
+<p><img src="\img\postimg\image-20221214133313460.png"/></p>
 <ul>
 <li>Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用；</li>
 <li>Canal 基于binary log 增量订阅和消费；</li>
@@ -298,7 +229,8 @@
 <blockquote>
 <p>以下使用 + 代表在该节点下新增一行</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#......</span><br><span class="line">+ default_authentication_plugin=mysql_native_password</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#......</span><br><span class="line">+ default_authentication_plugin=mysql_native_password</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>重启 msyql 实例；</p>
@@ -306,9 +238,8 @@
 </li>
 <li><p>查看是否重启成功；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps</span><br></pre></td></tr></table></figure>
-
 <blockquote>
-<p>如果容器启动失败，使用 docker logs [容器名&#x2F;容器ID] 来查看错误日志</p>
+<p>如果容器启动失败，使用 docker logs [容器名/容器ID] 来查看错误日志</p>
 </blockquote>
 </li>
 </ol>
@@ -319,7 +250,6 @@
 <li><p>如果显示未开启则需要修改配置文件开启（Docker 中最新版 mysql 默认是开启的）；</p>
 <p><code>liuduix/mysql/conf/my.cnf</code></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">#...</span><br><span class="line">+ log-bin=mysql-bin # 打开 binlog mysql-bin 为文件名</span><br><span class="line">+ binlog-format=ROW # 选择ROW(行)模式</span><br><span class="line">+ server_id=1 # 不要和 canal 的 slaveId 重复即可</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>binlog-format 三种模式</p>
 <ul>
@@ -331,16 +261,14 @@
 </li>
 <li><p>重启 mysql，查看是否开启 binlog 和配置是否成功；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker restart mysql</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">show variables like `log_bin`</span><br></pre></td></tr></table></figure>
-
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看 binlog 模式是否为行级模式</span></span><br><span class="line">show variables like <span class="string">&#x27;binlog_format&#x27;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>Mysql master 中新建用于 canal 访问的账户；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 新建用户 用户名：canal  密码：canal </span></span><br><span class="line">CREATE USER canal IDENTIFIED by <span class="string">&#x27;canal&#x27;</span>;</span><br><span class="line"><span class="comment"># 授权</span></span><br><span class="line">GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO <span class="string">&#x27;canal&#x27;</span>@<span class="string">&#x27;%&#x27;</span>;</span><br><span class="line"><span class="comment"># 刷新MySQL的系统权限表</span></span><br><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
-
 <p>查看用户表（主要查看 Host 是否为 %，如果是 localhost 代表仅支持本地访问）；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql-&gt;user</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mysql-&gt;user</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="Docker-安装-Canal"><a href="#Docker-安装-Canal" class="headerlink" title="Docker 安装 Canal"></a>Docker 安装 Canal</h3><ol>
 <li><p>拉取镜像；</p>
@@ -352,7 +280,8 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name canal -d canal/canal-server</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>复制出配置文件</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> canal:/home/admin/canal-server/conf/example/instance.properties /liuduix/canal/conf/</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> canal:/home/admin/canal-server/conf/example/instance.properties /liuduix/canal/conf/</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 <li><p>修改该配置文件；</p>
@@ -363,7 +292,8 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stop canal</span><br><span class="line">docker <span class="built_in">rm</span> canal</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>创建新的 canal 容器并挂载数据和配置；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name canal -d -p 11111:11111 \</span><br><span class="line">-v /liuduix/canal/conf/instance.properties:/home/admin/canal-server/conf/example/instance.properties \</span><br><span class="line">canal/canal-server</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name canal -d -p 11111:11111 \</span><br><span class="line">-v /liuduix/canal/conf/instance.properties:/home/admin/canal-server/conf/example/instance.properties \</span><br><span class="line">canal/canal-server</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><ol>
 <li><p>本地和远程 Mysql 的相同库中创建结构相同的表；</p>
@@ -403,7 +333,6 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>此篇文章主要用于备份 maven 配置，以下配置文件可直接复制后修改 Maven 的仓库地址即可，可以解决部份包无法获取的问题。</p>
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven_repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxies</span>&gt;</span><span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mirror&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;id&gt;nexus-aliyun&lt;/id&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;/mirrorOf&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;name&gt;Nexus aliyun&lt;/name&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;/mirror&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://nexus.pentaho.org/content/repositories/omni/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo2.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
 </blockquote>
@@ -411,7 +340,7 @@
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
 <li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
 <p>解决：手动刷新一下 Maven 工程</p>
-<img src="\img\postimg\image-20221214233607005.png"/>
+<p><img src="\img\postimg\image-20221214233607005.png"/></p>
 </li>
 <li><p>本地仓库中明明下载了相关依赖，但是 pom.xml 文件中还是爆红；</p>
 <ul>
@@ -421,7 +350,8 @@
 <blockquote>
 <p>修改以下脚本中的 maven 本地仓库地址为你的仓库地址，然后保存为 *.bat 文件运行</p>
 </blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ol>
@@ -439,7 +369,7 @@
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><ol>
 <li><p>将 idea 的配置导出到一个目录备份</p>
 <p>File-&gt;Manage IDE Settings-&gt;Export Settings，弹出对话框保存 settings.zip 文件</p>
-<img src="\img\postimg\image-20221205115142179.png" style="zoom:70%"/>
+<p><img src="\img\postimg\image-20221205115142179.png" style="zoom:70%"/></p>
 </li>
 <li><p>将 idea 的插件目录 myplugins 复制备份（插件目录名不能是 plugins）</p>
 </li>
@@ -455,11 +385,10 @@
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">idea.config.path</span>=<span class="string">D:/Program/JetBrains/.IntelliJIdea/config</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the caches directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.system.path</span>=<span class="string">D:/Program/JetBrains/.IntelliJIdea/system</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the user-installed plugins directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.plugins.path</span>=<span class="string">D:/Idea/IntelliJ IDEA 2021.2.2/myplugins</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the logs directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.log.path</span>=<span class="string">$&#123;idea.system.path&#125;/log</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>启动 idea，导入配置文件 settings.zip</p>
-<img src="\img\postimg\image-20221205122736003.png" style="zoom:70%"/>
+<p><img src="\img\postimg\image-20221205122736003.png" style="zoom:70%"/></p>
 </li>
 <li><p>检查插件和插件配置是否导入成功，查看设置中是否存在其他插件的配置</p>
-<img src="\img\postimg\image-20221205123217392.png" style="zoom:70%"/>
-
+<p><img src="\img\postimg\image-20221205123217392.png" style="zoom:70%"/></p>
 <blockquote>
 <p>如果进行了 idea 的板本升级，控制台可能报部份插件兼容问题，在插件中心卸载，或者下载新板本的覆盖即可</p>
 </blockquote>
@@ -493,12 +422,12 @@
 </li>
 <li><p>编辑 <code>frps.service</code> 文件，修改配置中的 frp 安装路径；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">vim /etc/systemd/system/frps.service</span><br></pre></td></tr></table></figure>
-
 <p>内容：</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line"># 服务名称，可自定义</span><br><span class="line">Description = frp server</span><br><span class="line">After = network.target syslog.target</span><br><span class="line">Wants = network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type = simple</span><br><span class="line"># 启动frps的命令，需修改为您的frps的安装路径</span><br><span class="line">ExecStart = /usr/local/frp/frps -c /usr/local/frp/frps.ini</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy = multi-user.target</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>大功告成，现在可以使用命令管理 frps；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动frp</span><br><span class="line">systemctl start frps</span><br><span class="line"># 停止frp</span><br><span class="line">systemctl stop frps</span><br><span class="line"># 重启frp</span><br><span class="line">systemctl restart frps</span><br><span class="line"># 查看frp状态</span><br><span class="line">systemctl status frps</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 启动frp</span><br><span class="line">systemctl start frps</span><br><span class="line"># 停止frp</span><br><span class="line">systemctl stop frps</span><br><span class="line"># 重启frp</span><br><span class="line">systemctl restart frps</span><br><span class="line"># 查看frp状态</span><br><span class="line">systemctl status frps</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <h2 id="远程访问-windows-桌面"><a href="#远程访问-windows-桌面" class="headerlink" title="远程访问 windows 桌面"></a>远程访问 windows 桌面</h2><ol>
 <li><p>客户端下载<code>frp_0.43.0_windows_amd64.zip</code>，解压到任意目录，删除<code>frps</code>开头的文件；</p>
@@ -551,10 +480,8 @@
 </ol>
 <h2 id="为本地HTTP服务启动HTTPS"><a href="#为本地HTTP服务启动HTTPS" class="headerlink" title="为本地HTTP服务启动HTTPS"></a>为本地HTTP服务启动HTTPS</h2><p>服务端修改 frps.ini；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[common]</span><br><span class="line">...</span><br><span class="line">vhost_https_port = 443</span><br></pre></td></tr></table></figure>
-
 <p>被穿透端修改 frpc.ini（需要提前准备好 SSL 证书，即 server.crt，server.key）；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">...</span><br><span class="line">[httpsweb]</span><br><span class="line">type = https</span><br><span class="line">local_port = 4000</span><br><span class="line">custom_domains = www.hahai.com</span><br><span class="line"></span><br><span class="line">plugin = https2http</span><br><span class="line">plugin_local_addr = 127.0.0.1:4000</span><br><span class="line"></span><br><span class="line"># HTTPS 证书相关的配置</span><br><span class="line">plugin_crt_path = D:/Frp/server.crt</span><br><span class="line">plugin_key_path = D:/Frp/server.key</span><br><span class="line">plugin_host_header_rewrite = 127.0.0.1</span><br><span class="line">plugin_header_X-From-Where = frp</span><br></pre></td></tr></table></figure>
-
 <p>分别启动 frps 和 frpc 即可实现 https 访问；</p>
 ]]></content>
       <categories>
@@ -574,13 +501,12 @@
 <h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
 <li><p>创建 msyql 实例 master，映射端口 3307；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3307:3306 --name=&quot;mysql-master&quot; \</span><br><span class="line">-v /mydata/mysql-master/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-master/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-master/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>启动错误：WARNING: IPv4 forwarding is disabled. Networking will not work</p>
-<p>没有开启转发,<a href="https://so.csdn.net/so/search?q=docker&spm=1001.2101.3001.7020">docker</a>网桥配置完后，需要开启转发，不然容器启动后，就会没有网络；</p>
+<p>没有开启转发,<a href="https://so.csdn.net/so/search?q=docker&amp;spm=1001.2101.3001.7020">docker</a>网桥配置完后，需要开启转发，不然容器启动后，就会没有网络；</p>
 <p>解决方案：</p>
 <ol>
-<li><p>vim &#x2F;etc&#x2F;sysctl.conf</p>
+<li><p>vim /etc/sysctl.conf</p>
 <p>添加如下配置项；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
 </li>
@@ -588,7 +514,8 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart network &amp;&amp; systemctl restart docker</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>查看是否修改成功；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.ip_forward</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.ip_forward</span><br></pre></td></tr></table></figure>
+</li>
 </ol>
 <p>参考来源：<a href="https://blog.csdn.net/cljdsc/article/details/115207336">https://blog.csdn.net/cljdsc/article/details/115207336</a></p>
 </blockquote>
@@ -622,10 +549,8 @@
 </li>
 <li><p>从数据库中开启主从同步；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">start slave;</span><br></pre></td></tr></table></figure>
-
 <p>再次查看主从同步状态中的下面两项是否变为「YES」；</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Slave_IO_Running: Connecting // 值应该为YES</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>出现错误：</p>
 <p>Authentication plugin ‘caching_sha2_password’ reported error: Authentication requires secure connection</p>
@@ -635,7 +560,6 @@
 <p>注意是修改 master 数据库的帐号验证方式和密码（<font color=red>一定要仔细核对</font>）；</p>
 <p>核对完成后再在 slave 中重建主从配置</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stop slave;</span><br><span class="line">reset slave;</span><br><span class="line"></span><br><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
-
 <p>参考文章：</p>
 <ul>
 <li><a href="https://blog.csdn.net/panrenjun/article/details/114219097">https://blog.csdn.net/panrenjun/article/details/114219097</a></li>
@@ -660,7 +584,6 @@
     <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure>
-
 <p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p>
 <p>于是乎，我用了一个捷径，直接查看同类<code>Butterfly</code>类型的博客，直接<kbd>f12</kbd>在「network」一栏查看请求的同名文件地址，然后迅速<kbd>ctrl</kbd> + <kbd>c</kbd> ， <kbd>ctrl</kbd> + <kbd>v</kbd>换到文件中对应声明的地方，然后控制台不报错了；</p>
 <p>再仔细观察请求的地址，前缀都不太一样，但是<code>npm.elemecdn.com</code>最多，于是又跟着将其他请求不到资源的地址全部换为此前缀，最终效果博客正常加载，但是加载速度很慢，<kbd>f12</kbd>查看「network」一栏发现主要是文字资源和图片龟速下载，于是乎准备冻手；在查看多篇文章后，决定写一写，以便不时之需，看完这篇文章，你将了解到</p>
@@ -703,7 +626,6 @@
 </li>
 <li><p>进入该文件夹中，然后输入<code>npm login</code>或者<code>npm adduser</code>登录</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm login //npm adduser</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>如果已经切换 npm 为淘宝镜像源，需要把切换为原本的镜像源 ，否则无法登录</p>
 <p><code>npm config set registry https://www.npmjs.org</code></p>
@@ -711,17 +633,14 @@
 </li>
 <li><p>初始化本地仓库</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>发布的包名不能与他人发布的包名重复，不然会发布失败</p>
 </blockquote>
 </li>
 <li><p>在文件夹中添加需要上传的文件，使用以下命令上传</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
-
 <p>发布的板本为 1.0.0，发布成功后即可在 npm 官网登录帐号查看或者</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;@version/</span><br><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;/</span><br></pre></td></tr></table></figure>
-
 <ul>
 <li>默认不带板本号查看的板本是 1.0.0，但下载或使用的是最新板本</li>
 <li>可以直接使用 url 的方式使用仓库内文件，且速读很快，意为着可以实现资源访问加速</li>
@@ -733,13 +652,11 @@
 <p>如果添加、修改、删除仓库文件后要发布，需要修改 package.json 内的版本号（递增）再发布即可，每次更新独立，即以前版本的文件依然还在</p>
 <p><strong>废弃</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;@version &#x27;message&#x27; --force</span><br></pre></td></tr></table></figure>
-
 <blockquote>
 <p>被废弃的包代表此包已不再维护，但是包内文件依然可以使用和安装</p>
 </blockquote>
 <p><strong>删除</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure>
-
 <p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p>
 <p><strong>参考</strong>：</p>
 <ul>
