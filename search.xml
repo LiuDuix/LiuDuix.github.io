@@ -186,42 +186,6 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
-    <title>Maven 多镜像源配置</title>
-    <url>/2022/12/14/PNGPtqI7TSsy/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>此篇文章主要用于备份 maven 配置，以下配置文件可直接复制后修改 Maven 的仓库地址即可，可以解决部份包无法获取的问题。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven_repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxies</span>&gt;</span><span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mirror&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;id&gt;nexus-aliyun&lt;/id&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;/mirrorOf&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;name&gt;Nexus aliyun&lt;/name&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;/mirror&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://nexus.pentaho.org/content/repositories/omni/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo2.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
-</blockquote>
-<p>来源：<a href="https://blog.csdn.net/chrisy521/article/details/121982044">https://blog.csdn.net/chrisy521/article/details/121982044</a></p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
-<li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
-<p>解决：手动刷新一下 Maven 工程</p>
-<p><img src="\img\postimg\image-20221214233607005.png"/></p>
-</li>
-<li><p>本地仓库中明明下载了相关依赖，但是 pom.xml 文件中还是爆红；</p>
-<ul>
-<li><p>如果是 Maven 父工程锁定依赖爆红，而子模块可以正常引入依赖且识别版本号则不用管，不影响使用；</p>
-</li>
-<li><p>如果无法引入依赖可使用以下脚本清除 Maven 下载过程中产生的「*.lastupdate」干扰文件，清除后再次尝试引入。</p>
-<blockquote>
-<p>修改以下脚本中的 maven 本地仓库地址为你的仓库地址，然后保存为 *.bat 文件运行</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Maven</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker部署Canal实践</title>
     <url>/2022/12/14/DACZKCX9iu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h2><p>官网地址：<a href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
@@ -364,6 +328,42 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
+    <title>Maven 多镜像源配置</title>
+    <url>/2022/12/14/PNGPtqI7TSsy/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>此篇文章主要用于备份 maven 配置，以下配置文件可直接复制后修改 Maven 的仓库地址即可，可以解决部份包无法获取的问题。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven_repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxies</span>&gt;</span><span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mirror&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;id&gt;nexus-aliyun&lt;/id&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;/mirrorOf&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;name&gt;Nexus aliyun&lt;/name&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;/mirror&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://nexus.pentaho.org/content/repositories/omni/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo2.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
+</blockquote>
+<p>来源：<a href="https://blog.csdn.net/chrisy521/article/details/121982044">https://blog.csdn.net/chrisy521/article/details/121982044</a></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
+<li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
+<p>解决：手动刷新一下 Maven 工程</p>
+<p><img src="\img\postimg\image-20221214233607005.png"/></p>
+</li>
+<li><p>本地仓库中明明下载了相关依赖，但是 pom.xml 文件中还是爆红；</p>
+<ul>
+<li><p>如果是 Maven 父工程锁定依赖爆红，而子模块可以正常引入依赖且识别版本号则不用管，不影响使用；</p>
+</li>
+<li><p>如果无法引入依赖可使用以下脚本清除 Maven 下载过程中产生的「*.lastupdate」干扰文件，清除后再次尝试引入。</p>
+<blockquote>
+<p>修改以下脚本中的 maven 本地仓库地址为你的仓库地址，然后保存为 *.bat 文件运行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>idea 完全迁移</title>
     <url>/2022/12/05/ZvjgayamzL/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><ol>
@@ -493,6 +493,116 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
+    <title>Windows 多 JDK 配置（带环境变量配置失效方案）</title>
+    <url>/2023/01/11/hP4jF5hZ9o/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 有些时候，我们需要在电脑上安装多个板本的 JDK ，以适应不同板本的开发需求，同时部份软件需要指定的某个板本的 JDK 才能运行，一般这个时候我们也不想卸载原本的 JDK 再去安装新的，这时就需要对 JDK 进行一种方便的管理（通过改变环境变量）。</p>
+<blockquote>
+<p>写这篇文章的起因是因为我在 Idea 中运行基于 JDK 1.8 的项目时没有问题，因为在<code>Project Structure</code> 中配置了 JDK 的目录，而改为使用<code>java -jar xxx.jar</code>方式运行时，</p>
+<ul>
+<li><p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原因：</p>
+<p>Java SE 9 及以上移除了 JAXB API（属于 JAVA EE API），因此对应的 JDK 也不再包含相关 jar 包，而我本地虽然配置的是 JDK 8 的环境变量，但是使用<code>java -version</code> 显示的是 jdk 11 板本，配置失效。</p>
+</li>
+<li><p>解决：</p>
+<p>第一种方式：pom.xml 文件中，加入这些被移除的相关包。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-impl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.activation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>activation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第二种方式：重新配置 JDK 环境变量（配置失效解决方案）。</p>
+<p>推荐阅读：<a href="https://www.cnblogs.com/Evanpie/p/14815043.html">https://www.cnblogs.com/Evanpie/p/14815043.html</a></p>
+<p>部份文章中的做法是删除文件或者 Path 中的一些环境变量，我的建议是不要删除，而是把自己配置的 JDK 移到顶部，因为系统是按照 Path 中以下路径的先后顺序来寻找 JDK 相关的可执行文件，找到后就不会再往下找。</p>
+<ul>
+<li><code>C:\Program Files\Common Files\Oracle\Java\javapath</code></li>
+<li><code>C:\ProgramData\Oracle\Java\javapath</code></li>
+<li><code>C:\Windows\System32</code></li>
+<li><code>D:Java\jdk1.8.0_291\bin</code>（你配置的路径）</li>
+</ul>
+</li>
+</ul>
+<p> <img src="\img\postimg\hP4jF5hZ9o\image-20230111214251348.png" style="zoom:75%"/></p>
+<p> 这时候再使用<code>java -version</code>就会发现 JDK 已经切换成功。</p>
+</blockquote>
+<p>上面的配置方式无法很方便的切换 JDK 板本，有没有一种更方便的方式呢？</p>
+<h2 id="1-通过配置环境变量手动切换-JDK"><a href="#1-通过配置环境变量手动切换-JDK" class="headerlink" title="1. 通过配置环境变量手动切换 JDK"></a>1. 通过配置环境变量手动切换 JDK</h2><ol>
+<li><p>「系统变量」中新建<code>CLASSPATH</code>变量，值为如下；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑「系统变量」中的<code>Path</code>，在最前面加入以下值；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增<code>JAVA_HOME</code>环境变量。</p>
+<p>比如我的系统有三个板本的 JDK ，那么我需要添加如下变量。</p>
+</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JAVA_HOME</td>
+<td>%JAVA_HOME8%</td>
+</tr>
+<tr>
+<td>JAVA_HOME8</td>
+<td>D:\Java\jdk1.8.0_291</td>
+</tr>
+<tr>
+<td>JAVA_HOME11</td>
+<td>D:\Java\jdk-11.0.11</td>
+</tr>
+<tr>
+<td>JAVA_HOME12</td>
+<td>D:\Java\jdk-12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>以后通过修改<code>JAVA_HOME</code>的值切换 JDK，到此就满足基本需求了。</li>
+</ol>
+<h2 id="2-通过-JEnv-工具切换-JDK"><a href="#2-通过-JEnv-工具切换-JDK" class="headerlink" title="2. 通过 JEnv 工具切换 JDK"></a>2. 通过 JEnv 工具切换 JDK</h2><blockquote>
+<p>使用这种方式需要先删除上面配置的 JAVA_HOME</p>
+</blockquote>
+<p>Github 地址：<a href="https://github.com/FelixSelter/JEnv-for-Windows">https://github.com/FelixSelter/JEnv-for-Windows</a></p>
+<ol>
+<li><p>克隆该库；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/FelixSelter/JEnv-for-Windows.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将该工具加入<code>Path</code>环境变量；</p>
+</li>
+<li><p>扫描 jdk 路径并添加 jdk；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv autoscan D:\java <span class="comment"># 选择你所有 JDK 所在的目录</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要根据提示修改 jdk 的名称</p>
+</blockquote>
+</li>
+<li><p>修改全局 JDK 板本；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv change jdk8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv remove &lt;jdkname&gt;</span><br><span class="line">jenv list</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/it-tsz/p/11749651.html">真正解决方案：java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1953014">Windows环境下切换JDK脚本</a></li>
+<li><a href="https://www.cnblogs.com/Evanpie/p/14815043.html">如何安装多个jdk并方便切换系统jdk版本</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JDK</category>
+      </categories>
+      <tags>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>云服务器安全（SSH,SSL VPN）</title>
     <url>/2023/01/09/mcxjgmqfSqf/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 在使用云服务器的过程中，我们一般会做一些配置来提高云服务器的安全，下面开始操作：</p>
@@ -574,7 +684,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>切换到 root 用户（否则密钥文件无法被读取，无法建立连接），执行以下命令下载一键安装脚本并执行；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://git.io/vpn -O openvpn-install.sh &amp;&amp; bash openvpn-install.sh</span><br></pre></td></tr></table></figure>
 <blockquote>
-<p>由于 github 做了下载限制，一般 wget 是获取不到的，所以建议先下载下载再以 root 用户执行脚本</p>
+<p>由于 github 做了下载限制，一般 wget 是获取不到的，所以建议先下载再以 root 用户执行脚本</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;sudo su</span><br><span class="line">&gt;bash openvpn-install.sh</span><br></pre></td></tr></table></figure>
 </blockquote>
 </li>
@@ -610,7 +720,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </li>
 <li><p>现在可以关闭服务器的其他端口，只开放 SSH、VPN、HTTP、HTTPS 端口；</p>
 <blockquote>
-<p>注意：如果 Docker 已经配置了 CA 认证，需要开放 Docker 端口才能连接，因为使用 CA 签署公钥时指定了 Docker 公网 IP，而走 VPN 通道必然是使用内网 IP 访问 Docker，连接时这两个 IP 对不上就连接失败，如果不嫌麻烦就重新配置 Docker CA 认证。或者取消认证，因为已经走 VPN 通道而且也没有开放 Docker 端口，就只有自己可以连接。</p>
+<p>注意：如果 Docker 已经配置了 CA 认证，需要开放 Docker 端口才能连接，因为使用 CA 签署公钥时指定了 Docker 公网 IP，而走 VPN 通道必然是使用内网 IP 访问 Docker，连接时这两个 IP 对不上就连接失败，如果不嫌麻烦就重新配置 Docker CA 认证。或者取消认证，因为走 VPN 通道就没有必要开放 Docker 端口，就只有自己可以连接。</p>
 </blockquote>
 </li>
 </ol>
@@ -624,7 +734,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <p>通过<code>man ssh-keygen</code>可以发现支持的加密算法很多，但一般选择 rsa 或者 ed25519 ，rsa 对 SSH 工具兼容好，ed25519 更安全，加密解密更快。 </p>
 </blockquote>
 </li>
-<li><p>拷贝公钥文件到服务器上；</p>
+<li><p>使用<code>ssh-copy-id</code>命令拷贝公钥到服务器上；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-copy-id -i /c/Users/immas/.ssh/id_ed25519.pub -p 5000 username@<span class="variable">$HOST</span> <span class="comment"># -p 指定 ssh 端口</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>远程连接服务器。</p>
