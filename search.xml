@@ -186,6 +186,42 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
+    <title>Maven 多镜像源配置</title>
+    <url>/2022/12/14/PNGPtqI7TSsy/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>此篇文章主要用于备份 maven 配置，以下配置文件可直接复制后修改 Maven 的仓库地址即可，可以解决部份包无法获取的问题。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven_repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxies</span>&gt;</span><span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mirror&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;id&gt;nexus-aliyun&lt;/id&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;/mirrorOf&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;name&gt;Nexus aliyun&lt;/name&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;/mirror&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://nexus.pentaho.org/content/repositories/omni/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo2.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
+</blockquote>
+<p>来源：<a href="https://blog.csdn.net/chrisy521/article/details/121982044">https://blog.csdn.net/chrisy521/article/details/121982044</a></p>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
+<li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
+<p>解决：手动刷新一下 Maven 工程</p>
+<p><img src="\img\postimg\image-20221214233607005.png"/></p>
+</li>
+<li><p>本地仓库中明明下载了相关依赖，但是 pom.xml 文件中还是爆红；</p>
+<ul>
+<li><p>如果是 Maven 父工程锁定依赖爆红，而子模块可以正常引入依赖且识别版本号则不用管，不影响使用；</p>
+</li>
+<li><p>如果无法引入依赖可使用以下脚本清除 Maven 下载过程中产生的「*.lastupdate」干扰文件，清除后再次尝试引入。</p>
+<blockquote>
+<p>修改以下脚本中的 maven 本地仓库地址为你的仓库地址，然后保存为 *.bat 文件运行</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Maven</category>
+      </categories>
+      <tags>
+        <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker部署Canal实践</title>
     <url>/2022/12/14/DACZKCX9iu/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Canal"><a href="#Canal" class="headerlink" title="Canal"></a>Canal</h2><p>官网地址：<a href="https://github.com/alibaba/canal">https://github.com/alibaba/canal</a></p>
@@ -367,42 +403,6 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
-    <title>Maven 多镜像源配置</title>
-    <url>/2022/12/14/PNGPtqI7TSsy/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>此篇文章主要用于备份 maven 配置，以下配置文件可直接复制后修改 Maven 的仓库地址即可，可以解决部份包无法获取的问题。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven_repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxies</span>&gt;</span><span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mirror&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;id&gt;nexus-aliyun&lt;/id&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;/mirrorOf&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;name&gt;Nexus aliyun&lt;/name&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;/mirror&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://nexus.pentaho.org/content/repositories/omni/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo2.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
-</blockquote>
-<p>来源：<a href="https://blog.csdn.net/chrisy521/article/details/121982044">https://blog.csdn.net/chrisy521/article/details/121982044</a></p>
-<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
-<li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
-<p>解决：手动刷新一下 Maven 工程</p>
-<p><img src="\img\postimg\image-20221214233607005.png"/></p>
-</li>
-<li><p>本地仓库中明明下载了相关依赖，但是 pom.xml 文件中还是爆红；</p>
-<ul>
-<li><p>如果是 Maven 父工程锁定依赖爆红，而子模块可以正常引入依赖且识别版本号则不用管，不影响使用；</p>
-</li>
-<li><p>如果无法引入依赖可使用以下脚本清除 Maven 下载过程中产生的「*.lastupdate」干扰文件，清除后再次尝试引入。</p>
-<blockquote>
-<p>修改以下脚本中的 maven 本地仓库地址为你的仓库地址，然后保存为 *.bat 文件运行</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Maven</category>
-      </categories>
-      <tags>
-        <tag>Maven</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>frp 内网穿透</title>
     <url>/2022/06/30/frp/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>官网文档地址：<a href="https://gofrp.org/docs/overview/">https://gofrp.org/docs/overview/</a></p>
@@ -493,90 +493,189 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
-    <title>Docker下的MYSQL主从复制</title>
-    <url>/2022/07/01/rH4YuaYi2C/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>阿里云服务器：CentOS 7.9</p>
-<p>本地：Windows 10 64</p>
-<p>MYSQL：8.0.x</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
-<li><p>创建 msyql 实例 master，映射端口 3307；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3307:3306 --name=&quot;mysql-master&quot; \</span><br><span class="line">-v /mydata/mysql-master/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-master/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-master/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>启动错误：WARNING: IPv4 forwarding is disabled. Networking will not work</p>
-<p>没有开启转发,<a href="https://so.csdn.net/so/search?q=docker&amp;spm=1001.2101.3001.7020">docker</a>网桥配置完后，需要开启转发，不然容器启动后，就会没有网络；</p>
-<p>解决方案：</p>
-<ol>
-<li><p>vim /etc/sysctl.conf</p>
-<p>添加如下配置项；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+    <title>云服务器安全（SSH,SSL VPN）</title>
+    <url>/2023/01/09/mcxjgmqfSqf/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 在使用云服务器的过程中，我们一般会做一些配置来提高云服务器的安全，下面开始操作：</p>
+<h2 id="1-修改-root-密码"><a href="#1-修改-root-密码" class="headerlink" title="1. 修改 root 密码"></a>1. 修改 root 密码</h2><ol>
+<li><p>修改 root 密码；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd root <span class="comment"># 修改 root 用户密码</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>重启 network 和 docker 服务；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart network &amp;&amp; systemctl restart docker</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>查看是否修改成功；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.ip_forward</span><br></pre></td></tr></table></figure>
+<li><p>修改 root 用户名（不推荐，sudo 提权时会找不到 root 用户）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/passwd <span class="comment"># 修改第一行第一个 root 为新的用户名</span></span><br><span class="line">vim /etc/shadow <span class="comment"># 修改第一行第一个 root 为新的用户名</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>参考来源：<a href="https://blog.csdn.net/cljdsc/article/details/115207336">https://blog.csdn.net/cljdsc/article/details/115207336</a></p>
+<h2 id="2-添加一个普通管理员"><a href="#2-添加一个普通管理员" class="headerlink" title="2. 添加一个普通管理员"></a>2. 添加一个普通管理员</h2><ol>
+<li><p>查看 root 账户所属权限组；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">id</span> root <span class="comment"># 查看 root 用户所属权限组（root，对应的 gid 为 0）</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>误区更新：把普通用户加入 root 权限组并不会具有 root 权限</p>
 </blockquote>
 </li>
-<li><p>进入<code>/mydata/mysql-master/conf</code>目录下新建文件<code>my.cnf</code>；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 设置server_id，同一局域网中需要唯一</span><br><span class="line">server_id=101</span><br><span class="line">## 指定不需要同步的数据库名称</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">## 开启二进制日志功能</span><br><span class="line">log-bin=mall-mysql-bin</span><br><span class="line">## 设置二进制日志使用内存大小(事务)</span><br><span class="line">binlog_cache_size=1M</span><br><span class="line">## 设置使用的二进制日志格式(mixed, statement, row)</span><br><span class="line">binlog_format=mixed</span><br><span class="line">## 二进制日志过期清理时间。默认值为0,表示不自动清理</span><br><span class="line">expire_logs_days=7</span><br><span class="line">## 跳过主从复制中遇到的所有错误或指定类型的错误,避免slave端复制中断。</span><br><span class="line">## 如: 1062错误是指一些主键重复,1032错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启 mysql；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart mysql-master</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入 mysql-master，在 master 容器实例内创建数据同步用户；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;slave&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br><span class="line">GRANT REPLICATION SLAVE,REPLICATION CLIENT ON *.* TO &#x27;slave&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;; #修改验证方式</span><br><span class="line">flush privileges; #刷新权限</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新建从服务器 3308；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3308:3306 --name=&quot;mysql-slave&quot; \</span><br><span class="line">-v /mydata/mysql-slave/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-slave/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-slave/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入<code>/mydata/mysql-slave/conf</code>目录下新建文件<code>my.cnf</code>；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">##设置server_id,同一局域网中需要唯一</span><br><span class="line">server_id=102</span><br><span class="line">##指定不需要同步的数据库名称</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">##开启二进制日志功能,以备Slave作为其它数据库实例的Master时使用</span><br><span class="line">log-bin=mall-mysql-slave1-bin</span><br><span class="line">##设置二进制日志使用内存大小(事务)</span><br><span class="line">binlog_cache_size=1M</span><br><span class="line">##设置使用的二进制日志格式(mixed, statement, row)</span><br><span class="line">binlog_format=mixed</span><br><span class="line">##二进制日志过期清理时间。默认值为0,表示不自动清理,</span><br><span class="line">expire_logs_days=7</span><br><span class="line">##跳过主从复制中遇到的所有错误或指定类型的错误,避免slave端复制中断。</span><br><span class="line">## 如: 1062错误是指一些主键重复,1032错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br><span class="line">## relay_log配置中继日志</span><br><span class="line">relay_log=mall-mysql-relay-bin</span><br><span class="line">## log_slave_updates表示slave将复制事件写进自己的二进制目志</span><br><span class="line">log_slave_updates=1</span><br><span class="line">## slave设置为只读(具有super权限的用户除外)</span><br><span class="line">read_only=1</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>重启 slaver 实例；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart mysql-slave</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入 master 数据库，查看主数据库中主从同步状态；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show master status;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>进入 slave 数据库，配置主从复制；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在从数据库中查看主从同步状态；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show slave status \G</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>从数据库中开启主从同步；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">start slave;</span><br></pre></td></tr></table></figure>
-<p>再次查看主从同步状态中的下面两项是否变为「YES」；</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Slave_IO_Running: Connecting // 值应该为YES</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+<li><p>创建一个普通管理员用户；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd -g wheel -m username </span><br></pre></td></tr></table></figure>
+<p>另一种方式（不推荐）：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd -o -u 0 -g 0 -m username</span><br></pre></td></tr></table></figure>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line"># -m 指定在 /home 下创建用户主目录,</span><br><span class="line"># -g 指定初始组（可以是 gid 或者 组名）</span><br><span class="line"># -o 必须和 -u 一起使用，指定 uid，并且 uid 可重复</span><br><span class="line"># 上面命令的意思是，创建一个名为 username 的用户，同时</span><br><span class="line"># 在 /home 目录下创建该用户主目录，指定该用户的 uid = 0,gid = 0，这代表该用户具有 root 用户</span><br><span class="line"># 的所有权限，一般只指定 gid = 10，也就是设置用户的初始组为 wheel，这时虽然具有 root 权限，但</span><br><span class="line"># 是进行某些敏感操作时（比如查看系统文件，日志等）还是需要使用 sudo su 命令切换到 root 用户。</span><br></pre></td></tr></table></figure>
+<p>权限管理小贴士：</p>
 <blockquote>
-<p>出现错误：</p>
-<p>Authentication plugin ‘caching_sha2_password’ reported error: Authentication requires secure connection</p>
-<p>原因：</p>
-<p>MYSQL 8.0.x 修改了验证方式，无法在 slave 中使用 master 帐号通过 3307 端口登录主数据库，需要改回原本的验证方式；</p>
-<p>ALTER USER ‘root’ IDENTIFIED WITH mysql_native_password BY ‘123456’;</p>
-<p>注意是修改 master 数据库的帐号验证方式和密码（<font color=red>一定要仔细核对</font>）；</p>
-<p>核对完成后再在 slave 中重建主从配置</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stop slave;</span><br><span class="line">reset slave;</span><br><span class="line"></span><br><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
-<p>参考文章：</p>
 <ul>
-<li><a href="https://blog.csdn.net/panrenjun/article/details/114219097">https://blog.csdn.net/panrenjun/article/details/114219097</a></li>
+<li><p>root 用户的 uid = 0，拥有最高权限，属于 root 权限组（gid = 0）；</p>
+</li>
+<li><p>wheel 权限组 gid = 10，普通管理员组，拥有部份 root 权限，可通过 sudo 命令提升权限执行 root 操作（部份操作需要输入密码）。wheel 组主要存在于 Redhat 系发行版（RHEL、Fedora、CentOS）中，Debian 系发行版（ubuntu、kali、…）中对应的为 sudo 权限组；</p>
+</li>
+<li><p>sudo 授权对应的配置文件为<code>/etc/sudoers</code>，你可以在其中添加如下配置使得 test 用户和 wheel 权限组内用户使用 sudo 提权时不需要输入密码；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">test</span>    ALL=(ALL)       ALL</span><br><span class="line">%wheel        ALL=(ALL)       NOPASSWD: ALL</span><br><span class="line"><span class="comment"># 授权用户/组 主机=[(切换到哪些用户或组)] [是否需要输入密码验证] 命令1,命令2,...</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建的用户如果不指定初始组，默认初始组名称就是用户名称，用户具有初始组（-g）和附加组（-G）所有权限。</p>
+</li>
 </ul>
 </blockquote>
 </li>
-<li><p>验证，在 master 数据库中创建数据，查看 slave 中是否存在相同的数据；</p>
+<li><p>设置密码；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">passwd username <span class="comment">#设置密码</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
+<h2 id="3-禁用-root-用户登录"><a href="#3-禁用-root-用户登录" class="headerlink" title="3. 禁用 root 用户登录"></a>3. 禁用 root 用户登录</h2><blockquote>
+<p>WARNING：先确保上面新创建的用户可以 SSH 登录，不然只有联系服务器提供商解决问题。</p>
+</blockquote>
+<ol>
+<li><p>第一种；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config <span class="comment"># 设置 PermitRootLogin no，禁止 root 用户 ssh 登录</span></span><br><span class="line">systemctl restart sshd <span class="comment"># 重启 ssh 服务，不要关闭当前终端！！！，最好先使用新用户测试能否远程 ssh 连接</span></span><br></pre></td></tr></table></figure>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110175012561.png"/></p>
+</li>
+<li><p>第二种（推荐）。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo passwd -l root</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="4-其他相关命令"><a href="#4-其他相关命令" class="headerlink" title="4. 其他相关命令"></a>4. 其他相关命令</h2><h3 id="4-1-查看登录和权限"><a href="#4-1-查看登录和权限" class="headerlink" title="4.1 查看登录和权限"></a>4.1 查看登录和权限</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">who</span> <span class="comment"># 查看系统当前所有的登录用户</span></span><br><span class="line">w <span class="comment"># 查看系统当前所有的登录用户及正在执行的操作</span></span><br><span class="line"><span class="built_in">who</span> am i <span class="comment"># 等同于 who -m</span></span><br><span class="line"><span class="built_in">whoami</span> <span class="comment"># 查看当前有效用户(比如登录后使用 su 切换了用户)</span></span><br><span class="line"><span class="built_in">id</span> <span class="comment"># 查看当前有效用户及所属组信息</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-2-权限组相关"><a href="#4-2-权限组相关" class="headerlink" title="4.2 权限组相关"></a>4.2 权限组相关</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">groups</span> <span class="comment"># 查看当前用户所属组</span></span><br><span class="line">sudo groupdel [OPTIONS] GROUP <span class="comment"># 删除组（组下没有用户）</span></span><br><span class="line">sudo groupadd [OPTIONS] GROUP <span class="comment"># 添加组</span></span><br><span class="line">sudo usermod -g root <span class="built_in">test</span> <span class="comment"># 修改 test 初始组为 root</span></span><br><span class="line">sudo usermod -G root <span class="built_in">test</span> <span class="comment"># 添加 test 的附加组为 root（用户具有初始组和附加组所有权限）</span></span><br><span class="line">sudo gpasswd root -d <span class="built_in">test</span> <span class="comment"># 将 test 移出 root 组</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-3-配置相关"><a href="#4-3-配置相关" class="headerlink" title="4.3 配置相关"></a>4.3 配置相关</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">cat</span> /etc/passwd <span class="comment"># 查看所有用户的 UID，GID，主目录，默认 shell</span></span><br><span class="line">sudo <span class="built_in">cat</span> /etc/shadow <span class="comment"># 查看用户名和 md5 加密后的密码</span></span><br><span class="line">sudo <span class="built_in">cat</span> /etc/sudoers <span class="comment"># 查看 sudo 授权配置</span></span><br><span class="line">sudo <span class="built_in">cat</span> /etc/profile <span class="comment"># 系统配置</span></span><br><span class="line">sudo <span class="built_in">cat</span> /etc/groups <span class="comment"># 查看用户权限情况</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-4-密码相关"><a href="#4-4-密码相关" class="headerlink" title="4.4  密码相关"></a>4.4  密码相关</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo passwd -d <span class="built_in">test</span> <span class="comment"># 删除密码</span></span><br><span class="line">sudo passwd -l root <span class="comment"># 禁止 root 用户登录（原理：生成错误的密码与输入的密码匹配），不影响 SSH 密钥登录</span></span><br><span class="line">sudo passwd -u root <span class="comment"># 解锁 root 登录</span></span><br><span class="line">sudo passwd -S root <span class="comment"># 检查密码状态</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-5-删除用户"><a href="#4-5-删除用户" class="headerlink" title="4.5 删除用户"></a>4.5 删除用户</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo userdel -rf <span class="built_in">test</span> <span class="comment"># 删除test用户同时删除test用户主目录及文件</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-6-文件授权"><a href="#4-6-文件授权" class="headerlink" title="4.6 文件授权"></a>4.6 文件授权</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsattr [OPTION][文件或文件夹]</span><br><span class="line">chattr [RVf][+-=属性][文件或文件夹]</span><br></pre></td></tr></table></figure>
+<p>常用方式：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chattr +ia /home/test/1.txt <span class="comment"># 即使 root 用户也无权修改或删除</span></span><br></pre></td></tr></table></figure>
+<h2 id="5-修改-SSH-端口"><a href="#5-修改-SSH-端口" class="headerlink" title="5. 修改 SSH 端口"></a>5. 修改 SSH 端口</h2><ol>
+<li><p>修改<code>/etc/ssh/sshd_config</code>配置文件；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config <span class="comment"># 设置 Port 为 5000，对应的云服务器防火墙或者安全组把原来的 22 端口 tcp 连接删除，新增一个 5000 端口</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 SSHD 服务；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>阿里云和腾讯云默认都关闭了防火墙，相应的做了其他措施来保证服务器安全，我们只需要防火墙或者安全组开放对应的端口即可，而不是频繁的使用 firewalld 命令来开放端口。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="6-使用-SSL-VPN-连接-推荐"><a href="#6-使用-SSL-VPN-连接-推荐" class="headerlink" title="6. 使用 SSL VPN 连接(推荐)"></a>6. 使用 SSL VPN 连接(推荐)</h2><blockquote>
+<p>配置教程：<a href="https://i4t.com/5253.html">https://i4t.com/5253.html</a></p>
+<p>关键词：Open VPN</p>
+</blockquote>
+<ol>
+<li><p>切换到 root 用户（否则密钥文件无法被读取，无法建立连接），执行以下命令下载一键安装脚本并执行；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://git.io/vpn -O openvpn-install.sh &amp;&amp; bash openvpn-install.sh</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>由于 github 做了下载限制，一般 wget 是获取不到的，所以建议先下载下载再以 root 用户执行脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;sudo su</span><br><span class="line">&gt;bash openvpn-install.sh</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>根据脚本提示输入（基本全部默认）；</p>
+<p><img src="\img\postimg\mcxjgmqfSqt\Snipaste_2023-01-10_16-29-53.png"/></p>
+</li>
+<li><p>下载 Open VPN Windows 客户端；</p>
+<blockquote>
+<p>官网地址（需要梯子）：<a href="https://openvpn.net/community-downloads/">https://openvpn.net/community-downloads/</a></p>
+<p>注意：不要选 Open VPN 官方 V3 板本的 windows 客户端，不方便查看连接日志，很难排查连接问题</p>
+</blockquote>
+</li>
+<li><p>服务器开放 VPN 端口（默认 1194，UDP方式）；</p>
+</li>
+<li><p>Windows 客户端导入上面下载的配置文件<code>ssh_client.ovpn</code>；</p>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110164722047.png"/></p>
+</li>
+<li><p>点击连接，可以查看到连接日志；</p>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110165033544.png" style="zoom:65%"/></p>
+<blockquote>
+<p>如果这个弹框过一会儿消失并且右下角的小电脑显示为绿色表示连接成功</p>
+</blockquote>
+</li>
+<li><p>连接成功后，可以使用服务器内网 IP 访问 nacos 测试；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://10.4.0.18:8848/nacos/index.html</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用<code>tracert -d</code>命令跟踪路由查看是否走的 VPN 通道连接；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tracert -d www.baidu.com</span><br></pre></td></tr></table></figure>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110170210591.png"/></p>
+<blockquote>
+<p>可以看到第一跳地址已经变为服务器内网网关，而不是本机的网关。</p>
+</blockquote>
+</li>
+<li><p>现在可以关闭服务器的其他端口，只开放 SSH、VPN、HTTP、HTTPS 端口；</p>
+<blockquote>
+<p>注意：如果 Docker 已经配置了 CA 认证，需要开放 Docker 端口才能连接，因为使用 CA 签署公钥时指定了 Docker 公网 IP，而走 VPN 通道必然是使用内网 IP 访问 Docker，连接时这两个 IP 对不上就连接失败，如果不嫌麻烦就重新配置 Docker CA 认证。或者取消认证，因为已经走 VPN 通道而且也没有开放 Docker 端口，就只有自己可以连接。</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="7-使用-SSH-密钥连接"><a href="#7-使用-SSH-密钥连接" class="headerlink" title="7.  使用 SSH 密钥连接"></a>7.  使用 SSH 密钥连接</h2><blockquote>
+<p>推荐阅读：<a href="https://zhuanlan.zhihu.com/p/587082161">https://zhuanlan.zhihu.com/p/587082161</a></p>
+</blockquote>
+<ol>
+<li><p>本地生成公钥和私钥；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">&quot;create by yourname@qq.com&quot;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>通过<code>man ssh-keygen</code>可以发现支持的加密算法很多，但一般选择 rsa 或者 ed25519 ，rsa 对 SSH 工具兼容好，ed25519 更安全，加密解密更快。 </p>
+</blockquote>
+</li>
+<li><p>拷贝公钥文件到服务器上；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-copy-id -i /c/Users/immas/.ssh/id_ed25519.pub -p 5000 username@<span class="variable">$HOST</span> <span class="comment"># -p 指定 ssh 端口</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>远程连接服务器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -p 5000 username@<span class="variable">$HOST</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 SSH 客户端免密登录；</p>
+<blockquote>
+<p>我使用的是 Bitvise，也可以选择 Xshell</p>
+</blockquote>
+<ul>
+<li><p><code>Initial method</code>选择<code>publickey</code>；</p>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111084754474.png" style="zoom:80%"/></p>
+</li>
+<li><p>点击<code>Client key manager</code>，在弹出界面导入生成的私钥文件；</p>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111085242234.png" style="zoom:80%"/></p>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111085351192.png" style="zoom:70%"/></p>
+</li>
+<li><p>导入私钥后关闭窗口，选择这个私钥并登录；</p>
+<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111085932930.png"/></p>
+</li>
+<li><p>连接测试。</p>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="8-记录所有用户操作日志"><a href="#8-记录所有用户操作日志" class="headerlink" title="8. 记录所有用户操作日志"></a>8. 记录所有用户操作日志</h2><ol>
+<li><p>修改<code>/etc/profile</code>文件，在文件末尾追加如下内容；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/profile</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#记录系统操作日志开始</span></span><br><span class="line">USER=`<span class="built_in">whoami</span>`</span><br><span class="line">USER_IP=`<span class="built_in">who</span> -u am i 2&gt;/dev/null| awk <span class="string">&#x27;&#123;print $NF&#125;&#x27;</span>|sed -e <span class="string">&#x27;s/[()]//g&#x27;</span>`</span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$USER_IP</span>&quot;</span> = <span class="string">&quot;&quot;</span> ]; <span class="keyword">then</span></span><br><span class="line">   USER_IP=`hostname`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d /var/log/history ]; <span class="keyword">then</span></span><br><span class="line">   <span class="built_in">mkdir</span> /var/log/history</span><br><span class="line">   <span class="built_in">chmod</span> 777 /var/log/history</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="keyword">if</span> [ ! -d /var/log/history/<span class="variable">$&#123;LOGNAME&#125;</span> ]; <span class="keyword">then</span></span><br><span class="line">   <span class="built_in">mkdir</span> /var/log/history/<span class="variable">$&#123;LOGNAME&#125;</span></span><br><span class="line">   <span class="built_in">chown</span> -R <span class="variable">$&#123;LOGNAME&#125;</span>:<span class="variable">$&#123;LOGNAME&#125;</span> /var/log/history/<span class="variable">$&#123;LOGNAME&#125;</span></span><br><span class="line">   <span class="built_in">chmod</span> 300 /var/log/history/<span class="variable">$&#123;LOGNAME&#125;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">export</span> HISTSIZE=4096</span><br><span class="line">DT=`<span class="built_in">date</span> +<span class="string">&quot;%Y%m%d_%H:%M:%S&quot;</span>`</span><br><span class="line"><span class="built_in">export</span> HISTFILE=<span class="string">&quot;/var/log/history/<span class="variable">$&#123;LOGNAME&#125;</span>/<span class="variable">$&#123;USER&#125;</span>@<span class="variable">$&#123;USER_IP&#125;</span>_<span class="variable">$DT</span>&quot;</span></span><br><span class="line"><span class="built_in">chmod</span> 600 /var/log/history/<span class="variable">$&#123;LOGNAME&#125;</span>*<span class="built_in">history</span>* 2&gt;/dev/null</span><br><span class="line"><span class="comment"># 记录系统操作日志结束</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>生成的日志文件在 /var/log/history，需要 root 权限查看</p>
+</blockquote>
+</li>
+<li><p>配置文件立即生效。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_42369687/article/details/89787719">服务器安全之 centos安全措施</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/587082161">ssh详解，ssh密钥生成，服务器认证和登陆</a></li>
+<li><a href="https://segmentfault.com/a/1190000020166520">ssh key类型这么多，要如何选择呢？</a></li>
+<li><a href="https://help.yeastar.com/zh-cn/s-series/topic/openvpn-installation.html">在 Windows 上安装 OpenVPN 客户端</a></li>
+<li><a href="https://i4t.com/5253.html">OpenVPN 一键部署脚本</a></li>
+</ul>
 ]]></content>
       <categories>
-        <category>MYSQL</category>
+        <category>ssh</category>
       </categories>
       <tags>
-        <tag>Docker</tag>
-        <tag>MYSQL</tag>
-        <tag>主从复制</tag>
+        <tag>ssh,vpn</tag>
       </tags>
   </entry>
   <entry>
@@ -669,6 +768,93 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
       </categories>
       <tags>
         <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker下的MYSQL主从复制</title>
+    <url>/2022/07/01/rH4YuaYi2C/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>阿里云服务器：CentOS 7.9</p>
+<p>本地：Windows 10 64</p>
+<p>MYSQL：8.0.x</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li><p>创建 msyql 实例 master，映射端口 3307；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3307:3306 --name=&quot;mysql-master&quot; \</span><br><span class="line">-v /mydata/mysql-master/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-master/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-master/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>启动错误：WARNING: IPv4 forwarding is disabled. Networking will not work</p>
+<p>没有开启转发,<a href="https://so.csdn.net/so/search?q=docker&amp;spm=1001.2101.3001.7020">docker</a>网桥配置完后，需要开启转发，不然容器启动后，就会没有网络；</p>
+<p>解决方案：</p>
+<ol>
+<li><p>vim /etc/sysctl.conf</p>
+<p>添加如下配置项；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 network 和 docker 服务；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">systemctl restart network &amp;&amp; systemctl restart docker</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看是否修改成功；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.ip_forward</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考来源：<a href="https://blog.csdn.net/cljdsc/article/details/115207336">https://blog.csdn.net/cljdsc/article/details/115207336</a></p>
+</blockquote>
+</li>
+<li><p>进入<code>/mydata/mysql-master/conf</code>目录下新建文件<code>my.cnf</code>；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">## 设置server_id，同一局域网中需要唯一</span><br><span class="line">server_id=101</span><br><span class="line">## 指定不需要同步的数据库名称</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">## 开启二进制日志功能</span><br><span class="line">log-bin=mall-mysql-bin</span><br><span class="line">## 设置二进制日志使用内存大小(事务)</span><br><span class="line">binlog_cache_size=1M</span><br><span class="line">## 设置使用的二进制日志格式(mixed, statement, row)</span><br><span class="line">binlog_format=mixed</span><br><span class="line">## 二进制日志过期清理时间。默认值为0,表示不自动清理</span><br><span class="line">expire_logs_days=7</span><br><span class="line">## 跳过主从复制中遇到的所有错误或指定类型的错误,避免slave端复制中断。</span><br><span class="line">## 如: 1062错误是指一些主键重复,1032错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 mysql；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart mysql-master</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 mysql-master，在 master 容器实例内创建数据同步用户；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">CREATE USER &#x27;slave&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;123456&#x27;;</span><br><span class="line">GRANT REPLICATION SLAVE,REPLICATION CLIENT ON *.* TO &#x27;slave&#x27;@&#x27;%&#x27;;</span><br><span class="line"></span><br><span class="line">ALTER USER &#x27;root&#x27; IDENTIFIED WITH mysql_native_password BY &#x27;123456&#x27;; #修改验证方式</span><br><span class="line">flush privileges; #刷新权限</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新建从服务器 3308；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker run -p 3308:3306 --name=&quot;mysql-slave&quot; \</span><br><span class="line">-v /mydata/mysql-slave/log:/var/log/mysql \</span><br><span class="line">-v /mydata/mysql-slave/data:/var/lib/mysql \</span><br><span class="line">-v /mydata/mysql-slave/conf:/etc/mysql/conf.d \</span><br><span class="line">-e MYSQL_ROOT_PASSWORD=123456 -d mysql</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入<code>/mydata/mysql-slave/conf</code>目录下新建文件<code>my.cnf</code>；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">##设置server_id,同一局域网中需要唯一</span><br><span class="line">server_id=102</span><br><span class="line">##指定不需要同步的数据库名称</span><br><span class="line">binlog-ignore-db=mysql</span><br><span class="line">##开启二进制日志功能,以备Slave作为其它数据库实例的Master时使用</span><br><span class="line">log-bin=mall-mysql-slave1-bin</span><br><span class="line">##设置二进制日志使用内存大小(事务)</span><br><span class="line">binlog_cache_size=1M</span><br><span class="line">##设置使用的二进制日志格式(mixed, statement, row)</span><br><span class="line">binlog_format=mixed</span><br><span class="line">##二进制日志过期清理时间。默认值为0,表示不自动清理,</span><br><span class="line">expire_logs_days=7</span><br><span class="line">##跳过主从复制中遇到的所有错误或指定类型的错误,避免slave端复制中断。</span><br><span class="line">## 如: 1062错误是指一些主键重复,1032错误是因为主从数据库数据不一致</span><br><span class="line">slave_skip_errors=1062</span><br><span class="line">## relay_log配置中继日志</span><br><span class="line">relay_log=mall-mysql-relay-bin</span><br><span class="line">## log_slave_updates表示slave将复制事件写进自己的二进制目志</span><br><span class="line">log_slave_updates=1</span><br><span class="line">## slave设置为只读(具有super权限的用户除外)</span><br><span class="line">read_only=1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 slaver 实例；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">docker restart mysql-slave</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 master 数据库，查看主数据库中主从同步状态；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show master status;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入 slave 数据库，配置主从复制；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在从数据库中查看主从同步状态；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">show slave status \G</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>从数据库中开启主从同步；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">start slave;</span><br></pre></td></tr></table></figure>
+<p>再次查看主从同步状态中的下面两项是否变为「YES」；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Slave_IO_Running: Connecting // 值应该为YES</span><br><span class="line">Slave_SQL_Running: Yes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>出现错误：</p>
+<p>Authentication plugin ‘caching_sha2_password’ reported error: Authentication requires secure connection</p>
+<p>原因：</p>
+<p>MYSQL 8.0.x 修改了验证方式，无法在 slave 中使用 master 帐号通过 3307 端口登录主数据库，需要改回原本的验证方式；</p>
+<p>ALTER USER ‘root’ IDENTIFIED WITH mysql_native_password BY ‘123456’;</p>
+<p>注意是修改 master 数据库的帐号验证方式和密码（<font color=red>一定要仔细核对</font>）；</p>
+<p>核对完成后再在 slave 中重建主从配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">stop slave;</span><br><span class="line">reset slave;</span><br><span class="line"></span><br><span class="line">change master to master_host=&#x27;172.23.81.57&#x27;, master_user=&#x27;root&#x27;, master_password=&#x27;123456&#x27;, master_port=3307, master_log_file=&#x27;mall-mysql-bin.000001&#x27;, master_log_pos=710, master_connect_retry=30;</span><br></pre></td></tr></table></figure>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://blog.csdn.net/panrenjun/article/details/114219097">https://blog.csdn.net/panrenjun/article/details/114219097</a></li>
+</ul>
+</blockquote>
+</li>
+<li><p>验证，在 master 数据库中创建数据，查看 slave 中是否存在相同的数据；</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>MYSQL</category>
+      </categories>
+      <tags>
+        <tag>Docker</tag>
+        <tag>MYSQL</tag>
+        <tag>主从复制</tag>
       </tags>
   </entry>
   <entry>
