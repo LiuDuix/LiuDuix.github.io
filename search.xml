@@ -331,7 +331,10 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
     <title>Maven 多镜像源配置</title>
     <url>/2022/12/14/PNGPtqI7TSsy/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>此篇文章主要用于备份 maven 配置，以下配置文件可直接复制后修改 Maven 的仓库地址即可，可以解决部份包无法获取的问题。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><blockquote>
+<p>推荐阅读：<a href="https://juejin.cn/post/7124296921245548558">Maven远程仓库优先级</a></p>
+</blockquote>
+<p>找到 Maven 的配置文件<code>settings.xml</code>，将其替换为以下文件，修改本地仓库地址。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=<span class="string">&quot;1.0&quot;</span> encoding=<span class="string">&quot;UTF-8&quot;</span>?&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">settings</span> <span class="attr">xmlns</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xmlns:xsi</span>=<span class="string">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span></span></span><br><span class="line"><span class="tag">          <span class="attr">xsi:schemaLocation</span>=<span class="string">&quot;http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">localRepository</span>&gt;</span>D:\maven_repository<span class="tag">&lt;/<span class="name">localRepository</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">pluginGroups</span>&gt;</span><span class="tag">&lt;/<span class="name">pluginGroups</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">proxies</span>&gt;</span><span class="tag">&lt;/<span class="name">proxies</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">servers</span>&gt;</span><span class="tag">&lt;/<span class="name">servers</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrors</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;mirror&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;id&gt;nexus-aliyun&lt;/id&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;mirrorOf&gt;*,!jeecg,!jeecg-snapshots&lt;/mirrorOf&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;name&gt;Nexus aliyun&lt;/name&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--    &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public&lt;/url&gt;--&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--&lt;/mirror&gt;--&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">mirrors</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">profiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://nexus.pentaho.org/content/repositories/omni/<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo1.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">profile</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">repository</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">id</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">url</span>&gt;</span>https://repo2.maven.org/maven2<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">releases</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">releases</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">enabled</span>&gt;</span>true<span class="tag">&lt;/<span class="name">enabled</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">updatePolicy</span>&gt;</span>always<span class="tag">&lt;/<span class="name">updatePolicy</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">snapshots</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">profile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">profiles</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>aliyun<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo1<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>repo2<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">activeProfile</span>&gt;</span>pentaho<span class="tag">&lt;/<span class="name">activeProfile</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">activeProfiles</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">settings</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>解释一下：包的下载会按照「activeProfiles」中定义的仓库激活顺序来下载，如果第一个找不到就会去找下一个，完美。</p>
@@ -352,7 +355,14 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>idea 中重建 maven 索引；</p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\PNGPtq17TSsy\image-20230114181815259.png" style="zoom:60%"/></p>
+</li>
 </ul>
+</li>
+<li><p>在 idea 中使用 maven，本地有依赖，但是 Maven 总是去远程仓库找依赖；</p>
+<p>解决：idea 中配置 maven vm参数<code>-DarchetypeCatalog=internal</code></p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\PNGPtq17TSsy\image-20230114184804200.png"/></p>
 </li>
 </ol>
 ]]></content>
@@ -361,6 +371,156 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </categories>
       <tags>
         <tag>Maven</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Centos 设置静态 IP 与 Windows 共享网络的问题</title>
+    <url>/2023/01/16/TzrGRQ7RSQ/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>事情是这样的，我们都知道笔记本有两张物理网卡（一张有线，一张无线），Windows 10 还可以通过虚拟网卡开启 WIFI 热点（实际是通过物理无线网卡发射无线信号），将本机的网络共享给其他设备，那有什么方法可以反过来吗？</p>
+<p>我的本机系统是 Windows 10，我手里有一张 RTL8188EU 的螃蟹网卡，由于安装了 Centos 的设备上并没有相应的驱动，所以我想将笔记本连接的 WIFI 网络通过笔记本的 WAN 口共享给这台设备，先让它联网安装驱动再使用无线网卡连接网络，首先声明一点，无法直接桥接有线网卡和无线网卡，因为两者的通信原理和使用的传输协议不同。下面是我实际的操作以及操作中遇到的问题。</p>
+<h2 id="1-共享网络"><a href="#1-共享网络" class="headerlink" title="1. 共享网络"></a>1. 共享网络</h2><p>Windows 系统的共享网络（包括开热点）实际上就是启用了主机的路由功能，中间做了一层 NAT 转换。</p>
+<ol>
+<li><p>点击无线连接网卡的属性；</p>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116204854954.png" style="zoom:75%"/></p>
+</li>
+<li><p>在弹出的窗口中共享给本地有线连接（以太网）。</p>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116205127469.png" style="zoom:75%"/></p>
+</li>
+</ol>
+<p>现在本机的 WAN 口就作为 LAN 口来使用了，拿一根网线连接本机和其他设备，其他设备也能连通网络。但这还不够，由于我另一个设备是 CentOS 最小化安装的，我想通过 SSH 去连接操作这个设备，就需要给他设置一个静态的 IP 地址。</p>
+<h2 id="2-Centos-设置静态-IP"><a href="#2-Centos-设置静态-IP" class="headerlink" title="2. Centos 设置静态 IP"></a>2. Centos 设置静态 IP</h2><ol>
+<li><p>查看目前 DHCP 方式分配的 IP 地址 和 网关地址。</p>
+<ul>
+<li><p>查看 IP 地址；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip a <span class="comment"># 或者 ifconfig（需要 yum update &amp;&amp; yum install -y net-tools）</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看网关地址；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">route -n</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>设置静态 IP；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-enp2s0</span><br></pre></td></tr></table></figure>
+<p>修改内容如下：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">	BOOTPROTO=static # 修改 dhcp 为 static</span><br><span class="line">+	IPADDR=192.168.137.253 # 上一步获取到的 IP（从 IPADDR 到 DNS2 的配置全部紧跟 BOOTPROTO 添加）</span><br><span class="line">+	NETMASK=255.255.255.0 # 子网掩码</span><br><span class="line">+	GATEWAY=192.168.137.1 # 上一步获取到的网关</span><br><span class="line">+	DNS1=114.114.114.114</span><br><span class="line">+	DNS2=8.8.8.8</span><br><span class="line">	ONBOOT=yes # 修改 no 为 yes</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>ONBOOT=yes 代表在系统启动时激活网卡，如果不开启，每次设备重启后，需要手动使用<code>ifup</code>命令激活网卡才能连接网络，如：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;ifup enp2s0</span><br></pre></td></tr></table></figure>
+<p>禁用网卡</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;ifdown enp2s0</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>重启网络；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart network</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>测试连通性。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ping www.baidu.com</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>现在设置好静态 IP 了，但如果重启共享网络的主机，被共享设备就会发现连接不上网络，最开始我认为网卡未被激活，实际上最后检测出是 Windows 的共享网络失败问题。</p>
+<h2 id="3-设置-Windwos-解决重启后共享网络失败问题"><a href="#3-设置-Windwos-解决重启后共享网络失败问题" class="headerlink" title="3. 设置 Windwos 解决重启后共享网络失败问题"></a>3. 设置 Windwos 解决重启后共享网络失败问题</h2><blockquote>
+<p>参考来源：<a href="https://answers.microsoft.com/zh-hans/windows/forum/all/windows-10/b7b94ad6-890c-45df-8496-d552c1505098">Windows 10 网络连接共享功能重启后失效</a></p>
+</blockquote>
+<ol>
+<li><p>「Win + R」打开窗口，输入<code>regedit</code>打开注册表；</p>
+</li>
+<li><p>定位到：<code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SharedAccess</code>，在空白处右击鼠标，新建 “DWORD（32位）值（D）”，名称叫做<code>EnableRebootPersistConnection</code>，将数值数据改为1。</p>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116215750118.png"/></p>
+</li>
+<li><p>重启测试。</p>
+</li>
+</ol>
+<h2 id="4-CentOS-安装无线网卡驱动"><a href="#4-CentOS-安装无线网卡驱动" class="headerlink" title="4. CentOS 安装无线网卡驱动"></a>4. CentOS 安装无线网卡驱动</h2><ol>
+<li><p>查看网卡型号；</p>
+<blockquote>
+<p>我的是 Realtek RTL8188EU Wireless LAN 802.11n USB 2.0 Network Adapter</p>
+</blockquote>
+</li>
+<li><p>查看目前系统安装的网卡驱动；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lspci | grep Ethernet</span><br></pre></td></tr></table></figure>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116222011514.png"/></p>
+<blockquote>
+<p>可以看见没有 RTL8188EU 的驱动，需要手动安装</p>
+<p>如果 lspci 命令不可用，可以用以下方式，安装相应包</p>
+<ul>
+<li><p>查看哪个包有 lspci 命令；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum whatprovides */lspci</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装对应的包；</p>
+</li>
+</ul>
+</blockquote>
+</li>
+<li><p>下载 RTL8188EU 驱动；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/lwfinger/rtl8188eu</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>其他-&gt;官网 REALTEK 驱动下载：<a href="https://www.realtek.com/zh-tw/?spm=a2c6h.12873639.article-detail.6.72524a92HsQDGH">https://www.realtek.com/zh-tw/?spm=a2c6h.12873639.article-detail.6.72524a92HsQDGH</a></p>
+<p>注意：RTL8188EU 和 RTL8188 EUS 不是一个驱动，两者有很大的区别。</p>
+<p>RTL8188EU 是一款 802.11n 无线网卡，支持 2.4GHz 频段，支持单双流，最高速率可达 150 Mbps。</p>
+<p>RTL8188EUS 是一款 802.11ac 无线网卡，支持 2.4GHz 和 5GHz 双频段，支持单双流，最高速率可达867Mbps。</p>
+</blockquote>
+</li>
+<li><p>编译安装；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> rtl8188eu/</span><br><span class="line">make all &amp;&amp; make install</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这里我编译的时候报错：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">&gt;make: *** /lib/modules/3.10.0-1160.81.1.el7.x86_64/build: 没有那个文件或目录。 停止。</span><br></pre></td></tr></table></figure>
+<p>我使用<code>yum install kernel-devel-$(uname -r)</code>将内核开发包安到<code>/usr/src/kernels</code>再重启后，再次编译安装没有出现问题。</p>
+<p>参考文章：<a href="https://www.cnblogs.com/beixiaobei/p/9041143.html">https://www.cnblogs.com/beixiaobei/p/9041143.html</a></p>
+<p>建议使用文章中的建立软连接的方式，因为我第一次未建立软连接的情况下安装成功后无法识别 RTL8188EU，于是使用以下命令卸载了已安装的 RTL8188EU 驱动，建立了软连接后又装了一次…，第二次安装成功。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;lsmod <span class="comment"># 查看加载的驱动列表</span></span><br><span class="line">&gt;rmmod modname <span class="comment"># 卸载已加载的驱动</span></span><br><span class="line">&gt;modprobe -r modname <span class="comment"># 如果用以上命令无法卸载，先执行此命令</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>插入网卡，查看网卡状态；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsusb <span class="comment"># 需要安装 usbutils</span></span><br></pre></td></tr></table></figure>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117021556304.png"/></p>
+<blockquote>
+<p>RTL8188EU 外置网卡已经被识别（虽然显示的是RTL8188EUS，不影响）</p>
+<p>注意：大部份外置网卡被激活后会有提示灯，但是这里提示灯并未闪亮，不影响使用</p>
+</blockquote>
+</li>
+<li><p>构建内核模块依赖关系表，以便内核模块管理器可以根据需要加载所有需要的模块。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">depmod -a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>加载 RTL8188EU 模块；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">modprobe 8188eu</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>查看网卡设备；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli d <span class="comment"># 或者 ifconfig</span></span><br></pre></td></tr></table></figure>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117022519783.png"/></p>
+</li>
+<li><p>使用图形化工具连接 WIFI；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
+<p>选择「编辑连接」</p>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117022853814.png"/></p>
+</li>
+<li><p>接下来就是水到渠成的操作，选择一个 WIFI 连接，输入密码连接；</p>
+<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117023243572.png"/></p>
+</li>
+</ol>
+<h2 id="5-再次设置静态-IP"><a href="#5-再次设置静态-IP" class="headerlink" title="5. 再次设置静态 IP"></a>5. 再次设置静态 IP</h2><ol>
+<li><p>进入配置目录；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /etc/sysconfig/network-scripts/</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>找到连接的那个 WIFI，编辑或添加如下内容；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">	BOOTPROTO=static # 修改 dhcp 为 static</span><br><span class="line">+	IPADDR=192.168.0.106</span><br><span class="line">+	NETMASK=255.255.255.0</span><br><span class="line">+	GATEWAY=192.168.0.1</span><br><span class="line">+	DNS1=223.6.6.6</span><br><span class="line">+	DNS2=114.114.114.114</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启网络后再使用<code>nmtui</code>命令进入 UI 页面激活 WIFI 连接。</p>
+</li>
+</ol>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://blog.csdn.net/weixin_29799209/article/details/117011269">centos rtl8188eu linux驱动,centos7 安装8188eu驱动小记</a></li>
+<li><a href="https://jonygame.com/zh-cn/a/91vey4rqd.html">centos 7.x 增加realtek 8188eus无线网卡教程</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>IP</category>
+        <category>网络共享</category>
+      </categories>
+      <tags>
+        <tag>IP</tag>
+        <tag>网络共享</tag>
       </tags>
   </entry>
   <entry>
@@ -785,7 +945,8 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
         <category>ssh</category>
       </categories>
       <tags>
-        <tag>ssh,vpn</tag>
+        <tag>ssh</tag>
+        <tag>vpn</tag>
       </tags>
   </entry>
   <entry>
