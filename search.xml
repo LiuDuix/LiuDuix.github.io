@@ -470,16 +470,17 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;https://www.cnblogs.com/beixiaobei/p/9041143.html</span><br></pre></td></tr></table></figure>
 <p>解决：</p>
 <ul>
-<li><p>安装 kernel-headers；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install kernel-headers-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>安装 kernel-devel 到<code>/usr/src/kernels</code>；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install kernel-devel-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>创建内核软连接文件。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ln [OPTION] target DIRECTORY</span></span><br><span class="line"><span class="built_in">ln</span> -sfv /usr/src/kernels/3.10.0-1160.81.1.el7.x86_64 /lib/modules/3.10.0-1160.81.1.el7.x86_64/build</span><br></pre></td></tr></table></figure>
-</li>
+<li>安装 kernel-headers；</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install kernel-headers-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装 kernel-devel 到<code>/usr/src/kernels</code>；</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install kernel-devel-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建内核软连接文件。</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ln [OPTION] target DIRECTORY</span></span><br><span class="line"><span class="built_in">ln</span> -sfv /usr/src/kernels/3.10.0-1160.81.1.el7.x86_64 /lib/modules/3.10.0-1160.81.1.el7.x86_64/build</span><br></pre></td></tr></table></figure>
 <p>其他命令：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;lsmod <span class="comment"># 查看加载的驱动列表</span></span><br><span class="line">&gt;rmmod modname <span class="comment"># 卸载已加载的驱动</span></span><br><span class="line">&gt;modprobe -r modname <span class="comment"># 如果用以上命令无法卸载，先执行此命令</span></span><br></pre></td></tr></table></figure>
 </blockquote>
@@ -521,6 +522,25 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>重启网络后再使用<code>nmtui</code>命令进入 UI 页面激活 WIFI 连接。</p>
 </li>
 </ol>
+<h2 id="6-解决-SSH-连接速度很慢问题"><a href="#6-解决-SSH-连接速度很慢问题" class="headerlink" title="6. 解决 SSH 连接速度很慢问题"></a>6. 解决 SSH 连接速度很慢问题</h2><blockquote>
+<p>参考文章：<a href="https://blog.51cto.com/fangniuwa/1759402">CentOS7 SSH登陆慢的解决方法简述</a></p>
+</blockquote>
+<ol>
+<li><p>修改文件<code>/etc/ssh/sshd_config</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config</span><br></pre></td></tr></table></figure>
+<p>修改内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">GSSAPIAuthentication no</span><br><span class="line">UseDNS no</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启 sshd 服务；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart sshd</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<ul>
+<li>UseDNS：当值为 yes 时，使用 DNS 查询，客户端连接时，先使用 DNS 反向查询客户端主机名，然后根据查询到的IP地址验证客户端身份。如果客户机的 IP 没有域名，或者DNS服务器很慢或不通，那么登录就会很花时间。</li>
+<li>GSSAPIAuthentication：允许客户端使用 Kerberos 认证的 SSH 认证方式，它可以提供更安全的 SSH 认证机制。但该接口在目标机器无域名解析时会有问题。</li>
+</ul>
+</blockquote>
 <p>参考文章：</p>
 <ul>
 <li><a href="https://blog.csdn.net/weixin_29799209/article/details/117011269">centos rtl8188eu linux驱动,centos7 安装8188eu驱动小记</a></li>
@@ -777,98 +797,6 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
-    <title>时间复杂度与空间复杂度</title>
-    <url>/2023/01/03/qgYscrzqK8/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近在学习数据结构与算法，发现对于算法的时间和空间复杂度一直处于一个比较懵懂的状态，所以专门写一下来理清楚这两个概念。在这之前，我们需要先了解一些基本概念。</p>
-<h2 id="1-基本概念与术语"><a href="#1-基本概念与术语" class="headerlink" title="1. 基本概念与术语"></a>1. 基本概念与术语</h2><h3 id="1-1-数据结构"><a href="#1-1-数据结构" class="headerlink" title="1.1 数据结构"></a>1.1 数据结构</h3><ul>
-<li>在计算机中，数据并不是孤立、杂乱无序的，而是具有内在联系的数据集合。数据之间存在的一种或多种特定关系，也就是数据的组织形式；</li>
-<li>数据结构是指相互之间存在一种或多种特定关系的数据元素的集合；</li>
-<li>简单的理解就是关系，比如分子结构；</li>
-<li>我们分析这些关系的目的就是为了编写出一个 “好” 的程序。</li>
-</ul>
-<p>按照视点的不同，我们一般把数据结构分为「逻辑结构」和「物理结构」。</p>
-<h3 id="1-2-逻辑结构"><a href="#1-2-逻辑结构" class="headerlink" title="1.2 逻辑结构"></a>1.2 逻辑结构</h3><p>逻辑结构是指数据元素之间的相互关系，分为以下四种。每个数据元素看为一个节点，如下面图中的①~⑨。</p>
-<h4 id="1-2-1-集合结构"><a href="#1-2-1-集合结构" class="headerlink" title="1.2.1 集合结构"></a>1.2.1 集合结构</h4><p>集合结构中的数据元素除了同属于一个集合外，<strong>它们之间没有其他关系</strong>，类似于数学中的集合。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672726573485.png" style="zoom:40%"/></p>
-<h4 id="1-2-2-线性结构"><a href="#1-2-2-线性结构" class="headerlink" title="1.2.2 线性结构"></a>1.2.2 线性结构</h4><p>线性结构中的数据元素之间是「一对一」的关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727164638.png" style="zoom:45%"/></p>
-<h4 id="1-2-3-树型结构"><a href="#1-2-3-树型结构" class="headerlink" title="1.2.3 树型结构"></a>1.2.3 树型结构</h4><p>树形结构中的数据元素之间存在一种「一对多」的层次关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727285270.png" style="zoom:50%"/></p>
-<h4 id="1-2-4-图型结构"><a href="#1-2-4-图型结构" class="headerlink" title="1.2.4 图型结构"></a>1.2.4 图型结构</h4><p>图形结构的数据元素是「多对多」的关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727368270.png" style="zoom:50%"/></p>
-<h3 id="1-3-物理结构"><a href="#1-3-物理结构" class="headerlink" title="1.3 物理结构"></a>1.3 物理结构</h3><p>物理结构指数据的逻辑结构在计算机中的存储形式，难点也在这里，物理结构应该正确的存储数据元素之间的关系，分为「顺序存储」和「链式存储」。</p>
-<h4 id="1-3-1-顺序存储"><a href="#1-3-1-顺序存储" class="headerlink" title="1.3.1 顺序存储"></a>1.3.1 顺序存储</h4><p>顺序存储是指把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。这种存储方式不利于频繁变化的结构，如：数据频繁的插入和删除。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727857342.png" style="zoom:60%"/></p>
-<h4 id="1-3-2-链式存储"><a href="#1-3-2-链式存储" class="headerlink" title="1.3.2 链式存储"></a>1.3.2 链式存储</h4><p>对于时常要变化的结构，应该使用链式存储，链式存储是指把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。我们通过数据元素包含指针，而指针存放与其相关联的数据元素的地址来表示它们之间的逻辑关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672728560285.png" style="zoom:50%"/></p>
-<h2 id="2-算法定义"><a href="#2-算法定义" class="headerlink" title="2. 算法定义"></a>2. 算法定义</h2><p>数据结构通常是和算法一起的，抛开任何一个单独谈论都是不科学的，它们的一起出现是为了解决现实中的一些复杂问题。</p>
-<ul>
-<li>算法是解决特定问题求解步骤的描述；</li>
-<li>算法注重的是思想，比如：排序、找到最大数和最小数；</li>
-<li>对于给定的问题，可以有多种算法来解决；</li>
-<li>算法具有优劣之分，除基本的正确性、可读性、健壮性外，好的算法还应该具备「耗时少，高效率」和「占用存储量低」的特点。</li>
-</ul>
-<h2 id="3-算法效率"><a href="#3-算法效率" class="headerlink" title="3. 算法效率"></a>3. 算法效率</h2><p>正所谓 “是骡子是马，拉出来遛遛”，一个好的算法才能够禁得起检验。我们一般通过「事前分析估算方法」来对「算法的运行时间」和「占用内存的大小」进行估算。</p>
-<p>通常一个程序在计算机上运行所消耗的时间取决于下列因素：</p>
-<ul>
-<li>算法采用的策略、方法；</li>
-<li>编译产生的代码质量；</li>
-<li>问题的输入规模；</li>
-<li>机器执行指令的速度。</li>
-</ul>
-<p>抛开和硬件、软件相关的影响因素，一个程序的运行时间，依赖于算法的好坏和问题的输入规模。我们习惯用「时间复杂度」预估算法的执行时间，用「空间复杂度」预估算法占用的内存大小。</p>
-<h3 id="3-1-时间复杂度"><a href="#3-1-时间复杂度" class="headerlink" title="3.1 时间复杂度"></a>3.1 时间复杂度</h3><p>因为运行时间越短算法效率越高，而 CPU 操作每个单元运行所消耗的时间（这里记为BTime）都是相同的，我们就可以通过估算算法操作单元的数量（操作数）来估算该算法消耗的时间。</p>
-<p>假设算法输入的规模为 n，用 T(n) 来表示算法所消耗的时间，f(n) 为操作数，那么：</p>
-<script type="math/tex; mode=display">
-T(n)=f(n)*BTime</script><p>因为 $BTime$ 是一个确定的常量，那么随着输入规模 n 的增大， T(n) 的增长率一定和 f(n) 的增长率相同，我们把这个增长趋势称为时间复杂度，使用大 O 阶表示法记为 O(f(n))。</p>
-<p>一般情况下 T(n) 增长越慢的算法为最优算法，所以预估算法的执行时间转变为计算算法的 O(f(n)) ，也就是计算时间复杂度。</p>
-<h3 id="3-2-大-O-阶表示法"><a href="#3-2-大-O-阶表示法" class="headerlink" title="3.2 大 O 阶表示法"></a>3.2 大 O 阶表示法</h3><p>我们使用 O(f(n)) 来表示一个算法的时间复杂度，严格来说，O(f(n)) 表示的是算法以最坏的情况运行的时间复杂度，但日常中默认指的是一般情况下的时间复杂度。</p>
-<h3 id="3-3-推导大-O-阶"><a href="#3-3-推导大-O-阶" class="headerlink" title="3.3 推导大 O 阶"></a>3.3 推导大 O 阶</h3><p>说白了就是省略 f(n) 的过程</p>
-<ul>
-<li>用常数 1 取代运行时间中的所有加法常数；</li>
-<li>只保留最高阶项；</li>
-<li>如果最高阶项存在且不是 1，则去除与这个项相乘的常数。</li>
-</ul>
-<p>因为输入规模 n 在突破一个点后，常数项和常数项系数（如：O(100n) 中的 100）已经起不了决定性的作用了，所以直接忽略。</p>
-<blockquote>
-<p>需要注意的是：</p>
-<ul>
-<li>在决定使用哪些算法的时候，不是时间复杂越低的越好（因为简化后的时间复杂度忽略了常数项等等）；</li>
-<li>我们省略常数项系数是因为一般情况下都是默认数据规模足够的大；</li>
-<li>如果常数项系数非常大，例如10^7 ，那么常数项系数应该考虑保留。</li>
-</ul>
-</blockquote>
-<p>基于以上默认规则和事实，得出以下排行：</p>
-<p>O(1)常数阶 &lt; O(logn)对数阶 &lt; O(n)线性阶 &lt; O(n^2)平方阶 &lt; O(n^3)立方阶 &lt; O(2^n)指数阶</p>
-<p>举例：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 注意j = i 而不是0 */</span></span><br><span class="line">    <span class="keyword">for</span> (j = i; j &lt; n; j++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 时间复杂度为O(1)的程序步骤序列 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于当 i=0 时，内循环执行了 n 次，当 i=1 时，执行了 n-1 次，……当 i=n-1 时，执行了1次。所以总的执行次数为：</p>
-<script type="math/tex; mode=display">
-f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p>那么根据上面的规则可以得出该算法的时间复杂度为 O(n^2)。</p>
-<h3 id="3-4-空间复杂度"><a href="#3-4-空间复杂度" class="headerlink" title="3.4 空间复杂度"></a>3.4 空间复杂度</h3><p>空间复杂度 S(n) 是指算法在运行过程中所申请的内存空间的量度，也使用 O(f(n))来表示，此时的 f(n) 为输入规模 n 与 算法申请的内存空间的关系。</p>
-<p>比如：</p>
-<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    j++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>此时，如果是 JAVA 语言，因为 j 指向是一个常量，常量虽然在随 n 变化，但是并没有新的变量也就不需要再去分配内存空间，所以上面算法的空间复杂度为 O(1)。</p>
-<p>不同的编程语言有各自的内存管理方式。</p>
-<ul>
-<li>C/C++这种内存堆空间的申请和释放完全靠自己管理；</li>
-<li>Java 依赖JVM来做内存管理；</li>
-<li>Python内存管理是由私有堆空间管理的，所有的python对象和数据结构都存储在私有堆空间中。</li>
-</ul>
-<p>以下是基本数据类型占用的内存大小：</p>
-<p><img src="\img\postimg\qgYscrzqK8\Snipaste_2023-01-03_20-08-01.png"/></p>
-<blockquote>
-<p>安装 64 位的操作系统的计算机内存都已经超过了4G，也就是指针大小如果还是4个字节的话，就已经不能寻址全部的内存地址，所以64位编译器使用8个字节的指针才能寻找所有的内存地址。</p>
-</blockquote>
-]]></content>
-      <categories>
-        <category>算法</category>
-      </categories>
-      <tags>
-        <tag>算法</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>云服务器安全（SSH,SSL VPN）</title>
     <url>/2023/01/09/mcxjgmqfSqf/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 在使用云服务器的过程中，我们一般会做一些配置来提高云服务器的安全，下面开始操作：</p>
@@ -1053,6 +981,98 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
       <tags>
         <tag>ssh</tag>
         <tag>vpn</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>时间复杂度与空间复杂度</title>
+    <url>/2023/01/03/qgYscrzqK8/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>最近在学习数据结构与算法，发现对于算法的时间和空间复杂度一直处于一个比较懵懂的状态，所以专门写一下来理清楚这两个概念。在这之前，我们需要先了解一些基本概念。</p>
+<h2 id="1-基本概念与术语"><a href="#1-基本概念与术语" class="headerlink" title="1. 基本概念与术语"></a>1. 基本概念与术语</h2><h3 id="1-1-数据结构"><a href="#1-1-数据结构" class="headerlink" title="1.1 数据结构"></a>1.1 数据结构</h3><ul>
+<li>在计算机中，数据并不是孤立、杂乱无序的，而是具有内在联系的数据集合。数据之间存在的一种或多种特定关系，也就是数据的组织形式；</li>
+<li>数据结构是指相互之间存在一种或多种特定关系的数据元素的集合；</li>
+<li>简单的理解就是关系，比如分子结构；</li>
+<li>我们分析这些关系的目的就是为了编写出一个 “好” 的程序。</li>
+</ul>
+<p>按照视点的不同，我们一般把数据结构分为「逻辑结构」和「物理结构」。</p>
+<h3 id="1-2-逻辑结构"><a href="#1-2-逻辑结构" class="headerlink" title="1.2 逻辑结构"></a>1.2 逻辑结构</h3><p>逻辑结构是指数据元素之间的相互关系，分为以下四种。每个数据元素看为一个节点，如下面图中的①~⑨。</p>
+<h4 id="1-2-1-集合结构"><a href="#1-2-1-集合结构" class="headerlink" title="1.2.1 集合结构"></a>1.2.1 集合结构</h4><p>集合结构中的数据元素除了同属于一个集合外，<strong>它们之间没有其他关系</strong>，类似于数学中的集合。</p>
+<p><img src="\img\postimg\qgYscrzqK8\1672726573485.png" style="zoom:40%"/></p>
+<h4 id="1-2-2-线性结构"><a href="#1-2-2-线性结构" class="headerlink" title="1.2.2 线性结构"></a>1.2.2 线性结构</h4><p>线性结构中的数据元素之间是「一对一」的关系。</p>
+<p><img src="\img\postimg\qgYscrzqK8\1672727164638.png" style="zoom:45%"/></p>
+<h4 id="1-2-3-树型结构"><a href="#1-2-3-树型结构" class="headerlink" title="1.2.3 树型结构"></a>1.2.3 树型结构</h4><p>树形结构中的数据元素之间存在一种「一对多」的层次关系。</p>
+<p><img src="\img\postimg\qgYscrzqK8\1672727285270.png" style="zoom:50%"/></p>
+<h4 id="1-2-4-图型结构"><a href="#1-2-4-图型结构" class="headerlink" title="1.2.4 图型结构"></a>1.2.4 图型结构</h4><p>图形结构的数据元素是「多对多」的关系。</p>
+<p><img src="\img\postimg\qgYscrzqK8\1672727368270.png" style="zoom:50%"/></p>
+<h3 id="1-3-物理结构"><a href="#1-3-物理结构" class="headerlink" title="1.3 物理结构"></a>1.3 物理结构</h3><p>物理结构指数据的逻辑结构在计算机中的存储形式，难点也在这里，物理结构应该正确的存储数据元素之间的关系，分为「顺序存储」和「链式存储」。</p>
+<h4 id="1-3-1-顺序存储"><a href="#1-3-1-顺序存储" class="headerlink" title="1.3.1 顺序存储"></a>1.3.1 顺序存储</h4><p>顺序存储是指把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。这种存储方式不利于频繁变化的结构，如：数据频繁的插入和删除。</p>
+<p><img src="\img\postimg\qgYscrzqK8\1672727857342.png" style="zoom:60%"/></p>
+<h4 id="1-3-2-链式存储"><a href="#1-3-2-链式存储" class="headerlink" title="1.3.2 链式存储"></a>1.3.2 链式存储</h4><p>对于时常要变化的结构，应该使用链式存储，链式存储是指把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。我们通过数据元素包含指针，而指针存放与其相关联的数据元素的地址来表示它们之间的逻辑关系。</p>
+<p><img src="\img\postimg\qgYscrzqK8\1672728560285.png" style="zoom:50%"/></p>
+<h2 id="2-算法定义"><a href="#2-算法定义" class="headerlink" title="2. 算法定义"></a>2. 算法定义</h2><p>数据结构通常是和算法一起的，抛开任何一个单独谈论都是不科学的，它们的一起出现是为了解决现实中的一些复杂问题。</p>
+<ul>
+<li>算法是解决特定问题求解步骤的描述；</li>
+<li>算法注重的是思想，比如：排序、找到最大数和最小数；</li>
+<li>对于给定的问题，可以有多种算法来解决；</li>
+<li>算法具有优劣之分，除基本的正确性、可读性、健壮性外，好的算法还应该具备「耗时少，高效率」和「占用存储量低」的特点。</li>
+</ul>
+<h2 id="3-算法效率"><a href="#3-算法效率" class="headerlink" title="3. 算法效率"></a>3. 算法效率</h2><p>正所谓 “是骡子是马，拉出来遛遛”，一个好的算法才能够禁得起检验。我们一般通过「事前分析估算方法」来对「算法的运行时间」和「占用内存的大小」进行估算。</p>
+<p>通常一个程序在计算机上运行所消耗的时间取决于下列因素：</p>
+<ul>
+<li>算法采用的策略、方法；</li>
+<li>编译产生的代码质量；</li>
+<li>问题的输入规模；</li>
+<li>机器执行指令的速度。</li>
+</ul>
+<p>抛开和硬件、软件相关的影响因素，一个程序的运行时间，依赖于算法的好坏和问题的输入规模。我们习惯用「时间复杂度」预估算法的执行时间，用「空间复杂度」预估算法占用的内存大小。</p>
+<h3 id="3-1-时间复杂度"><a href="#3-1-时间复杂度" class="headerlink" title="3.1 时间复杂度"></a>3.1 时间复杂度</h3><p>因为运行时间越短算法效率越高，而 CPU 操作每个单元运行所消耗的时间（这里记为BTime）都是相同的，我们就可以通过估算算法操作单元的数量（操作数）来估算该算法消耗的时间。</p>
+<p>假设算法输入的规模为 n，用 T(n) 来表示算法所消耗的时间，f(n) 为操作数，那么：</p>
+<script type="math/tex; mode=display">
+T(n)=f(n)*BTime</script><p>因为 $BTime$ 是一个确定的常量，那么随着输入规模 n 的增大， T(n) 的增长率一定和 f(n) 的增长率相同，我们把这个增长趋势称为时间复杂度，使用大 O 阶表示法记为 O(f(n))。</p>
+<p>一般情况下 T(n) 增长越慢的算法为最优算法，所以预估算法的执行时间转变为计算算法的 O(f(n)) ，也就是计算时间复杂度。</p>
+<h3 id="3-2-大-O-阶表示法"><a href="#3-2-大-O-阶表示法" class="headerlink" title="3.2 大 O 阶表示法"></a>3.2 大 O 阶表示法</h3><p>我们使用 O(f(n)) 来表示一个算法的时间复杂度，严格来说，O(f(n)) 表示的是算法以最坏的情况运行的时间复杂度，但日常中默认指的是一般情况下的时间复杂度。</p>
+<h3 id="3-3-推导大-O-阶"><a href="#3-3-推导大-O-阶" class="headerlink" title="3.3 推导大 O 阶"></a>3.3 推导大 O 阶</h3><p>说白了就是省略 f(n) 的过程</p>
+<ul>
+<li>用常数 1 取代运行时间中的所有加法常数；</li>
+<li>只保留最高阶项；</li>
+<li>如果最高阶项存在且不是 1，则去除与这个项相乘的常数。</li>
+</ul>
+<p>因为输入规模 n 在突破一个点后，常数项和常数项系数（如：O(100n) 中的 100）已经起不了决定性的作用了，所以直接忽略。</p>
+<blockquote>
+<p>需要注意的是：</p>
+<ul>
+<li>在决定使用哪些算法的时候，不是时间复杂越低的越好（因为简化后的时间复杂度忽略了常数项等等）；</li>
+<li>我们省略常数项系数是因为一般情况下都是默认数据规模足够的大；</li>
+<li>如果常数项系数非常大，例如10^7 ，那么常数项系数应该考虑保留。</li>
+</ul>
+</blockquote>
+<p>基于以上默认规则和事实，得出以下排行：</p>
+<p>O(1)常数阶 &lt; O(logn)对数阶 &lt; O(n)线性阶 &lt; O(n^2)平方阶 &lt; O(n^3)立方阶 &lt; O(2^n)指数阶</p>
+<p>举例：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> i, j;</span><br><span class="line"><span class="keyword">for</span> (i = <span class="number">0</span>; i &lt; n; i++)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">/* 注意j = i 而不是0 */</span></span><br><span class="line">    <span class="keyword">for</span> (j = i; j &lt; n; j++) </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">/* 时间复杂度为O(1)的程序步骤序列 */</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>由于当 i=0 时，内循环执行了 n 次，当 i=1 时，执行了 n-1 次，……当 i=n-1 时，执行了1次。所以总的执行次数为：</p>
+<script type="math/tex; mode=display">
+f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p>那么根据上面的规则可以得出该算法的时间复杂度为 O(n^2)。</p>
+<h3 id="3-4-空间复杂度"><a href="#3-4-空间复杂度" class="headerlink" title="3.4 空间复杂度"></a>3.4 空间复杂度</h3><p>空间复杂度 S(n) 是指算法在运行过程中所申请的内存空间的量度，也使用 O(f(n))来表示，此时的 f(n) 为输入规模 n 与 算法申请的内存空间的关系。</p>
+<p>比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> <span class="variable">j</span> <span class="operator">=</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">    j++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>此时，如果是 JAVA 语言，因为 j 指向是一个常量，常量虽然在随 n 变化，但是并没有新的变量也就不需要再去分配内存空间，所以上面算法的空间复杂度为 O(1)。</p>
+<p>不同的编程语言有各自的内存管理方式。</p>
+<ul>
+<li>C/C++这种内存堆空间的申请和释放完全靠自己管理；</li>
+<li>Java 依赖JVM来做内存管理；</li>
+<li>Python内存管理是由私有堆空间管理的，所有的python对象和数据结构都存储在私有堆空间中。</li>
+</ul>
+<p>以下是基本数据类型占用的内存大小：</p>
+<p><img src="\img\postimg\qgYscrzqK8\Snipaste_2023-01-03_20-08-01.png"/></p>
+<blockquote>
+<p>安装 64 位的操作系统的计算机内存都已经超过了4G，也就是指针大小如果还是4个字节的话，就已经不能寻址全部的内存地址，所以64位编译器使用8个字节的指针才能寻找所有的内存地址。</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
       </tags>
   </entry>
   <entry>
