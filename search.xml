@@ -388,7 +388,12 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </li>
 </ol>
 <p>现在本机的 WAN 口就作为 LAN 口来使用了，拿一根网线连接本机和其他设备，其他设备也能连通网络。但这还不够，由于我另一个设备是 CentOS 最小化安装的，我想通过 SSH 去连接操作这个设备，就需要给他设置一个静态的 IP 地址。</p>
-<h2 id="2-Centos-设置静态-IP"><a href="#2-Centos-设置静态-IP" class="headerlink" title="2. Centos 设置静态 IP"></a>2. Centos 设置静态 IP</h2><ol>
+<h2 id="2-Centos-设置静态-IP"><a href="#2-Centos-设置静态-IP" class="headerlink" title="2. Centos 设置静态 IP"></a>2. Centos 设置静态 IP</h2><p>安装 Centos 7.9 系统的设备网卡情况：</p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\TzrGRQ7RSQ\image-20230118173854531.png"/></p>
+<blockquote>
+<p>插上网线后发现获取到 IP 地址的是 enp2s0 网卡，下面对其进行设置</p>
+</blockquote>
+<ol>
 <li><p>查看目前 DHCP 方式分配的 IP 地址 和 网关地址。</p>
 <ul>
 <li><p>查看 IP 地址；</p>
@@ -478,7 +483,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install kernel-devel-$(<span class="built_in">uname</span> -r)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>创建内核软连接文件。</li>
+<li>根据上面报错提示创建内核软连接文件。</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ln [OPTION] target DIRECTORY</span></span><br><span class="line"><span class="built_in">ln</span> -sfv /usr/src/kernels/3.10.0-1160.81.1.el7.x86_64 /lib/modules/3.10.0-1160.81.1.el7.x86_64/build</span><br></pre></td></tr></table></figure>
 <p>其他命令：</p>
@@ -594,6 +599,178 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </categories>
       <tags>
         <tag>idea</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Docker 安装 OpenWrt</title>
+    <url>/2023/01/17/dG1fS6pZ0r/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>Docker 对比裸机安装 OpenWrt 的优势是很方便管理 OpenWrt 的板本，缺点是比直接安装 OpenWrt 系统复杂，并且网络情况也更加复杂。</p>
+<h2 id="1-Docker-安装-OpenWrt"><a href="#1-Docker-安装-OpenWrt" class="headerlink" title="1. Docker 安装 OpenWrt"></a>1. Docker 安装 OpenWrt</h2><ol>
+<li><p>查看有哪些镜像；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker search openwrt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>拉取符合架构的镜像；</p>
+<blockquote>
+<p>使用<code>arch</code>命令查看系统架构，x86、x86_64、AMD64 基本都是同一个架构</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_64</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>打开网卡混杂模式；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip <span class="built_in">link</span> <span class="built_in">set</span> enp2s0 promisc on <span class="comment"># 或 ifconfig enp2s0 promisc</span></span><br></pre></td></tr></table></figure>
+<p>防止启动失效，加入开机自启动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&quot;ip link set enp2s0 promisc on&quot;</span> &gt;&gt; /etc/rc.local</span><br><span class="line"><span class="built_in">chmod</span> a+x /etc/rc.local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建 Docker macvlan 网络；</p>
+<blockquote>
+<p>Docker 的 macvlan 容器网络模式是一种网卡虚拟化技术，可以将一张物理网卡虚拟出多张网卡，容器可通过这些虚拟网卡与主机网络互联，Docker 中的 macvlan 只支持 bridge 模式。</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker network create -d macvlan -o parent=<span class="string">&quot;enp2s0&quot;</span> --subnet <span class="string">&quot;192.168.137.0/24&quot;</span> --gateway <span class="string">&quot;192.168.137.1&quot;</span> macnet</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>-d macvlan</code>指定网络类型为 macvlan</p>
+<p><code>parent</code> 取值为宿主机当前所用网卡名</p>
+<p><code>--sublet</code>宿主机 IP 所在网段</p>
+<p><code>--gateway</code>宿主机网关</p>
+<p><code>macnet</code>为网络名</p>
+</blockquote>
+</li>
+<li><p>运行 OpenWrt 容器；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name openwrt \</span><br><span class="line">--network macnet \</span><br><span class="line">-d --privileged=<span class="literal">true</span> \</span><br><span class="line">registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_64 /sbin/init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入容器内，编写网络配置文件；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it openwrt bash</span><br><span class="line">vim /etc/config/network</span><br></pre></td></tr></table></figure>
+<p>修改其中 lan 口的配置：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">config interface <span class="string">&#x27;lan&#x27;</span></span><br><span class="line">        option <span class="built_in">type</span> <span class="string">&#x27;bridge&#x27;</span></span><br><span class="line">        option ifname <span class="string">&#x27;eth0&#x27;</span></span><br><span class="line">        option proto <span class="string">&#x27;static&#x27;</span></span><br><span class="line">        option netmask <span class="string">&#x27;255.255.255.0&#x27;</span></span><br><span class="line">        option ip6assign <span class="string">&#x27;60&#x27;</span></span><br><span class="line">        option ipaddr <span class="string">&#x27;192.168.137.252&#x27;</span> <span class="comment"># 填写宿主机同网段 IP（不能冲突）</span></span><br><span class="line">        option gateway <span class="string">&#x27;192.168.137.1&#x27;</span>  <span class="comment"># 填写宿主机网关</span></span><br><span class="line">        option dns <span class="string">&#x27;192.168.137.1&#x27;</span>      <span class="comment"># 填写宿主机网关</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启网络；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/network restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>通过刚刚设置的 IP 地址访问 OpenWrt 管理页面并登录，用户名<code>root</code>，密码<code>password</code>；</p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\image-20230118044201272.png"/></p>
+</li>
+</ol>
+<h2 id="2-Dokcer-安装-OpenWrt-做旁路网关（推荐）"><a href="#2-Dokcer-安装-OpenWrt-做旁路网关（推荐）" class="headerlink" title="2. Dokcer 安装 OpenWrt 做旁路网关（推荐）"></a>2. Dokcer 安装 OpenWrt 做旁路网关（推荐）</h2><blockquote>
+<p>推荐阅读：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">https://blog.csdn.net/weixin_42708321/article/details/124720849</span><br><span class="line">https://zhuanlan.zhihu.com/p/122233420</span><br></pre></td></tr></table></figure>
+<p>部份人把这个旁路设备叫做旁路网关或者旁路由，严格来说叫旁路由或者旁路网关的说法都不正确，首先要搞清除什么是路由？什么是网关？什么叫转发？</p>
+<ul>
+<li>路由：现在的路由器基本都同时扮演着 路由、DHCP、DNS、网关 的角色，甚至交换机都具有了路由器功能（三层交换机）。路由器最主要的功能就是路由、转发、隔离广播域，路由是根据一些算法（静态路由算法、距离-向量算法、链路状态算法…）从路由表中找到从源设备达目标设备的最佳路径；</li>
+<li>转发：根据路由找到的最佳路径进行实际的传递数据包动作；</li>
+<li>网关：网关是一个网段数据的入口和出口，用于连接两个不同的网段从而实现不同网段间的设备通信，同一个网段的两个设备间是直接通信的，这种情况数据不经过网关。</li>
+</ul>
+<p>为了方便解释，下面统一叫旁路网关，下图是一个含有旁路网关（旁路由）网络架构示例（图片来源于上面文章）：</p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\377faba1865d4268910829586520b29d.jpg"/></p>
+<p>由上图可知，旁路网关就是主路由所分配子网中的一个设备，它虽然参与了流量的转发但并不是这个网段出口，实际连接外部网络的还是主路由，设置旁路网关的优点是减少了一层 NAT，由于数据需要经过旁路网关，所以连接主路由的下级设备也可以使用旁路网关所提供的功能，比如下载机、NAS、多媒体中心、内网穿透、科学上网。</p>
+<p>简单来说，旁路网关是一个通过 LAN 口与主路由连接的一个客户端设备，主路由主要负责流量的转发，而将网关等任务交给旁路网关，减轻主路由负担。</p>
+<p>下面是详细步骤</p>
+</blockquote>
+<h3 id="2-1-旁路设备部份接管"><a href="#2-1-旁路设备部份接管" class="headerlink" title="2.1 旁路设备部份接管"></a>2.1 旁路设备部份接管</h3><ol>
+<li><p>进入旁路设备 OpenWrt 配置界面，定位到<code>网络-&gt;接口</code>，找到当前连接的 LAN 口，将<code>传输协议</code>改为「静态地址」，<code>Ipv4 地址</code>改为当前子网内 IP（不能和其他设备冲突，具体哪些 IP 不能用可以在主路由 DHCP 设置中查看）。</p>
+</li>
+<li><p><code>Ipv4 网关</code>改为主路由 LAN 口地址，DNS 服务器可自定义；</p>
+</li>
+<li><p>关闭 DHCP 功能，在 OpenWrt 中是「忽略此接口」；</p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\image-20230119081800404.png"/></p>
+</li>
+<li><p>将旁路设备拔出接在主路由的 LAN 口，使用新设置的地址查看是否可以访问；</p>
+</li>
+<li><p>需要使用旁路设备提供功能的设备将网关改为旁路设备 IP。</p>
+</li>
+</ol>
+<h3 id="2-2-旁路设备全面接管"><a href="#2-2-旁路设备全面接管" class="headerlink" title="2.2 旁路设备全面接管"></a>2.2 旁路设备全面接管</h3><blockquote>
+<p>这种方式不需要其他设备手动指定网关，缺点就是如果旁路设备宕机，那么这个网段内的所有设备都无法上网。</p>
+</blockquote>
+<ol>
+<li><p>在上面配置的基础上做如下配置；</p>
+</li>
+<li><p>进入主路由后台，将<code>DHCP 服务器</code>的网关改为旁路设备的 IP 地址，DNS 最好自定义，比如：223.6.6.6，8.8.8.8；</p>
+<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\image-20230119122846356.png"/></p>
+</li>
+</ol>
+<h2 id="3-Docker-安装OpenWrt-做二级路由"><a href="#3-Docker-安装OpenWrt-做二级路由" class="headerlink" title="3. Docker 安装OpenWrt 做二级路由"></a>3. Docker 安装OpenWrt 做二级路由</h2><p>参考文章：<a href="https://www.treesir.pub/post/openwrt-docker-multi-net/">https://www.treesir.pub/post/openwrt-docker-multi-net/</a></p>
+<blockquote>
+<font color="e94b8">WARING:以下操作并未成功，仅为后面补坑提供一个思路</font>
+
+<p>TODO：双网口，使用 macvlan 虚拟出 WAN 口和 LAN 口为 openwrt 容器内部使用</p>
+<p>设备：双网口 + 一张无线网卡 RTL8188</p>
+<p>说明：由于 Docker 启动后，终端命令行会出现紊乱，一直提示登录 Openwrt 容器内部，导致命令行完全无法使用，原因未知，所以只能使用如下方式来进行操作。</p>
+<ol>
+<li>设备先连接主路由 LAN 口后获取到 IP 地址；</li>
+<li>查看设备该网卡获取到的 IP 地址，进入<code>/etc/sysconfig/network-scripts/</code>，将 IP 设置为静态地址，方便后面登录。</li>
+<li>电脑连接主路由无线局域网，使用 SSH 通过该 IP 连接，进行后面的操作。</li>
+</ol>
+<p>想实现效果：enp2s0 将用于 WAN 口，enp3s0 将用于 LAN 口，无线网卡暂时搁置</p>
+</blockquote>
+<ol>
+<li><p>开启网卡的混杂模式；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">ifconfig enp2s0 promisc</span><br><span class="line">ifconfig enp3s0 promisc</span><br></pre></td></tr></table></figure>
+<p>防止启动失效，加入开机自启动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> \</span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;ip link set enp2s0 promisc on </span></span><br><span class="line"><span class="string">ip link set enp3s0 promisc on&quot;</span><span class="string">&quot;&quot;</span> \</span><br><span class="line">&gt;&gt; /etc/rc.local</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">chmod</span> a+x /etc/rc.local</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>宿主机开启 ipv4 转发（开启 NAT 功能）；</p>
+<blockquote>
+<p>如果是裸装 OpenWrt 不需要开启此功能。出于安全考虑，Linux 系统默认是禁止数据包转发的。所谓转发即当主机拥有多于一块的网卡时，其中一块收到数据包，根据数据包的目的 ip 地址将数据包发往本机另一块网卡。</p>
+</blockquote>
+<ul>
+<li><p>查看系统是否开启 ipv4 转发；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl net.ipv4.ip_forward <span class="comment"># 值为 1 代表已开启</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开启 ipv4 转发；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<p>修改或添加以下值</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置立即生效；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>创建 WAN 口，LAN 口 的 macvlan；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker network create -d macvlan -o parent=enp2s0 --subnet=192.168.10.0/24 --gateway=192.168.10.1 macwan</span><br><span class="line">docker network create -d macvlan -o parent=enp3s0 maclan</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>enp2s0 目前连接主路由，所以用于创建 macwan；enp3s0 暂未连接，用于虚拟出 LAN 口。</p>
+</blockquote>
+</li>
+<li><p>启动容器并指定网络为 maclan；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run --name openwrt \</span><br><span class="line">--network maclan \</span><br><span class="line">-d --privileged=<span class="literal">true</span> \</span><br><span class="line">registry.cn-shanghai.aliyuncs.com/suling/openwrt:x86_64 /sbin/init</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>openwrt 容器连接 macwan；</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">   docker network connect macwan openwrt</span><br><span class="line"></span><br><span class="line">6. 进入容器内，编写网络配置文件；</span><br><span class="line"></span><br><span class="line">   ```bash</span><br><span class="line">   docker exec -it openwrt bash</span><br><span class="line">   vim /etc/config/network</span><br></pre></td></tr></table></figure>
+<p>修改其中 lan 口的配置：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">config interface &#x27;lan&#x27;</span><br><span class="line">        option type &#x27;bridge&#x27;</span><br><span class="line">        option ifname &#x27;eth0&#x27;</span><br><span class="line">        option proto &#x27;static&#x27;</span><br><span class="line">        option netmask &#x27;255.255.255.0&#x27;</span><br><span class="line">        option ip6assign &#x27;60&#x27;</span><br><span class="line">        option ipaddr &#x27;192.168.10.2&#x27;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重启容器网络；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/network restart</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>电脑连接设备 LAN 口（enp3s0），因为此 LAN 口并未开启 DHCP，所以需要手动配置电脑 IP（192.168.10.0/24 网段）和网关（192.168.10.1），然后进入OpenWrt 控制台；</p>
+</li>
+<li><p>控制台<code>网络-&gt;接口</code>中添加接口，选择<code>eth1</code>，设置 DHCP 自动获取 IP，然后在<code>网络-&gt;诊断</code>测试容器是否可以连通外网。</p>
+</li>
+<li><p>测试设备能否连通外网，如果不行，可尝试添加如下防火墙规则并重启防火墙；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">iptables -t nat -I POSTROUTING -s 192.168.10.0/24  -j MASQUERADE</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<blockquote>
+<p>目前的问题：Docker 内部可以连通外网（也就是说 macwan 的配置是成功的），但是连接 LAN 的设备无法连通外网（LAN 口配置失败）</p>
+<p>可能的原因：</p>
+<ul>
+<li>找不到网关（192.168.10.1 并没有指定给哪个设备，理论来说应该配置给 enp3s0，且虚拟 lan 口的网关也应该是 192.168.10.1）；</li>
+<li>OpenWrt 转发失败；</li>
+<li>其他…</li>
+</ul>
+</blockquote>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://mlapp.cn/376.html">在Docker 中运行 OpenWrt 旁路网关</a></li>
+<li><a href="https://oeone.cn/archives/486.html">旁路由设置的三种方式</a></li>
+<li><a href="https://pfschina.org/wp/?p=8031#comment-1619">OpenWrt旁路由设置教程</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>OpenWrt</category>
+      </categories>
+      <tags>
+        <tag>OpenWrt</tag>
       </tags>
   </entry>
   <entry>
