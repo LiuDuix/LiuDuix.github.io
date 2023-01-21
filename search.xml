@@ -645,7 +645,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/network restart</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过刚刚设置的 IP 地址访问 OpenWrt 管理页面并登录，用户名<code>root</code>，密码<code>password</code>；</p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\image-20230118044201272.png"/></p>
+<p><img src="\img\postimg\dG1fS6pZ0r\image-20230118044201272.png"/></p>
 </li>
 </ol>
 <h2 id="2-Dokcer-安装-OpenWrt-做旁路网关（推荐）"><a href="#2-Dokcer-安装-OpenWrt-做旁路网关（推荐）" class="headerlink" title="2. Dokcer 安装 OpenWrt 做旁路网关（推荐）"></a>2. Dokcer 安装 OpenWrt 做旁路网关（推荐）</h2><blockquote>
@@ -658,7 +658,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li>网关：网关是一个网段数据的入口和出口，用于连接两个不同的网段从而实现不同网段间的设备通信，同一个网段的两个设备间是直接通信的，这种情况数据不经过网关。</li>
 </ul>
 <p>为了方便解释，下面统一叫旁路网关，下图是一个含有旁路网关（旁路由）网络架构示例（图片来源于上面文章）：</p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\377faba1865d4268910829586520b29d.jpg"/></p>
+<p><img src="\img\postimg\dG1fS6pZ0r\377faba1865d4268910829586520b29d.jpg"/></p>
 <p>由上图可知，旁路网关就是主路由所分配子网中的一个设备，它虽然参与了流量的转发但并不是这个网段出口，实际连接外部网络的还是主路由，设置旁路网关的优点是减少了一层 NAT，由于数据需要经过旁路网关，所以连接主路由的下级设备也可以使用旁路网关所提供的功能，比如下载机、NAS、多媒体中心、内网穿透、科学上网。</p>
 <p>简单来说，旁路网关是一个通过 LAN 口与主路由连接的一个客户端设备，主路由主要负责流量的转发，而将网关等任务交给旁路网关，减轻主路由负担。</p>
 <p>下面是详细步骤</p>
@@ -669,7 +669,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p><code>Ipv4 网关</code>改为主路由 LAN 口地址，DNS 服务器可自定义；</p>
 </li>
 <li><p>关闭 DHCP 功能，在 OpenWrt 中是「忽略此接口」；</p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\image-20230119081800404.png"/></p>
+<p><img src="\img\postimg\dG1fS6pZ0r\image-20230119081800404.png"/></p>
 </li>
 <li><p>将旁路设备拔出接在主路由的 LAN 口，使用新设置的地址查看是否可以访问；</p>
 </li>
@@ -683,7 +683,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>在上面配置的基础上做如下配置；</p>
 </li>
 <li><p>进入主路由后台，将<code>DHCP 服务器</code>的网关改为旁路设备的 IP 地址，DNS 最好自定义，比如：223.6.6.6，8.8.8.8；</p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\dG1fS6pZ0r\image-20230119122846356.png"/></p>
+<p><img src="\img\postimg\dG1fS6pZ0r\image-20230119122846356.png"/></p>
 </li>
 </ol>
 <h2 id="3-Docker-安装OpenWrt-做二级路由"><a href="#3-Docker-安装OpenWrt-做二级路由" class="headerlink" title="3. Docker 安装OpenWrt 做二级路由"></a>3. Docker 安装OpenWrt 做二级路由</h2><p>参考文章：<a href="https://www.treesir.pub/post/openwrt-docker-multi-net/">https://www.treesir.pub/post/openwrt-docker-multi-net/</a></p>
