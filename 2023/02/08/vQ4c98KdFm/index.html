@@ -1,0 +1,539 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>记录一次前端部署 | LiuDuix's Blog</title><meta name="keywords" content="前端部署"><meta name="author" content="LiuDuix"><meta name="copyright" content="LiuDuix"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#0d0d0d"><meta name="description" content="1. 为所有用户安装 NVM 以下步骤需切换到 root 用户 参考文章：https:&#x2F;&#x2F;www.soulfree.cn&#x2F;?p&#x3D;486  Github：https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;nvm  设置 github 代理；  相关文章：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;thepoy&#x2F;p&#x2F;14848080.html  1git config --global url.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="记录一次前端部署">
+<meta property="og:url" content="http://liuduix.github.io/2023/02/08/vQ4c98KdFm/index.html">
+<meta property="og:site_name" content="LiuDuix&#39;s Blog">
+<meta property="og:description" content="1. 为所有用户安装 NVM 以下步骤需切换到 root 用户 参考文章：https:&#x2F;&#x2F;www.soulfree.cn&#x2F;?p&#x3D;486  Github：https:&#x2F;&#x2F;github.com&#x2F;nvm-sh&#x2F;nvm  设置 github 代理；  相关文章：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;thepoy&#x2F;p&#x2F;14848080.html  1git config --global url.">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://npm.elemecdn.com/liuduix-assets/img/postcover/vQ4c98KdFm.jpg">
+<meta property="article:published_time" content="2023-02-08T23:25:30.000Z">
+<meta property="article:modified_time" content="2023-02-08T19:42:28.993Z">
+<meta property="article:author" content="LiuDuix">
+<meta property="article:tag" content="前端部署">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://npm.elemecdn.com/liuduix-assets/img/postcover/vQ4c98KdFm.jpg"><link rel="shortcut icon" href="/img/favicon.ico"><link rel="canonical" href="http://liuduix.github.io/2023/02/08/vQ4c98KdFm/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":190},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '记录一次前端部署',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-08 19:42:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.css"><link rel="stylesheet" href="https://npm.elemecdn.com/liuduix-test1@1.0.2/css/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avator.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://npm.elemecdn.com/liuduix-assets/img/postcover/vQ4c98KdFm.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">LiuDuix's Blog</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fa fa-paper-plane"></i><span> 留言</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">记录一次前端部署</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-08T23:25:30.000Z" title="发表于 2023-02-08 23:25:30">2023-02-08</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-08T19:42:28.993Z" title="更新于 2023-02-08 19:42:28">2023-02-08</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2/">前端部署</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>7分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="记录一次前端部署"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="1-为所有用户安装-NVM"><a href="#1-为所有用户安装-NVM" class="headerlink" title="1. 为所有用户安装 NVM"></a>1. 为所有用户安装 NVM</h2><blockquote>
+<p>以下步骤需切换到 root 用户</p>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://www.soulfree.cn/?p=486">https://www.soulfree.cn/?p=486</a></p>
+</blockquote>
+<p>Github：<a target="_blank" rel="noopener" href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
+<ol>
+<li><p>设置 github 代理；</p>
+<blockquote>
+<p>相关文章：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/thepoy/p/14848080.html">https://www.cnblogs.com/thepoy/p/14848080.html</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git config --global url.<span class="string">&quot;https://ghproxy.com/https://github.com&quot;</span>.insteadOf <span class="string">&quot;https://github.com&quot;</span> </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 nvm 安装地址，在<code>/etc/profile</code>最后添加如下内容；</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">export NVM_BIN=&quot;/usr/local/nvm/versions/node&quot; # node安装地址</span><br><span class="line">export NVM_DIR=&quot;/usr/local/nvm&quot; # nvm安装地址</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置立即生效；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 nvm；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新开一个窗口验证安装；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm -v</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-安装-node"><a href="#2-安装-node" class="headerlink" title="2. 安装 node"></a>2. 安装 node</h2><ol>
+<li><p>查询可用 node；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm ls-remote</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问题：无可用板本 N/A</p>
+<p>解决：<a target="_blank" rel="noopener" href="https://bitnut.github.io/post/nvm-error/">https://bitnut.github.io/post/nvm-error/</a></p>
+</blockquote>
+</li>
+<li><p>安装 node；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install v10.14.2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换 node。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm use v10.14.2</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-安装-nginx"><a href="#3-安装-nginx" class="headerlink" title="3. 安装 nginx"></a>3. 安装 nginx</h2><ol>
+<li><p>添加 nginx 仓库；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt;/etc/yum.repos.d/nginx.repo&lt;&lt;<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/\<span class="variable">$releasever</span>/\<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=<span class="literal">true</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>cat &gt;{文件名}&lt;&lt;’EOF’：创建文件，之后的内容都是文件内容，以 EOF 结束输入。</p>
+</blockquote>
+</li>
+<li><p>查看仓库是否生效；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yum 安装 nginx；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果无法安装，可以先更换 yum 源为 网易163 源，然后执行以下语句</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;yum clean all</span><br><span class="line">&gt;yum makecache</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>查看 nginx 路径；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 nginx；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<ul>
+<li>查看占用 80 端口的 PID；</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;sudo netstat -tunlp | grep 80</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结束进程；</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="built_in">kill</span> -9 &#123;PID&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>查看是否启动；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问 80 端口；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 127.0.0.1:80</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果显示<code>Welcome to nginx</code>或者<code>Welcome to CentOS</code>代表启动成功。</p>
+</blockquote>
+</li>
+<li><p>查看 nginx 错误日志；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/nginx/error.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他常用命令；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">nginx -s stop <span class="comment"># 立即停止</span></span><br><span class="line">nginx -s reload <span class="comment"># 重新加载配置文件</span></span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl stop nginx</span><br><span class="line">systemctl status nginx</span><br><span class="line">systemctl reload nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx <span class="comment"># 开机自启动</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置相关；</p>
+<ul>
+<li><code>/etc/nginx/conf.d</code>：配置文件存放目录；</li>
+<li><code>/etc/nginx/nginx.conf</code>：配置文件；</li>
+<li><code>/etc/nginx/nginx.conf.default</code>：默认配置文件。</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-后台管理前端打包与部署"><a href="#4-后台管理前端打包与部署" class="headerlink" title="4. 后台管理前端打包与部署"></a>4. 后台管理前端打包与部署</h2><blockquote>
+<p>前提：一个正常解析的域名（已备案），如果不想备案，可购买国外服务器。</p>
+<p>后台管理前端基于 vue 2.0 的 vue admin template</p>
+</blockquote>
+<ol>
+<li><p>修改<code>/config/prod.env.js</code>，配置生产环境变量；</p>
+<blockquote>
+<p>主要是修改 BASE_URL 为 Spring Gateway 网关地址，并且服务器需要放行相应端口</p>
+</blockquote>
+</li>
+<li><p>打包 vue admin template 项目，生成「dist」文件夹；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;ERROR in Template execution failed: ReferenceError: BASE_URL is not defined</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<ul>
+<li>将<code>index.html</code> 中的<code>BASE_URL</code>换为<code>htmlWebpackPlugin.options.url</code></li>
+</ul>
+<p>如：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>换为：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= htmlWebpackPlugin.options.url %&gt;favicon.ico&quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postimg/vQ4c98KdFm/image-20230128093713840.png" style="zoom:70%"/></p>
+</li>
+</ol>
+<ol>
+<li><p>将打包后的 dist 文件改为项目名，并上传至服务器<code>/home/web/</code>目录下；</p>
+</li>
+<li><p>修改<code>/etc/nginx/nginx.conf</code>，内容如下；</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        listen       [::]:80;</span><br><span class="line">        server_name  admin.nanostu.top; # 域名、主机名</span><br><span class="line"></span><br><span class="line">        location /&#123;</span><br><span class="line">            root /home/web/admin; # 打包后的目录</span><br><span class="line">            index index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载 nginx 配置文件，并访问页面测试；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="5-用户访问前端打包与部署"><a href="#5-用户访问前端打包与部署" class="headerlink" title="5. 用户访问前端打包与部署"></a>5. 用户访问前端打包与部署</h2><blockquote>
+<p>参考文章：<a target="_blank" rel="noopener" href="https://blog.csdn.net/piconjo/article/details/106347853">https://blog.csdn.net/piconjo/article/details/106347853</a></p>
+<p>用户访问前端基于 nuxt2 框架</p>
+</blockquote>
+<ol>
+<li><p>修改 axios 请求的路径；</p>
+<p><code>/utils/request.js</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">baseURL: <span class="string">&quot;http://&#123;服务器 IP&#125;:8222&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>package.json</code>中添加如下内容，修改 nuxt 项目的 IP 地址和端口号；</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">&quot;config&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;nuxt&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3000&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这儿的 host 改为 0.0.0.0，否则外网无法访问，除非使用 nginx 进行反向代理，至于为什么配置为localhost 不能访问可以阅读这篇文章：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/ad7cd1d5be45">彻底明白ip地址，区分localhost、127.0.0.1和0.0.0.0</a></p>
+</blockquote>
+</li>
+<li><p>执行<code>npm run build</code>，在<code>.nuxt</code>文件夹下生成 dist 文件；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将下图中的文件上传到服务器；</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postimg/vQ4c98KdFm/image-20230208182545230.png" style="zoom:70%"/></p>
+<blockquote>
+<p>我上传到了<code>/home/web/front</code>目录</p>
+</blockquote>
+</li>
+<li><p>进入上传的目录，执行<code>npm install</code>安装依赖；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/web/front</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在该目录执行以下命令启动项目并访问测试；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样启动后，关闭终端就不能访问页面了，下面配置 pm2 后台启动</p>
+</blockquote>
+</li>
+<li><p>全局安装 pm2；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 pm2 开机自启；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pm2 startup</span><br><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入项目目录，执行以下命令启动前端项目；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pm2 start npm --name <span class="string">&quot;project name&quot;</span> -- run start <span class="comment"># 项目名在 package.json 中</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用 pm2 命令；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pm2 start [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 stop [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 restart [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 reload [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 delete [<span class="built_in">id</span>/name/all]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 nginx 反向代理；</p>
+<p>在<code>/etc/nginx/conf.d</code>文件夹下新建<code>front.conf</code>文件，内容如下</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       [::]:80;</span><br><span class="line">    server_name  front.nanostu.top; # 域名、主机名</span><br><span class="line"></span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">	    proxy_set_header host              $host;</span><br><span class="line">        proxy_set_header X-Real-IP         $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_read_timeout 1m;</span><br><span class="line">        proxy_connect_timeout 1m;</span><br><span class="line">        proxy_pass http://127.0.0.1:3000; # nuxt项目的监听端口</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载配置文件并访问测试；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>问题一：登录功能不能正常使用</p>
+<p>原因：cookie 的 domain 填写的是 localhost</p>
+<p>解决：修改项目中的 cookie 作用域</p>
+</li>
+<li><p>问题二：</p>
+<p>部署上服务器报如下错误</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Failed to execute &#x27;appendChild&#x27; on &#x27;Node&#x27;: This node type does not support this method</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>相关文章：<a target="_blank" rel="noopener" href="https://segmentfault.com/q/1010000016466439">https://segmentfault.com/q/1010000016466439</a></p>
+</blockquote>
+<p>解决：渲染的页面添加<code>&lt;no-ssr&gt;</code>标签包裹</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">no-ssr</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 内容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">no-ssr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-nginx-代理后端接口隐藏-API-端口"><a href="#6-nginx-代理后端接口隐藏-API-端口" class="headerlink" title="6. nginx 代理后端接口隐藏 API 端口"></a>6. nginx 代理后端接口隐藏 API 端口</h2><ol>
+<li><p>新增一个 nginx 配置文件，内容如下；</p>
+<p><code>/etc/nginx/conf.d/api.conf</code></p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       [::]:80;</span><br><span class="line">    server_name  api.nanostu.top; # 域名、主机名</span><br><span class="line"></span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">	    proxy_set_header host              $host;</span><br><span class="line">        proxy_set_header X-Real-IP         $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_read_timeout 1m;</span><br><span class="line">        proxy_connect_timeout 1m;</span><br><span class="line">        proxy_pass http://127.0.0.1:8222; # 后端 API 端口（gateway 端口）</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载配置文件；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将项目中所有请求后端的地址改为上面的地址（api.nanostu.top）；</p>
+</li>
+</ol>
+<h2 id="7-多个子域名批量申请-SSL-证书并自动续签"><a href="#7-多个子域名批量申请-SSL-证书并自动续签" class="headerlink" title="7. 多个子域名批量申请 SSL 证书并自动续签"></a>7. 多个子域名批量申请 SSL 证书并自动续签</h2><blockquote>
+<p>参考教程：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/354241539">https://zhuanlan.zhihu.com/p/354241539</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au">https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au</a></li>
+</ul>
+<p>以下步骤在 root 用户下执行</p>
+</blockquote>
+<ol>
+<li><p>安装 certbot；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install certbot python2-certbot-nginx -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>批量申请 SSL 证书；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot --nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>按照提示，留空表示为所有检测到的子域名添加证书</p>
+</blockquote>
+</li>
+<li><p>自动续约；</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TODO：申请泛域名证书；</p>
+<blockquote>
+<p>因为申请泛域名 SSL 证书还需要手动配置每个 *.conf 文件，所以就暂时搁置了</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="8-TODO-使用宝塔面版部署"><a href="#8-TODO-使用宝塔面版部署" class="headerlink" title="8. TODO: 使用宝塔面版部署"></a>8. TODO: 使用宝塔面版部署</h2><h2 id="9-TODO-使用-vercel-自动化部署"><a href="#9-TODO-使用-vercel-自动化部署" class="headerlink" title="9. TODO: 使用 vercel 自动化部署"></a>9. TODO: 使用 vercel 自动化部署</h2></article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>记录一次前端部署</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://liuduix.github.io/2023/02/08/vQ4c98KdFm/">http://liuduix.github.io/2023/02/08/vQ4c98KdFm/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>LiuDuix</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2023-02-08</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2023-02-08</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF%E9%83%A8%E7%BD%B2/">前端部署</a></div><div class="post_share"><div class="social-share" data-image="https://npm.elemecdn.com/liuduix-assets/img/postcover/vQ4c98KdFm.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.elemecdn.com/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2023/02/01/xP85b98dSc/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postcover/xP85b98dSc.jpg" onerror="onerror=null;src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">MYSQL 学习笔记</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-test1/img/avatars/avator.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">LiuDuix</div><div class="author-info__description">真的吃土了😭😭😭</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">17</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">20</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/LiuDuix"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/liuduix" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:immaster74@gmail.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎来到我的博客</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%B8%BA%E6%89%80%E6%9C%89%E7%94%A8%E6%88%B7%E5%AE%89%E8%A3%85-NVM"><span class="toc-text">1. 为所有用户安装 NVM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%AE%89%E8%A3%85-node"><span class="toc-text">2. 安装 node</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%AE%89%E8%A3%85-nginx"><span class="toc-text">3. 安装 nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E5%90%8E%E5%8F%B0%E7%AE%A1%E7%90%86%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">4. 后台管理前端打包与部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E7%94%A8%E6%88%B7%E8%AE%BF%E9%97%AE%E5%89%8D%E7%AB%AF%E6%89%93%E5%8C%85%E4%B8%8E%E9%83%A8%E7%BD%B2"><span class="toc-text">5. 用户访问前端打包与部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-nginx-%E4%BB%A3%E7%90%86%E5%90%8E%E7%AB%AF%E6%8E%A5%E5%8F%A3%E9%9A%90%E8%97%8F-API-%E7%AB%AF%E5%8F%A3"><span class="toc-text">6. nginx 代理后端接口隐藏 API 端口</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E5%A4%9A%E4%B8%AA%E5%AD%90%E5%9F%9F%E5%90%8D%E6%89%B9%E9%87%8F%E7%94%B3%E8%AF%B7-SSL-%E8%AF%81%E4%B9%A6%E5%B9%B6%E8%87%AA%E5%8A%A8%E7%BB%AD%E7%AD%BE"><span class="toc-text">7. 多个子域名批量申请 SSL 证书并自动续签</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-TODO-%E4%BD%BF%E7%94%A8%E5%AE%9D%E5%A1%94%E9%9D%A2%E7%89%88%E9%83%A8%E7%BD%B2"><span class="toc-text">8. TODO: 使用宝塔面版部署</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-TODO-%E4%BD%BF%E7%94%A8-vercel-%E8%87%AA%E5%8A%A8%E5%8C%96%E9%83%A8%E7%BD%B2"><span class="toc-text">9. TODO: 使用 vercel 自动化部署</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/08/vQ4c98KdFm/" title="记录一次前端部署"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postcover/vQ4c98KdFm.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="记录一次前端部署"/></a><div class="content"><a class="title" href="/2023/02/08/vQ4c98KdFm/" title="记录一次前端部署">记录一次前端部署</a><time datetime="2023-02-08T23:25:30.000Z" title="发表于 2023-02-08 23:25:30">2023-02-08</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/01/xP85b98dSc/" title="MYSQL 学习笔记"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postcover/xP85b98dSc.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="MYSQL 学习笔记"/></a><div class="content"><a class="title" href="/2023/02/01/xP85b98dSc/" title="MYSQL 学习笔记">MYSQL 学习笔记</a><time datetime="2023-02-01T11:29:27.000Z" title="发表于 2023-02-01 11:29:27">2023-02-01</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/30/tbTTrGgn9k/" title="记录一次后端部署"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postcover/tbTTrGgn9k.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="记录一次后端部署"/></a><div class="content"><a class="title" href="/2023/01/30/tbTTrGgn9k/" title="记录一次后端部署">记录一次后端部署</a><time datetime="2023-01-30T16:48:44.000Z" title="发表于 2023-01-30 16:48:44">2023-01-30</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/21/qZ2fKtiq3h/" title="小知识搜集"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postcover/qZ2fKtiq3h.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="小知识搜集"/></a><div class="content"><a class="title" href="/2023/01/21/qZ2fKtiq3h/" title="小知识搜集">小知识搜集</a><time datetime="2023-01-21T17:28:18.000Z" title="发表于 2023-01-21 17:28:18">2023-01-21</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/17/dG1fS6pZ0r/" title="Docker 安装 OpenWrt"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/liuduix-assets/img/postcover/dG1fS6pZ0r.jpg" onerror="this.onerror=null;this.src='https://npm.elemecdn.com/liuduix-test1/img/loading/loading02.gif'" alt="Docker 安装 OpenWrt"/></a><div class="content"><a class="title" href="/2023/01/17/dG1fS6pZ0r/" title="Docker 安装 OpenWrt">Docker 安装 OpenWrt</a><time datetime="2023-01-17T18:28:50.000Z" title="发表于 2023-01-17 18:28:50">2023-01-17</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2022 - 2023 By LiuDuix</div><div class="footer_custom_text"><p> <a style="margin-inline:5px"target="_blank" href="https://hexo.io/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Frame-Hexo-blue?style=flat&logo=hexo" title="博客框架为 Hexo" alt="HEXO"> </a>&nbsp; <a style="margin-inline:5px"target="_blank" href="https://butterfly.js.org/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Theme-Butterfly-6513df?style=flat&logo=bitdefender" title="主题采用 Butterfly" alt="Butterfly"> </a>&nbsp; <a style="margin-inline:5px"target="_blank" href="https://github.com/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Source-Github-d021d6?style=flat&logo=GitHub" title="本站项目由 GitHub 托管" alt="GitHub"> </a>&nbsp; <a style="margin-inline:5px"target="_blank"href="http://creativecommons.org/licenses/by-nc-sa/4.0/"> <img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://img.shields.io/badge/Copyright-BY--NC--SA%204.0-d42328?style=flat&logo=Claris" alt="img" title="本站采用知识共享署名-非商业性使用-相同方式共享4.0国际许可协议进行许可"> </a> </p></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="https://npm.elemecdn.com/vanilla-lazyload/dist/lazyload.iife.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://twikoo-seven-khaki.vercel.app/',
+      region: 'ap-shanghai',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://twikoo-seven-khaki.vercel.app/',
+      region: 'ap-shanghai',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://npm.elemecdn.com/twikoo@1.5.11/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script defer src="https://cdn.jsdelivr.net/gh/metowolf/MetingJS@1.2/dist/Meting.min.js"></script><div class="aplayer no-destroy no-reload aplayer-withlist aplayer-fixed" data-id="7464902660" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listfolded="false" data-preload="none" data-autoplay="false" data-order="random" muted></div><link rel="stylesheet" href="https://npm.elemecdn.com/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.elemecdn.com/aplayer/dist/APlayer.min.js"></script><script src="https://npm.elemecdn.com/meting@1.2/dist/Meting.min.js"></script><script src="https://npm.elemecdn.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = 'undefined';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.6/clock.js"></script><script data-pjax>
+  function butterfly_clock_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock')
+    parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  var elist = '/posts/,/about/'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var flag = 0;
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_injector_config();
+  }
+  </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax src="https://npm.elemecdn.com/hexo-butterfly-clock/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"left","width":150,"height":300,"hOffset":1,"vOffset":-15},"mobile":{"show":true},"react":{"opacity":1},"log":false});</script></body></html>

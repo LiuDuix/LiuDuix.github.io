@@ -193,7 +193,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <blockquote>
 <p>canal ，译意为水道/管道/沟渠，主要用途是基于 MySQL 数据库增量日志解析，提供<strong>增量数据订阅和消费</strong></p>
 </blockquote>
-<p><img src="\img\postimg\image-20221214133313460.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/image-20221214133313460.png"/></p>
 <ul>
 <li>Canal 是一个同步增量数据的一个工具，可以很方便的同步数据库的增量数据到其他存储应用；</li>
 <li>Canal 基于binary log 增量订阅和消费；</li>
@@ -343,7 +343,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ol>
 <li><p>Idea 设置了自动导包，但是添加依赖后没有反应；</p>
 <p>解决：手动刷新一下 Maven 工程</p>
-<p><img src="\img\postimg\image-20221214233607005.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/image-20221214233607005.png"/></p>
 </li>
 <li><p>本地仓库中明明下载了相关依赖，但是 pom.xml 文件中还是爆红；</p>
 <ul>
@@ -356,13 +356,13 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">set</span> REPOSITORY_PATH=D:\maven_repository</span><br><span class="line">rem 正在搜索...</span><br><span class="line"><span class="keyword">for</span> /f <span class="string">&quot;delims=&quot;</span> %%i <span class="keyword">in</span> (<span class="string">&#x27;dir /b /s &quot;%REPOSITORY_PATH%\*lastUpdated*&quot;&#x27;</span>) <span class="keyword">do</span> (</span><br><span class="line">    del /s /q %%i</span><br><span class="line">)</span><br><span class="line">rem 搜索完毕</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>idea 中重建 maven 索引；</p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\PNGPtq17TSsy\image-20230114181815259.png" style="zoom:60%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/PNGPtq17TSsy/image-20230114181815259.png" style="zoom:60%"/></p>
 </li>
 </ul>
 </li>
 <li><p>在 idea 中使用 maven，本地有依赖，但是 Maven 总是去远程仓库找依赖；</p>
 <p>解决：idea 中配置 maven vm参数<code>-DarchetypeCatalog=internal</code></p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\PNGPtq17TSsy\image-20230114184804200.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/PNGPtq17TSsy/image-20230114184804200.png"/></p>
 </li>
 </ol>
 ]]></content>
@@ -381,15 +381,15 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <h2 id="1-共享网络"><a href="#1-共享网络" class="headerlink" title="1. 共享网络"></a>1. 共享网络</h2><p>Windows 系统的共享网络（包括开热点）实际上就是启用了主机的路由功能，中间做了一层 NAT 转换。</p>
 <ol>
 <li><p>点击无线连接网卡的属性；</p>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116204854954.png" style="zoom:75%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230116204854954.png" style="zoom:75%"/></p>
 </li>
 <li><p>在弹出的窗口中共享给本地有线连接（以太网）。</p>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116205127469.png" style="zoom:75%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230116205127469.png" style="zoom:75%"/></p>
 </li>
 </ol>
 <p>现在本机的 WAN 口就作为 LAN 口来使用了，拿一根网线连接本机和其他设备，其他设备也能连通网络。但这还不够，由于我另一个设备是 CentOS 最小化安装的，我想通过 SSH 去连接操作这个设备，就需要给他设置一个静态的 IP 地址。</p>
 <h2 id="2-Centos-设置静态-IP"><a href="#2-Centos-设置静态-IP" class="headerlink" title="2. Centos 设置静态 IP"></a>2. Centos 设置静态 IP</h2><p>安装 Centos 7.9 系统的设备网卡情况：</p>
-<p><img src="D:\Hexo\themes\Butterfly\source\img\postimg\TzrGRQ7RSQ\image-20230118173854531.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230118173854531.png"/></p>
 <blockquote>
 <p>插上网线后发现获取到 IP 地址的是 enp2s0 网卡，下面对其进行设置</p>
 </blockquote>
@@ -430,7 +430,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>「Win + R」打开窗口，输入<code>regedit</code>打开注册表；</p>
 </li>
 <li><p>定位到：<code>HKEY_LOCAL_MACHINE\Software\Microsoft\Windows\CurrentVersion\SharedAccess</code>，在空白处右击鼠标，新建 “DWORD（32位）值（D）”，名称叫做<code>EnableRebootPersistConnection</code>，将数值数据改为1。</p>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116215750118.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230116215750118.png"/></p>
 </li>
 <li><p>重启测试。</p>
 </li>
@@ -443,7 +443,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </li>
 <li><p>查看目前系统安装的网卡驱动；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lspci | grep Ethernet</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230116222011514.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230116222011514.png"/></p>
 <blockquote>
 <p>可以看见没有 RTL8188EU 的驱动，需要手动安装</p>
 <p>如果 lspci 命令不可用，可以用以下方式，安装相应包</p>
@@ -492,7 +492,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </li>
 <li><p>插入网卡，查看网卡状态；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">lsusb <span class="comment"># 需要安装 usbutils</span></span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117021556304.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230117021556304.png"/></p>
 <blockquote>
 <p>RTL8188EU 外置网卡已经被识别（虽然显示的是RTL8188EUS，不影响）</p>
 <p>注意：大部份外置网卡被激活后会有提示灯，这里提示灯并未闪亮，但不影响使用</p>
@@ -506,15 +506,15 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </li>
 <li><p>查看网卡设备；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmcli d <span class="comment"># 或者 ifconfig</span></span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117022519783.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230117022519783.png"/></p>
 </li>
 <li><p>使用图形化工具连接 WIFI；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nmtui</span><br></pre></td></tr></table></figure>
 <p>选择「编辑连接」</p>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117022853814.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230117022853814.png"/></p>
 </li>
 <li><p>接下来就是水到渠成的操作，选择一个 WIFI，输入密码连接；</p>
-<p><img src="\img\postimg\TzrGRQ7RSQ\image-20230117023243572.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/TzrGRQ7RSQ/image-20230117023243572.png"/></p>
 </li>
 </ol>
 <h2 id="5-再次设置静态-IP"><a href="#5-再次设置静态-IP" class="headerlink" title="5. 再次设置静态 IP"></a>5. 再次设置静态 IP</h2><ol>
@@ -568,7 +568,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><ol>
 <li><p>将 idea 的配置导出到一个目录备份</p>
 <p>File-&gt;Manage IDE Settings-&gt;Export Settings，弹出对话框保存 settings.zip 文件</p>
-<p><img src="\img\postimg\image-20221205115142179.png" style="zoom:70%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/image-20221205115142179.png" style="zoom:70%"/></p>
 </li>
 <li><p>将 idea 的插件目录 myplugins 复制备份（插件目录名不能是 plugins）</p>
 </li>
@@ -583,11 +583,11 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>修改 idea bin 目录下 idea.properties，添加或修改如下内容，修改默认的配置、缓存、插件、日志目录</p>
 <figure class="highlight properties"><table><tr><td class="code"><pre><span class="line"><span class="attr">idea.config.path</span>=<span class="string">D:/Program/JetBrains/.IntelliJIdea/config</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the caches directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.system.path</span>=<span class="string">D:/Program/JetBrains/.IntelliJIdea/system</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the user-installed plugins directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.plugins.path</span>=<span class="string">D:/Idea/IntelliJ IDEA 2021.2.2/myplugins</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="comment"># Uncomment this option if you want to customize a path to the logs directory.</span></span><br><span class="line"><span class="comment">#---------------------------------------------------------------------</span></span><br><span class="line"><span class="attr">idea.log.path</span>=<span class="string">$&#123;idea.system.path&#125;/log</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>启动 idea，导入配置文件 settings.zip</p>
-<p><img src="\img\postimg\image-20221205122736003.png" style="zoom:70%"/></p>
+<li><p>启动 idea，导入配置文件 settings.zip；</p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/image-20221205122736003.png" style="zoom:70%"/></p>
 </li>
 <li><p>检查插件和插件配置是否导入成功，查看设置中是否存在其他插件的配置</p>
-<p><img src="\img\postimg\image-20221205123217392.png" style="zoom:70%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/image-20221205123217392.png" style="zoom:70%"/></p>
 <blockquote>
 <p>如果进行了 idea 的板本升级，控制台可能报部份插件兼容问题，在插件中心卸载，或者下载新板本的覆盖即可</p>
 </blockquote>
@@ -645,7 +645,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/etc/init.d/network restart</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>通过刚刚设置的 IP 地址访问 OpenWrt 管理页面并登录，用户名<code>root</code>，密码<code>password</code>；</p>
-<p><img src="\img\postimg\dG1fS6pZ0r\image-20230118044201272.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/dG1fS6pZ0r/image-20230118044201272.png"/></p>
 </li>
 </ol>
 <h2 id="2-Dokcer-安装-OpenWrt-做旁路网关（推荐）"><a href="#2-Dokcer-安装-OpenWrt-做旁路网关（推荐）" class="headerlink" title="2. Dokcer 安装 OpenWrt 做旁路网关（推荐）"></a>2. Dokcer 安装 OpenWrt 做旁路网关（推荐）</h2><blockquote>
@@ -658,7 +658,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li>网关：网关是一个网段数据的入口和出口，用于连接两个不同的网段从而实现不同网段间的设备通信，同一个网段的两个设备间是直接通信的，这种情况数据不经过网关。</li>
 </ul>
 <p>为了方便解释，下面统一叫旁路网关，下图是一个含有旁路网关（旁路由）网络架构示例（图片来源于上面文章）：</p>
-<p><img src="\img\postimg\dG1fS6pZ0r\377faba1865d4268910829586520b29d.jpg"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/dG1fS6pZ0r/377faba1865d4268910829586520b29d.jpg"/></p>
 <p>由上图可知，旁路网关就是主路由所分配子网中的一个设备，它虽然参与了流量的转发但并不是这个网段出口，实际连接外部网络的还是主路由，设置旁路网关的优点是减少了一层 NAT，由于数据需要经过旁路网关，所以连接主路由的下级设备也可以使用旁路网关所提供的功能，比如下载机、NAS、多媒体中心、内网穿透、科学上网。</p>
 <p>简单来说，旁路网关是一个通过 LAN 口与主路由连接的一个客户端设备，主路由主要负责流量的转发，而将网关等任务交给旁路网关，减轻主路由负担。</p>
 <p>下面是详细步骤</p>
@@ -669,7 +669,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p><code>Ipv4 网关</code>改为主路由 LAN 口地址，DNS 服务器可自定义；</p>
 </li>
 <li><p>关闭 DHCP 功能，在 OpenWrt 中是「忽略此接口」；</p>
-<p><img src="\img\postimg\dG1fS6pZ0r\image-20230119081800404.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/dG1fS6pZ0r/image-20230119081800404.png"/></p>
 </li>
 <li><p>将旁路设备拔出接在主路由的 LAN 口，使用新设置的地址查看是否可以访问；</p>
 </li>
@@ -683,7 +683,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>在上面配置的基础上做如下配置；</p>
 </li>
 <li><p>进入主路由后台，将<code>DHCP 服务器</code>的网关改为旁路设备的 IP 地址，DNS 最好自定义，比如：223.6.6.6，8.8.8.8；</p>
-<p><img src="\img\postimg\dG1fS6pZ0r\image-20230119122846356.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/dG1fS6pZ0r/image-20230119122846356.png"/></p>
 </li>
 </ol>
 <h2 id="3-Docker-安装OpenWrt-做二级路由"><a href="#3-Docker-安装OpenWrt-做二级路由" class="headerlink" title="3. Docker 安装OpenWrt 做二级路由"></a>3. Docker 安装OpenWrt 做二级路由</h2><p>参考文章：<a href="https://www.treesir.pub/post/openwrt-docker-multi-net/">https://www.treesir.pub/post/openwrt-docker-multi-net/</a></p>
@@ -778,6 +778,116 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
+    <title>Windows 多 JDK 配置（带环境变量配置失效方案）</title>
+    <url>/2023/01/11/hP4jF5hZ9o/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 有些时候，我们需要在电脑上安装多个板本的 JDK ，以适应不同板本的开发需求，同时部份软件需要指定的某个板本的 JDK 才能运行，一般这个时候我们也不想卸载原本的 JDK 再去安装新的，这时就需要对 JDK 进行一种方便的管理（通过改变环境变量）。</p>
+<blockquote>
+<p>写这篇文章的起因是因为我在 Idea 中运行基于 JDK 1.8 的项目时没有问题，因为在<code>Project Structure</code> 中配置了 JDK 的目录，而改为使用<code>java -jar xxx.jar</code>方式运行时，</p>
+<ul>
+<li><p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>原因：</p>
+<p>Java SE 9 及以上移除了 JAXB API（属于 JAVA EE API），因此对应的 JDK 也不再包含相关 jar 包，而我本地虽然配置的是 JDK 8 的环境变量，但是使用<code>java -version</code> 显示的是 jdk 11 板本，配置失效。</p>
+</li>
+<li><p>解决：</p>
+<p>第一种方式：pom.xml 文件中，加入这些被移除的相关包。</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-impl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.activation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>activation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>第二种方式：重新配置 JDK 环境变量（配置失效解决方案）。</p>
+<p>推荐阅读：<a href="https://www.cnblogs.com/Evanpie/p/14815043.html">https://www.cnblogs.com/Evanpie/p/14815043.html</a></p>
+<p>部份文章中的做法是删除文件或者 Path 中的一些环境变量，我的建议是不要删除，而是把自己配置的 JDK 移到顶部，因为系统是按照 Path 中以下路径的先后顺序来寻找 JDK 相关的可执行文件，找到后就不会再往下找。</p>
+<ul>
+<li><code>C:\Program Files\Common Files\Oracle\Java\javapath</code></li>
+<li><code>C:\ProgramData\Oracle\Java\javapath</code></li>
+<li><code>C:\Windows\System32</code></li>
+<li><code>D:Java\jdk1.8.0_291\bin</code>（你配置的路径）</li>
+</ul>
+</li>
+</ul>
+<p> <img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/hP4jF5hZ9o/image-20230111214251348.png" style="zoom:75%"/></p>
+<p> 这时候再使用<code>java -version</code>就会发现 JDK 已经切换成功。</p>
+</blockquote>
+<p>上面的配置方式无法很方便的切换 JDK 板本，有没有一种更方便的方式呢？</p>
+<h2 id="1-通过配置环境变量手动切换-JDK"><a href="#1-通过配置环境变量手动切换-JDK" class="headerlink" title="1. 通过配置环境变量手动切换 JDK"></a>1. 通过配置环境变量手动切换 JDK</h2><ol>
+<li><p>「系统变量」中新建<code>CLASSPATH</code>变量，值为如下；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>编辑「系统变量」中的<code>Path</code>，在最前面加入以下值；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新增<code>JAVA_HOME</code>环境变量。</p>
+<p>比如我的系统有三个板本的 JDK ，那么我需要添加如下变量。</p>
+</li>
+</ol>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JAVA_HOME</td>
+<td>%JAVA_HOME8%</td>
+</tr>
+<tr>
+<td>JAVA_HOME8</td>
+<td>D:\Java\jdk1.8.0_291</td>
+</tr>
+<tr>
+<td>JAVA_HOME11</td>
+<td>D:\Java\jdk-11.0.11</td>
+</tr>
+<tr>
+<td>JAVA_HOME12</td>
+<td>D:\Java\jdk-12</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ol>
+<li>以后通过修改<code>JAVA_HOME</code>的值切换 JDK，到此就满足基本需求了。</li>
+</ol>
+<h2 id="2-通过-JEnv-工具切换-JDK"><a href="#2-通过-JEnv-工具切换-JDK" class="headerlink" title="2. 通过 JEnv 工具切换 JDK"></a>2. 通过 JEnv 工具切换 JDK</h2><blockquote>
+<p>使用这种方式需要先删除上面配置的 JAVA_HOME</p>
+</blockquote>
+<p>Github 地址：<a href="https://github.com/FelixSelter/JEnv-for-Windows">https://github.com/FelixSelter/JEnv-for-Windows</a></p>
+<ol>
+<li><p>克隆该库；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/FelixSelter/JEnv-for-Windows.git</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将该工具加入<code>Path</code>环境变量；</p>
+</li>
+<li><p>扫描 jdk 路径并添加 jdk；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv autoscan D:\java <span class="comment"># 选择你所有 JDK 所在的目录</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>需要根据提示修改 jdk 的名称</p>
+</blockquote>
+</li>
+<li><p>修改全局 JDK 板本；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv change jdk8</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他命令。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv remove &lt;jdkname&gt;</span><br><span class="line">jenv list</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>参考文章：</p>
+<ul>
+<li><a href="https://www.cnblogs.com/it-tsz/p/11749651.html">真正解决方案：java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter</a></li>
+<li><a href="https://cloud.tencent.com/developer/article/1953014">Windows环境下切换JDK脚本</a></li>
+<li><a href="https://www.cnblogs.com/Evanpie/p/14815043.html">如何安装多个jdk并方便切换系统jdk版本</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>JDK</category>
+      </categories>
+      <tags>
+        <tag>JDK</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>frp 内网穿透</title>
     <url>/2022/06/30/frp/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>官网文档地址：<a href="https://gofrp.org/docs/overview/">https://gofrp.org/docs/overview/</a></p>
@@ -868,116 +978,6 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
       </tags>
   </entry>
   <entry>
-    <title>Windows 多 JDK 配置（带环境变量配置失效方案）</title>
-    <url>/2023/01/11/hP4jF5hZ9o/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 有些时候，我们需要在电脑上安装多个板本的 JDK ，以适应不同板本的开发需求，同时部份软件需要指定的某个板本的 JDK 才能运行，一般这个时候我们也不想卸载原本的 JDK 再去安装新的，这时就需要对 JDK 进行一种方便的管理（通过改变环境变量）。</p>
-<blockquote>
-<p>写这篇文章的起因是因为我在 Idea 中运行基于 JDK 1.8 的项目时没有问题，因为在<code>Project Structure</code> 中配置了 JDK 的目录，而改为使用<code>java -jar xxx.jar</code>方式运行时，</p>
-<ul>
-<li><p>报错：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>原因：</p>
-<p>Java SE 9 及以上移除了 JAXB API（属于 JAVA EE API），因此对应的 JDK 也不再包含相关 jar 包，而我本地虽然配置的是 JDK 8 的环境变量，但是使用<code>java -version</code> 显示的是 jdk 11 板本，配置失效。</p>
-</li>
-<li><p>解决：</p>
-<p>第一种方式：pom.xml 文件中，加入这些被移除的相关包。</p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-api<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-impl<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.sun.xml.bind<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>jaxb-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.3.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>javax.activation<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>activation<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.1.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>第二种方式：重新配置 JDK 环境变量（配置失效解决方案）。</p>
-<p>推荐阅读：<a href="https://www.cnblogs.com/Evanpie/p/14815043.html">https://www.cnblogs.com/Evanpie/p/14815043.html</a></p>
-<p>部份文章中的做法是删除文件或者 Path 中的一些环境变量，我的建议是不要删除，而是把自己配置的 JDK 移到顶部，因为系统是按照 Path 中以下路径的先后顺序来寻找 JDK 相关的可执行文件，找到后就不会再往下找。</p>
-<ul>
-<li><code>C:\Program Files\Common Files\Oracle\Java\javapath</code></li>
-<li><code>C:\ProgramData\Oracle\Java\javapath</code></li>
-<li><code>C:\Windows\System32</code></li>
-<li><code>D:Java\jdk1.8.0_291\bin</code>（你配置的路径）</li>
-</ul>
-</li>
-</ul>
-<p> <img src="\img\postimg\hP4jF5hZ9o\image-20230111214251348.png" style="zoom:75%"/></p>
-<p> 这时候再使用<code>java -version</code>就会发现 JDK 已经切换成功。</p>
-</blockquote>
-<p>上面的配置方式无法很方便的切换 JDK 板本，有没有一种更方便的方式呢？</p>
-<h2 id="1-通过配置环境变量手动切换-JDK"><a href="#1-通过配置环境变量手动切换-JDK" class="headerlink" title="1. 通过配置环境变量手动切换 JDK"></a>1. 通过配置环境变量手动切换 JDK</h2><ol>
-<li><p>「系统变量」中新建<code>CLASSPATH</code>变量，值为如下；</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">.;%JAVA_HOME%\lib;%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编辑「系统变量」中的<code>Path</code>，在最前面加入以下值；</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">%JAVA_HOME%\bin</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>新增<code>JAVA_HOME</code>环境变量。</p>
-<p>比如我的系统有三个板本的 JDK ，那么我需要添加如下变量。</p>
-</li>
-</ol>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>变量</th>
-<th>值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JAVA_HOME</td>
-<td>%JAVA_HOME8%</td>
-</tr>
-<tr>
-<td>JAVA_HOME8</td>
-<td>D:\Java\jdk1.8.0_291</td>
-</tr>
-<tr>
-<td>JAVA_HOME11</td>
-<td>D:\Java\jdk-11.0.11</td>
-</tr>
-<tr>
-<td>JAVA_HOME12</td>
-<td>D:\Java\jdk-12</td>
-</tr>
-</tbody>
-</table>
-</div>
-<ol>
-<li>以后通过修改<code>JAVA_HOME</code>的值切换 JDK，到此就满足基本需求了。</li>
-</ol>
-<h2 id="2-通过-JEnv-工具切换-JDK"><a href="#2-通过-JEnv-工具切换-JDK" class="headerlink" title="2. 通过 JEnv 工具切换 JDK"></a>2. 通过 JEnv 工具切换 JDK</h2><blockquote>
-<p>使用这种方式需要先删除上面配置的 JAVA_HOME</p>
-</blockquote>
-<p>Github 地址：<a href="https://github.com/FelixSelter/JEnv-for-Windows">https://github.com/FelixSelter/JEnv-for-Windows</a></p>
-<ol>
-<li><p>克隆该库；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/FelixSelter/JEnv-for-Windows.git</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>将该工具加入<code>Path</code>环境变量；</p>
-</li>
-<li><p>扫描 jdk 路径并添加 jdk；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv autoscan D:\java <span class="comment"># 选择你所有 JDK 所在的目录</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>需要根据提示修改 jdk 的名称</p>
-</blockquote>
-</li>
-<li><p>修改全局 JDK 板本；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv change jdk8</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他命令。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">jenv remove &lt;jdkname&gt;</span><br><span class="line">jenv list</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<p>参考文章：</p>
-<ul>
-<li><a href="https://www.cnblogs.com/it-tsz/p/11749651.html">真正解决方案：java.lang.NoClassDefFoundError: javax/xml/bind/DatatypeConverter</a></li>
-<li><a href="https://cloud.tencent.com/developer/article/1953014">Windows环境下切换JDK脚本</a></li>
-<li><a href="https://www.cnblogs.com/Evanpie/p/14815043.html">如何安装多个jdk并方便切换系统jdk版本</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>JDK</category>
-      </categories>
-      <tags>
-        <tag>JDK</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>云服务器安全（SSH,SSL VPN）</title>
     <url>/2023/01/09/mcxjgmqfSqf/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p> 在使用云服务器的过程中，我们一般会做一些配置来提高云服务器的安全，下面开始操作：</p>
@@ -1026,7 +1026,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <ol>
 <li><p>第一种；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/ssh/sshd_config <span class="comment"># 设置 PermitRootLogin no，禁止 root 用户 ssh 登录</span></span><br><span class="line">systemctl restart sshd <span class="comment"># 重启 ssh 服务，不要关闭当前终端！！！，最好先使用新用户测试能否远程 ssh 连接</span></span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110175012561.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqt/image-20230110175012561.png"/></p>
 </li>
 <li><p>第二种（推荐）。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo passwd -l root</span><br></pre></td></tr></table></figure>
@@ -1064,7 +1064,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </blockquote>
 </li>
 <li><p>根据脚本提示输入（基本全部默认）；</p>
-<p><img src="\img\postimg\mcxjgmqfSqt\Snipaste_2023-01-10_16-29-53.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqt/Snipaste_2023-01-10_16-29-53.png"/></p>
 </li>
 <li><p>下载 Open VPN Windows 客户端；</p>
 <blockquote>
@@ -1075,10 +1075,10 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <li><p>服务器开放 VPN 端口（默认 1194，UDP方式）；</p>
 </li>
 <li><p>Windows 客户端导入上面下载的配置文件<code>ssh_client.ovpn</code>；</p>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110164722047.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqt/image-20230110164722047.png"/></p>
 </li>
 <li><p>点击连接，可以查看到连接日志；</p>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110165033544.png" style="zoom:65%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqf/image-20230110165033544.png" style="zoom:65%"/></p>
 <blockquote>
 <p>如果这个弹框过一会儿消失并且右下角的小电脑显示为绿色表示连接成功</p>
 </blockquote>
@@ -1088,7 +1088,7 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </li>
 <li><p>使用<code>tracert -d</code>命令跟踪路由查看是否走的 VPN 通道连接；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tracert -d www.baidu.com</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230110170210591.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqf/image-20230110170210591.png"/></p>
 <blockquote>
 <p>可以看到第一跳地址已经变为服务器内网网关，而不是本机的网关。</p>
 </blockquote>
@@ -1121,14 +1121,14 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 </blockquote>
 <ul>
 <li><p><code>Initial method</code>选择<code>publickey</code>；</p>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111084754474.png" style="zoom:80%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqf/image-20230111084754474.png" style="zoom:80%"/></p>
 </li>
 <li><p>点击<code>Client key manager</code>，在弹出界面导入生成的私钥文件；</p>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111085242234.png" style="zoom:80%"/></p>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111085351192.png" style="zoom:70%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqf/image-20230111085242234.png" style="zoom:80%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqf/image-20230111085351192.png" style="zoom:70%"/></p>
 </li>
 <li><p>导入私钥后关闭窗口，选择这个私钥并登录；</p>
-<p><img src="\img\postimg\mcxjgmqfSqt\image-20230111085932930.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/mcxjgmqfSqf/image-20230111085932930.png"/></p>
 </li>
 <li><p>连接测试。</p>
 </li>
@@ -1193,18 +1193,18 @@ f(n)=f(n-1)+f(n-2)</script><p>代码：</p>
 <p>按照视点的不同，我们一般把数据结构分为「逻辑结构」和「物理结构」。</p>
 <h3 id="1-2-逻辑结构"><a href="#1-2-逻辑结构" class="headerlink" title="1.2 逻辑结构"></a>1.2 逻辑结构</h3><p>逻辑结构是指数据元素之间的相互关系，分为以下四种。每个数据元素看为一个节点，如下面图中的①~⑨。</p>
 <h4 id="1-2-1-集合结构"><a href="#1-2-1-集合结构" class="headerlink" title="1.2.1 集合结构"></a>1.2.1 集合结构</h4><p>集合结构中的数据元素除了同属于一个集合外，<strong>它们之间没有其他关系</strong>，类似于数学中的集合。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672726573485.png" style="zoom:40%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/1672726573485.png" style="zoom:40%"/></p>
 <h4 id="1-2-2-线性结构"><a href="#1-2-2-线性结构" class="headerlink" title="1.2.2 线性结构"></a>1.2.2 线性结构</h4><p>线性结构中的数据元素之间是「一对一」的关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727164638.png" style="zoom:45%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/1672727164638.png" style="zoom:45%"/></p>
 <h4 id="1-2-3-树型结构"><a href="#1-2-3-树型结构" class="headerlink" title="1.2.3 树型结构"></a>1.2.3 树型结构</h4><p>树形结构中的数据元素之间存在一种「一对多」的层次关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727285270.png" style="zoom:50%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/1672727285270.png" style="zoom:50%"/></p>
 <h4 id="1-2-4-图型结构"><a href="#1-2-4-图型结构" class="headerlink" title="1.2.4 图型结构"></a>1.2.4 图型结构</h4><p>图形结构的数据元素是「多对多」的关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727368270.png" style="zoom:50%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/1672727368270.png" style="zoom:50%"/></p>
 <h3 id="1-3-物理结构"><a href="#1-3-物理结构" class="headerlink" title="1.3 物理结构"></a>1.3 物理结构</h3><p>物理结构指数据的逻辑结构在计算机中的存储形式，难点也在这里，物理结构应该正确的存储数据元素之间的关系，分为「顺序存储」和「链式存储」。</p>
 <h4 id="1-3-1-顺序存储"><a href="#1-3-1-顺序存储" class="headerlink" title="1.3.1 顺序存储"></a>1.3.1 顺序存储</h4><p>顺序存储是指把数据元素存放在地址连续的存储单元里，其数据间的逻辑关系和物理关系是一致的。这种存储方式不利于频繁变化的结构，如：数据频繁的插入和删除。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672727857342.png" style="zoom:60%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/1672727857342.png" style="zoom:60%"/></p>
 <h4 id="1-3-2-链式存储"><a href="#1-3-2-链式存储" class="headerlink" title="1.3.2 链式存储"></a>1.3.2 链式存储</h4><p>对于时常要变化的结构，应该使用链式存储，链式存储是指把数据元素存放在任意的存储单元里，这组存储单元可以是连续的，也可以是不连续的。我们通过数据元素包含指针，而指针存放与其相关联的数据元素的地址来表示它们之间的逻辑关系。</p>
-<p><img src="\img\postimg\qgYscrzqK8\1672728560285.png" style="zoom:50%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/1672728560285.png" style="zoom:50%"/></p>
 <h2 id="2-算法定义"><a href="#2-算法定义" class="headerlink" title="2. 算法定义"></a>2. 算法定义</h2><p>数据结构通常是和算法一起的，抛开任何一个单独谈论都是不科学的，它们的一起出现是为了解决现实中的一些复杂问题。</p>
 <ul>
 <li>算法是解决特定问题求解步骤的描述；</li>
@@ -1260,7 +1260,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <li>Python内存管理是由私有堆空间管理的，所有的python对象和数据结构都存储在私有堆空间中。</li>
 </ul>
 <p>以下是基本数据类型占用的内存大小：</p>
-<p><img src="\img\postimg\qgYscrzqK8\Snipaste_2023-01-03_20-08-01.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/qgYscrzqK8/Snipaste_2023-01-03_20-08-01.png"/></p>
 <blockquote>
 <p>安装 64 位的操作系统的计算机内存都已经超过了4G，也就是指针大小如果还是4个字节的话，就已经不能寻址全部的内存地址，所以64位编译器使用8个字节的指针才能寻找所有的内存地址。</p>
 </blockquote>
@@ -1360,6 +1360,260 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
       </tags>
   </entry>
   <entry>
+    <title>记录一次前端部署</title>
+    <url>/2023/02/08/vQ4c98KdFm/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-为所有用户安装-NVM"><a href="#1-为所有用户安装-NVM" class="headerlink" title="1. 为所有用户安装 NVM"></a>1. 为所有用户安装 NVM</h2><blockquote>
+<p>以下步骤需切换到 root 用户</p>
+<p>参考文章：<a href="https://www.soulfree.cn/?p=486">https://www.soulfree.cn/?p=486</a></p>
+</blockquote>
+<p>Github：<a href="https://github.com/nvm-sh/nvm">https://github.com/nvm-sh/nvm</a></p>
+<ol>
+<li><p>设置 github 代理；</p>
+<blockquote>
+<p>相关文章：<a href="https://www.cnblogs.com/thepoy/p/14848080.html">https://www.cnblogs.com/thepoy/p/14848080.html</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git config --global url.<span class="string">&quot;https://ghproxy.com/https://github.com&quot;</span>.insteadOf <span class="string">&quot;https://github.com&quot;</span> </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>修改 nvm 安装地址，在<code>/etc/profile</code>最后添加如下内容；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">export NVM_BIN=&quot;/usr/local/nvm/versions/node&quot; # node安装地址</span><br><span class="line">export NVM_DIR=&quot;/usr/local/nvm&quot; # nvm安装地址</span><br><span class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置立即生效；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/profile</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>安装 nvm；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>新开一个窗口验证安装；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm -v</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="2-安装-node"><a href="#2-安装-node" class="headerlink" title="2. 安装 node"></a>2. 安装 node</h2><ol>
+<li><p>查询可用 node；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm ls-remote</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>问题：无可用板本 N/A</p>
+<p>解决：<a href="https://bitnut.github.io/post/nvm-error/">https://bitnut.github.io/post/nvm-error/</a></p>
+</blockquote>
+</li>
+<li><p>安装 node；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm install v10.14.2</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>切换 node。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nvm use v10.14.2</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="3-安装-nginx"><a href="#3-安装-nginx" class="headerlink" title="3. 安装 nginx"></a>3. 安装 nginx</h2><ol>
+<li><p>添加 nginx 仓库；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> &gt;/etc/yum.repos.d/nginx.repo&lt;&lt;<span class="string">&#x27;EOF&#x27;</span></span><br><span class="line">[nginx-stable]</span><br><span class="line">name=nginx stable repo</span><br><span class="line">baseurl=http://nginx.org/packages/centos/\<span class="variable">$releasever</span>/\<span class="variable">$basearch</span>/</span><br><span class="line">gpgcheck=1</span><br><span class="line">enabled=1</span><br><span class="line">gpgkey=https://nginx.org/keys/nginx_signing.key</span><br><span class="line">module_hotfixes=<span class="literal">true</span></span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>cat &gt;{文件名}&lt;&lt;’EOF’：创建文件，之后的内容都是文件内容，以 EOF 结束输入。</p>
+</blockquote>
+</li>
+<li><p>查看仓库是否生效；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum repolist</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>yum 安装 nginx；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install -y nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果无法安装，可以先更换 yum 源为 网易163 源，然后执行以下语句</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;yum clean all</span><br><span class="line">&gt;yum makecache</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>查看 nginx 路径；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">whereis nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动 nginx；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">&gt;nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use)</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<ul>
+<li>查看占用 80 端口的 PID；</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;sudo netstat -tunlp | grep 80</span><br></pre></td></tr></table></figure>
+<ul>
+<li>结束进程；</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&gt;<span class="built_in">kill</span> -9 &#123;PID&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>查看是否启动；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo ps -ef | grep nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>访问 80 端口；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl 127.0.0.1:80</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果显示<code>Welcome to nginx</code>或者<code>Welcome to CentOS</code>代表启动成功。</p>
+</blockquote>
+</li>
+<li><p>查看 nginx 错误日志；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/nginx/error.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他常用命令；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nginx -s stop <span class="comment"># 立即停止</span></span><br><span class="line">nginx -s reload <span class="comment"># 重新加载配置文件</span></span><br><span class="line">systemctl start nginx</span><br><span class="line">systemctl stop nginx</span><br><span class="line">systemctl status nginx</span><br><span class="line">systemctl reload nginx</span><br><span class="line">systemctl <span class="built_in">enable</span> nginx <span class="comment"># 开机自启动</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置相关；</p>
+<ul>
+<li><code>/etc/nginx/conf.d</code>：配置文件存放目录；</li>
+<li><code>/etc/nginx/nginx.conf</code>：配置文件；</li>
+<li><code>/etc/nginx/nginx.conf.default</code>：默认配置文件。</li>
+</ul>
+</li>
+</ol>
+<h2 id="4-后台管理前端打包与部署"><a href="#4-后台管理前端打包与部署" class="headerlink" title="4. 后台管理前端打包与部署"></a>4. 后台管理前端打包与部署</h2><blockquote>
+<p>前提：一个正常解析的域名（已备案），如果不想备案，可购买国外服务器。</p>
+<p>后台管理前端基于 vue 2.0 的 vue admin template</p>
+</blockquote>
+<ol>
+<li><p>修改<code>/config/prod.env.js</code>，配置生产环境变量；</p>
+<blockquote>
+<p>主要是修改 BASE_URL 为 Spring Gateway 网关地址，并且服务器需要放行相应端口</p>
+</blockquote>
+</li>
+<li><p>打包 vue admin template 项目，生成「dist」文件夹；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>报错：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">&gt;ERROR in Template execution failed: ReferenceError: BASE_URL is not defined</span><br></pre></td></tr></table></figure>
+<p>解决：</p>
+<ul>
+<li>将<code>index.html</code> 中的<code>BASE_URL</code>换为<code>htmlWebpackPlugin.options.url</code></li>
+</ul>
+<p>如：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= BASE_URL %&gt;favicon.ico&quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+<p>换为：</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">&gt;<span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;icon&quot;</span> <span class="attr">href</span>=<span class="string">&quot;&lt;%= htmlWebpackPlugin.options.url %&gt;favicon.ico&quot;</span>&gt;</span> </span><br></pre></td></tr></table></figure>
+</blockquote>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/vQ4c98KdFm/image-20230128093713840.png" style="zoom:70%"/></p>
+</li>
+</ol>
+<ol>
+<li><p>将打包后的 dist 文件改为项目名，并上传至服务器<code>/home/web/</code>目录下；</p>
+</li>
+<li><p>修改<code>/etc/nginx/nginx.conf</code>，内容如下；</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">        listen       80;</span><br><span class="line">        listen       [::]:80;</span><br><span class="line">        server_name  admin.nanostu.top; # 域名、主机名</span><br><span class="line"></span><br><span class="line">        location /&#123;</span><br><span class="line">            root /home/web/admin; # 打包后的目录</span><br><span class="line">            index index.html index.htm;</span><br><span class="line">        &#125;</span><br><span class="line">        //...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载 nginx 配置文件，并访问页面测试；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="5-用户访问前端打包与部署"><a href="#5-用户访问前端打包与部署" class="headerlink" title="5. 用户访问前端打包与部署"></a>5. 用户访问前端打包与部署</h2><blockquote>
+<p>参考文章：<a href="https://blog.csdn.net/piconjo/article/details/106347853">https://blog.csdn.net/piconjo/article/details/106347853</a></p>
+<p>用户访问前端基于 nuxt2 框架</p>
+</blockquote>
+<ol>
+<li><p>修改 axios 请求的路径；</p>
+<p><code>/utils/request.js</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">baseURL: <span class="string">&quot;http://&#123;服务器 IP&#125;:8222&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在<code>package.json</code>中添加如下内容，修改 nuxt 项目的 IP 地址和端口号；</p>
+<figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;config&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;nuxt&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">        <span class="attr">&quot;host&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0.0.0.0&quot;</span><span class="punctuation">,</span></span><br><span class="line">        <span class="attr">&quot;port&quot;</span><span class="punctuation">:</span> <span class="string">&quot;3000&quot;</span></span><br><span class="line">    <span class="punctuation">&#125;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这儿的 host 改为 0.0.0.0，否则外网无法访问，除非使用 nginx 进行反向代理，至于为什么配置为localhost 不能访问可以阅读这篇文章：<a href="https://www.jianshu.com/p/ad7cd1d5be45">彻底明白ip地址，区分localhost、127.0.0.1和0.0.0.0</a></p>
+</blockquote>
+</li>
+<li><p>执行<code>npm run build</code>，在<code>.nuxt</code>文件夹下生成 dist 文件；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm run build</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将下图中的文件上传到服务器；</p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/vQ4c98KdFm/image-20230208182545230.png" style="zoom:70%"/></p>
+<blockquote>
+<p>我上传到了<code>/home/web/front</code>目录</p>
+</blockquote>
+</li>
+<li><p>进入上传的目录，执行<code>npm install</code>安装依赖；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home/web/front</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在该目录执行以下命令启动项目并访问测试；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>这样启动后，关闭终端就不能访问页面了，下面配置 pm2 后台启动</p>
+</blockquote>
+</li>
+<li><p>全局安装 pm2；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm install pm2 -g</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置 pm2 开机自启；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 startup</span><br><span class="line">pm2 save</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>进入项目目录，执行以下命令启动前端项目；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start npm --name <span class="string">&quot;project name&quot;</span> -- run start <span class="comment"># 项目名在 package.json 中</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>常用 pm2 命令；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pm2 start [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 stop [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 restart [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 reload [<span class="built_in">id</span>/name/all]</span><br><span class="line">pm2 delete [<span class="built_in">id</span>/name/all]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置 nginx 反向代理；</p>
+<p>在<code>/etc/nginx/conf.d</code>文件夹下新建<code>front.conf</code>文件，内容如下</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       [::]:80;</span><br><span class="line">    server_name  front.nanostu.top; # 域名、主机名</span><br><span class="line"></span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">	    proxy_set_header host              $host;</span><br><span class="line">        proxy_set_header X-Real-IP         $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_read_timeout 1m;</span><br><span class="line">        proxy_connect_timeout 1m;</span><br><span class="line">        proxy_pass http://127.0.0.1:3000; # nuxt项目的监听端口</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载配置文件并访问测试；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>问题一：登录功能不能正常使用</p>
+<p>原因：cookie 的 domain 填写的是 localhost</p>
+<p>解决：修改项目中的 cookie 作用域</p>
+</li>
+<li><p>问题二：</p>
+<p>部署上服务器报如下错误</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">Failed to execute &#x27;appendChild&#x27; on &#x27;Node&#x27;: This node type does not support this method</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>相关文章：<a href="https://segmentfault.com/q/1010000016466439">https://segmentfault.com/q/1010000016466439</a></p>
+</blockquote>
+<p>解决：渲染的页面添加<code>&lt;no-ssr&gt;</code>标签包裹</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">no-ssr</span>&gt;</span></span><br><span class="line">      <span class="comment">&lt;!-- 内容 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">no-ssr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="6-nginx-代理后端接口隐藏-API-端口"><a href="#6-nginx-代理后端接口隐藏-API-端口" class="headerlink" title="6. nginx 代理后端接口隐藏 API 端口"></a>6. nginx 代理后端接口隐藏 API 端口</h2><ol>
+<li><p>新增一个 nginx 配置文件，内容如下；</p>
+<p><code>/etc/nginx/conf.d/api.conf</code></p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen       80;</span><br><span class="line">    listen       [::]:80;</span><br><span class="line">    server_name  api.nanostu.top; # 域名、主机名</span><br><span class="line"></span><br><span class="line">    location /&#123;</span><br><span class="line">        proxy_redirect off;</span><br><span class="line">	    proxy_set_header host              $host;</span><br><span class="line">        proxy_set_header X-Real-IP         $remote_addr;</span><br><span class="line">        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto $scheme;</span><br><span class="line">        proxy_read_timeout 1m;</span><br><span class="line">        proxy_connect_timeout 1m;</span><br><span class="line">        proxy_pass http://127.0.0.1:8222; # 后端 API 端口（gateway 端口）</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>重新加载配置文件；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl reload nginx</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将项目中所有请求后端的地址改为上面的地址（api.nanostu.top）；</p>
+</li>
+</ol>
+<h2 id="7-多个子域名批量申请-SSL-证书并自动续签"><a href="#7-多个子域名批量申请-SSL-证书并自动续签" class="headerlink" title="7. 多个子域名批量申请 SSL 证书并自动续签"></a>7. 多个子域名批量申请 SSL 证书并自动续签</h2><blockquote>
+<p>参考教程：</p>
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/354241539">https://zhuanlan.zhihu.com/p/354241539</a></li>
+<li><a href="https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au">https://github.com/ywdblog/certbot-letencrypt-wildcardcertificates-alydns-au</a></li>
+</ul>
+<p>以下步骤在 root 用户下执行</p>
+</blockquote>
+<ol>
+<li><p>安装 certbot；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install certbot python2-certbot-nginx -y</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>批量申请 SSL 证书；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">certbot --nginx</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>按照提示，留空表示为所有检测到的子域名添加证书</p>
+</blockquote>
+</li>
+<li><p>自动续约；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">certbot renew --dry-run</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>TODO：申请泛域名证书；</p>
+<blockquote>
+<p>因为申请泛域名 SSL 证书还需要手动配置每个 *.conf 文件，所以就暂时搁置了</p>
+</blockquote>
+</li>
+</ol>
+<h2 id="8-TODO-使用宝塔面版部署"><a href="#8-TODO-使用宝塔面版部署" class="headerlink" title="8. TODO: 使用宝塔面版部署"></a>8. TODO: 使用宝塔面版部署</h2><h2 id="9-TODO-使用-vercel-自动化部署"><a href="#9-TODO-使用-vercel-自动化部署" class="headerlink" title="9. TODO: 使用 vercel 自动化部署"></a>9. TODO: 使用 vercel 自动化部署</h2>]]></content>
+      <categories>
+        <category>前端部署</category>
+      </categories>
+      <tags>
+        <tag>前端部署</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>记录一次后端部署</title>
     <url>/2023/01/30/tbTTrGgn9k/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-安装-Docker"><a href="#1-安装-Docker" class="headerlink" title="1. 安装 Docker"></a>1. 安装 Docker</h2><p>官方教程：<a href="https://docs.docker.com/engine/install/centos/">https://docs.docker.com/engine/install/centos/</a></p>
@@ -1418,7 +1672,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p>查看访问权限信息。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">SELECT user,host,plugin FROM mysql.user;</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230105171757899.png" style="zoom:70%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230105171757899.png" style="zoom:70%"/></p>
 <blockquote>
 <p>主要查看是否存在 root 用户，并且对应的 HOST 为 %，% 代表允许所有的 IP 使用该用户登录。</p>
 <p>由上面得知，使用 docker 安装的 mysql 默认是可以通过 root 用户远程登录的。</p>
@@ -1442,11 +1696,11 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <p>常见问题：</p>
 <ul>
 <li><p>拒绝连接；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230105175250484.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230105175250484.png"/></p>
 <p>解决办法：按照上面的步骤创建远程登录用户并授权。</p>
 </li>
 <li><p>报错 “plugin caching_sha2_password could not be loaded”；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230105180449344.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230105180449344.png"/></p>
 <p>原因：mysql 8.x 的更新了密码验证方式为 caching_sha2_passoword，一些比较老的 mysql 客户端由于驱动未更新，连接时使用的方式还是以前的 mysql_native_password，这时就可能报这个错误。</p>
 <p>解决办法：修改该用户的密码验证方式。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ALTER USER <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;%&#x27;</span> IDENTIFIED WITH mysql_native_password BY <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
@@ -1494,7 +1748,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p>去官网下载对应板本的 redis 配置文件，拷贝到<code>/usr/local/redis</code>目录下；</p>
 <p>官网：<a href="https://github.com/redis/redis/">https://github.com/redis/redis/</a></p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230105212236840.png" style="zoom:70%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230105212236840.png" style="zoom:70%"/></p>
 <blockquote>
 <p>小技巧：链接中的 github 改为<code>github1s</code>可以打开 github 的 vscode 板本，可以很方便的下载和复制单个文件，如：</p>
 <p><a href="https://github1s.com/redis/redis/blob/6.2.6/redis.conf">https://github1s.com/redis/redis/blob/6.2.6/redis.conf</a></p>
@@ -1509,7 +1763,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d --restart=always --name redis -p 6379:6379 --privileged=<span class="literal">true</span> \</span><br><span class="line">-v /usr/local/redis/redis.conf:/etc/redis/redis.conf \</span><br><span class="line">-v /usr/local/redis/data:/data \</span><br><span class="line">redis redis-server /etc/redis/redis.conf \</span><br><span class="line">--appendonly <span class="built_in">yes</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>远程连接测试（工具：dbeaver）；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230105222315352.png" style="zoom:60%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230105222315352.png" style="zoom:60%"/></p>
 </li>
 </ol>
 <h2 id="4-安装-nacos-单机版"><a href="#4-安装-nacos-单机版" class="headerlink" title="4. 安装 nacos(单机版)"></a>4. 安装 nacos(单机版)</h2><ol>
@@ -1537,7 +1791,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <p>地址：<a href="https://github.com/alibaba/nacos/blob/master/config/src/main/resources/META-INF/nacos-db.sql">https://github.com/alibaba/nacos/blob/master/config/src/main/resources/META-INF/nacos-db.sql</a></p>
 </li>
 <li><p>创建 nacos 数据库并运行该 sql 文件创建相关表。</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230106004403945.png" style="zoom:70%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230106004403945.png" style="zoom:70%"/></p>
 </li>
 </ul>
 </li>
@@ -1674,14 +1928,14 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 
    <figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">http://ip:8848/nacos/index.html</span><br></pre></td></tr></table></figure>
 
-   &lt;img src=&quot;\img\postimg\tbTTrGgn9k\image-20230106153052383.png&quot;/&gt;
+   &lt;img src=&quot;https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230106153052383.png&quot;/&gt;
 
    数据库中也存在对应的配置。
 
-   &lt;img src=&quot;\img\postimg\tbTTrGgn9k\image-20230106153654000.png&quot;/&gt;
+   &lt;img src=&quot;https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230106153654000.png&quot;/&gt;
 </code></pre><ol>
 <li><p>修改服务器 nacos 密码；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230106154321320.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230106154321320.png"/></p>
 </li>
 <li><p>现在可以将项目中的 mysql，redis，nacos 地址都改为服务器的 IP 地址来测试是否配置成功。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">spring.datasource.url</span><br><span class="line">spring.redis.host</span><br><span class="line">spring.cloud.nacos.discovery.server-addr</span><br></pre></td></tr></table></figure>
@@ -1691,10 +1945,10 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <li><p>微服务项目打包；</p>
 <p>使用 mvn clean package，或者使用 spring-boot-maven-plugin 插件，打包微服务为 jar 包。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104181003244.png" alt="image-20230104181003244"></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104181003244.png" alt="image-20230104181003244"></p>
 </li>
 <li><p>将该 jar 包上传至服务器，我这里放到<code>/usr/local/springboot/demo/</code>；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104185200753.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104185200753.png"/></p>
 </li>
 <li><p>进入该目录，在 jar 包的同级目录编写<code>Dockerfile</code> 文件；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> usr/local/springboot/demo/</span><br><span class="line">vim Dockerfile</span><br></pre></td></tr></table></figure>
@@ -1744,37 +1998,37 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p>远程 http 访问查看是否配置成功。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://ip:2375/version</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\Snipaste_2023-01-04_14-59-07.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/Snipaste_2023-01-04_14-59-07.png"/></p>
 </li>
 </ol>
 <h4 id="5-2-2-idea-配置连接远程-Docker"><a href="#5-2-2-idea-配置连接远程-Docker" class="headerlink" title="5.2.2 idea 配置连接远程 Docker"></a>5.2.2 idea 配置连接远程 Docker</h4><ol>
 <li>IDEA 安装 Docker 插件；</li>
 </ol>
-<p><img src="\img\postimg\tbTTrGgn9k\Snipaste_2023-01-04_15-03-58.png" style="zoom:50%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/Snipaste_2023-01-04_15-03-58.png" style="zoom:50%"/></p>
 <ol>
 <li>IDEA 中配置 Docker，配置好后点击 Apply 应用；</li>
 </ol>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104151850296.png" style="zoom:50%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104151850296.png" style="zoom:50%"/></p>
 <ol>
 <li><p>配置好后，在<code>service</code>窗口即可看见 Docker，「双击」或者「右键」它进行连接；连接后可以看见已有的容器和镜像，可以很方便的进行一些操作。</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104152614340.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104152614340.png"/></p>
 </li>
 </ol>
 <h4 id="5-2-3-idea-中操作-Docker-创建容器"><a href="#5-2-3-idea-中操作-Docker-创建容器" class="headerlink" title="5.2.3 idea 中操作 Docker 创建容器"></a>5.2.3 idea 中操作 Docker 创建容器</h4><ol>
 <li><p>右击对应镜像，选择<code>Create Container</code>；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104204646560.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104204646560.png"/></p>
 </li>
 <li><p>弹出的页面初始只能填写容器名；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104205144704.png" alt="image-20230104205144704"></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104205144704.png" alt="image-20230104205144704"></p>
 </li>
 <li><p>点击右边的 Modify options 可以添加其他选项，如下图中所示；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104205752989.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104205752989.png"/></p>
 </li>
 <li><p>启动后可在右边查看一些容器信息，如：启动日志，容器 ID 等；</p>
 <blockquote>
 <p>对于其他功能，如：删除镜像，删除容器，拉取镜像…，idea 中都有相应的操作</p>
 </blockquote>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104210145202.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104210145202.png"/></p>
 </li>
 <li><p>访问地址测试；</p>
 </li>
@@ -1813,21 +2067,21 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p>生成 CA 私钥和公钥；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl genrsa -aes256 -out ca-key.pem 4096</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104161003555.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104161003555.png"/></p>
 <blockquote>
 <p>这个 ca-key.pem 的密码要记下，用于后续操作</p>
 </blockquote>
 </li>
 <li><p>依次输入密码、国家、省、市、组织名称、邮箱等；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl req -new -x509 -days 365 -key ca-key.pem -sha256 -out ca.pem</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104162238870.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104162238870.png"/></p>
 <blockquote>
 <p>现在已经有了CA，接下来创建一个服务器密钥和证书签名请求(CSR)。确保「Common Name」也就是上面填写的「昵称」与你用来连接到 Docker 的主机名匹配</p>
 </blockquote>
 </li>
 <li><p>生成 server-key.pem；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl genrsa -out server-key.pem 4096</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104162826133.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104162826133.png"/></p>
 </li>
 <li><p>使用 CA 签署公钥；</p>
 <blockquote>
@@ -1855,7 +2109,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p>生成签名证书；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -days 365 -sha256 -<span class="keyword">in</span> server.csr -CA ca.pem -CAkey ca-key.pem \</span><br><span class="line">  -CAcreateserial -out server-cert.pem -extfile extfile.cnf</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104170116019.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104170116019.png"/></p>
 </li>
 <li><p>生成客户端的 key.pem；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl genrsa -out key.pem 4096</span><br><span class="line">openssl req -subj <span class="string">&#x27;/CN=client&#x27;</span> -new -key key.pem -out client.csr</span><br></pre></td></tr></table></figure>
@@ -1865,7 +2119,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p>现在生成签名证书；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -req -days 365 -sha256 -<span class="keyword">in</span> client.csr -CA ca.pem -CAkey ca-key.pem \</span><br><span class="line">  -CAcreateserial -out cert.pem -extfile extfile-client.cnf</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104171354029.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104171354029.png"/></p>
 </li>
 <li><p>删除不需要的文件，两个证书签名请求；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">rm</span> -v client.csr server.csr extfile.cnf extfile-client.cnf</span><br></pre></td></tr></table></figure>
@@ -1887,10 +2141,10 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <li><p>服务器开放 2375 端口（前面步骤已经开放）；</p>
 </li>
 <li><p>将认证文件保存至客户端；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104174500258.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104174500258.png"/></p>
 </li>
 <li><p>Idea 配置使用 CA 认证远程连接 Docker；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230104175219328.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230104175219328.png"/></p>
 </li>
 <li><p>此时如果使用 docker-maven-plugin，要修改其中的 docker 连接并指定认证文件地址，如下。</p>
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dockerHost</span>&gt;</span>https://160.160.176.123:2375<span class="tag">&lt;/<span class="name">dockerHost</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dockerCertPath</span>&gt;</span>D:/Docker/ca<span class="tag">&lt;/<span class="name">dockerCertPath</span>&gt;</span></span><br></pre></td></tr></table></figure>
@@ -1916,11 +2170,11 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 项目打包时会将java目录中的*.xml文件也进行打包 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--该插件主要用途：构建可执行的JAR --&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--指定打包时要打包 mapper.xml 文件--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/java<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.xml<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">            <span class="comment">&lt;!--打包时不解析文件中的占位符--&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">filtering</span>&gt;</span>false<span class="tag">&lt;/<span class="name">filtering</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">        <span class="comment">&lt;!--指定打包时要打包资源目录下的所有的配置文件--&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>src/main/resources<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">includes</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">include</span>&gt;</span>**/*.*<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">includes</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>禁用 maven 的测试，否则打包时所有的测试类都会运行，一旦某个测试不通过，打包失败；</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230105025057741.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230105025057741.png"/></p>
 </li>
 <li><p>打包所有 SpringBoot 模块；</p>
 <p>idea 中找到根模块，点击<code>package</code></p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230112014857296.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230112014857296.png"/></p>
 </li>
 <li><p>打包完成后，先在 windows 本地执行所有 jar 包是否可用；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">javaw -jar xx.jar</span><br></pre></td></tr></table></figure>
@@ -2041,7 +2295,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <ol>
 <li><p>查看交换空间大小；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">free -h/-m</span><br></pre></td></tr></table></figure>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230107161017562.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230107161017562.png"/></p>
 </li>
 <li><p>查看使用的交换设备；</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">swapon -s</span><br></pre></td></tr></table></figure>
@@ -2053,7 +2307,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkidr /swap</span><br><span class="line">sudo <span class="built_in">dd</span> <span class="keyword">if</span>=/dev/zero of=/swap/swapfile bs=1G count=4</span><br><span class="line">sudo mkswap /swap/swapfile <span class="comment">#在 /swap/swapfile 文件上建立交换空间</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>bs*count 为交换文件大小，<a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-diskpartrecommend-ppc#id4394007">官方推荐大小</a>：</p>
-<p><img src="\img\postimg\tbTTrGgn9k\image-20230107163858201.png" style="zoom:60%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/tbTTrGgn9k/image-20230107163858201.png" style="zoom:60%"/></p>
 <p>注意：如果服务器的内存使用是几十G或者上百G级别的，那么尽量提高机器配置，使用物理内存，因为频繁的交换数据进行磁盘 I/O 读写，势必会影响服务器性能，严重时直接宕机。</p>
 </blockquote>
 </li>
@@ -2106,6 +2360,206 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
       </tags>
   </entry>
   <entry>
+    <title>自建代理服务器（Cross The GFW）脚本与常见问题解决方案</title>
+    <url>/2023/01/12/zJiQJ3wQymv/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>自建代理服务器没有啥其他优势，两个字「安全」。另外，如果你没有找到比较好一点的节点（一般免费的节点经常变动以提升网站流量），那么自建就是不错的选择，如果钱包充足，你可以在你的软路由上设置你自建的代理，当然这种方式需要代理服务器一直开着（如果选择的是 Vultr，目前最低配置 「1 Core 1 GB  2TB」一个月 6$），具体怎么自建在下面推荐的网站，这儿主要是记录脚本和一些常用的问题解决方案。</p>
+<h2 id="1-推荐阅读"><a href="#1-推荐阅读" class="headerlink" title="1. 推荐阅读"></a>1. 推荐阅读</h2><ol>
+<li><p>一灯不是和尚：<a href="https://iyideng.net/">https://iyideng.net/</a></p>
+<blockquote>
+<p>了解高效上网的前世今生以及如何自建和配置服务器</p>
+</blockquote>
+</li>
+<li><p>灯得：<a href="https://getdeng.com/">https://getdeng.com/</a></p>
+<blockquote>
+<p>好用节点分享</p>
+</blockquote>
+</li>
+<li><p>官方文档与各种协议说明：<a href="https://www.v2fly.org/">https://www.v2fly.org/</a></p>
+</li>
+</ol>
+<h2 id="2-脚本"><a href="#2-脚本" class="headerlink" title="2. 脚本"></a>2. 脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -s -L https://git.io/v2ray.sh)</span><br></pre></td></tr></table></figure>
+<h2 id="3-代理模式"><a href="#3-代理模式" class="headerlink" title="3. 代理模式"></a>3. 代理模式</h2><blockquote>
+<p>推荐阅读：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">&gt;https://baiyunju.cc/7285</span><br><span class="line">&gt;https://vimcaw.github.io/blog/2018/03/12/Shadowsocks(R)%E8%AE%BE%E7%BD%AE%EF%BC%9A%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E3%80%81PAC%E3%80%81%E4%BB%A3%E7%90%86%E8%A7%84%E5%88%99/#代理流程图</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="3-1-系统代理"><a href="#3-1-系统代理" class="headerlink" title="3.1 系统代理"></a>3.1 系统代理</h3><p>开启系统代理后，系统其他软件可以<strong>直接调用系统代理设置（部份软件默认选择使用系统代理）</strong>，<strong>有些时候需要在软件中设置代理</strong>。</p>
+<h3 id="3-2-PAC-模式"><a href="#3-2-PAC-模式" class="headerlink" title="3.2  PAC 模式"></a>3.2  PAC 模式</h3><p>PAC 模式会在系统代理设置一个 PAC 脚本文件，让系统通过这个文件自动选择每一个连接是否启用代理服务器，以及选择哪一个代理服务器，这种模式下一般访问国内网站（在文件记录中）不会使用代理，而访问国外网站会使用代理。</p>
+<blockquote>
+<p>V2rayN 高板本已经取消了这种配置模式，改为 「绕过大陆」、[黑名单] 和 [全局] 模式</p>
+</blockquote>
+<h3 id="3-3-全局模式"><a href="#3-3-全局模式" class="headerlink" title="3.3  全局模式"></a>3.3  全局模式</h3><p>所有跟随系统代理设置的软件（一般是浏览器）都会使用这个代理服务器</p>
+<h3 id="3-4-绕过大陆（Whitelist）"><a href="#3-4-绕过大陆（Whitelist）" class="headerlink" title="3.4  绕过大陆（Whitelist）"></a>3.4  绕过大陆（Whitelist）</h3><p>白名单模式，除开在白名单内的所有流量都走代理。</p>
+<h3 id="3-5-黑名单（Blacklist）"><a href="#3-5-黑名单（Blacklist）" class="headerlink" title="3.5 黑名单（Blacklist）"></a>3.5 黑名单（Blacklist）</h3><p>黑名单模式，在黑名单内的访问才走代理。</p>
+<blockquote>
+<p>代理的本质是我们去获取互联网中某台电脑的资源（网页，文件，图片等等）时，因为某些原因（你懂的）我们直接去获取是获取不到的，这时通过代理服务器去获取，然后将内容再转回给我们，需要知道的是，代理服务器既然代理了流量，也就具有所有权限去处理这些数据，比如：窜改返回的数据，返回给你钓鱼网站，获取你加密后的密码再破解等等，所以野生的节点会存在安全问题。</p>
+</blockquote>
+<h2 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4. 常见问题"></a>4. 常见问题</h2><blockquote>
+<p>首先，我使用的 Vultr 的 VPS，Windows 客户端是 V2rayN，手机客户端是 V2rayNG，并没有使用带伪装的 V2ray（就目前来说，使用不带伪装的方式可能第二天就不能用了），一是因为还要买一个域名解析到服务器，稍微比较麻烦，二是囊中羞涩，一般没需要我就销毁服务器了。</p>
+<p>下面出现的问题，默认你的配置是正确的，使用了支持的客户端并且客户端板本和服务器 V2ray 板本相差不大。</p>
+</blockquote>
+<h3 id="4-1-VPS-和-客户端时间不同步，导致连接不上"><a href="#4-1-VPS-和-客户端时间不同步，导致连接不上" class="headerlink" title="4.1 VPS 和 客户端时间不同步，导致连接不上"></a>4.1 VPS 和 客户端时间不同步，导致连接不上</h3><ol>
+<li><p>安装 NTP 服务；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y ntp</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>设置开机自启并开启 NTP；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> ntpd</span><br><span class="line">systemctl start ntpd</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>同步时间服务器。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ntpdate pool.ntp.org</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="4-2-V2ray、HTTP、HTTPS-端口未开启"><a href="#4-2-V2ray、HTTP、HTTPS-端口未开启" class="headerlink" title="4.2 V2ray、HTTP、HTTPS 端口未开启"></a>4.2 V2ray、HTTP、HTTPS 端口未开启</h3><ol>
+<li><p>检查服务器是否开启了防火墙；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果开启了防火墙，放行 V2ray 的端口；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=<span class="variable">$&#123;V2ray 端口&#125;</span>/tcp --permanent</span><br><span class="line">firewall-cmd --reload <span class="comment"># 配置立即生效</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="4-3-IP-或者-端口被封"><a href="#4-3-IP-或者-端口被封" class="headerlink" title="4.3 IP 或者 端口被封"></a>4.3 IP 或者 端口被封</h3><ol>
+<li><p>使用 ping 命令检查 IP 是否被封。</p>
+</li>
+<li><p>检查 V2ray 端口是否可以访问；</p>
+<p>客户端执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet ip port <span class="comment"># 请换为你的服务器 IP 和 V2ray 端口</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果返回中包含<code>Escape character is &#39;^]&#39;</code>则代表端口访问正常</p>
+</blockquote>
+</li>
+<li><p>使用在线网站检测。</p>
+<p><a href="https://tcp.ping.pe/">https://tcp.ping.pe/</a></p>
+<p>输入格式：ip:port</p>
+<blockquote>
+<p>如果其他国家的可以连接，而<code>China</code>字样的报红大概率是封了。</p>
+</blockquote>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/zJiQJ3wQymv/image-20230112235636378.png"/></p>
+</li>
+</ol>
+<h3 id="4-4-IP、端口都没有被封，但连接报错-failed-to-process-outbound-traffic"><a href="#4-4-IP、端口都没有被封，但连接报错-failed-to-process-outbound-traffic" class="headerlink" title="4.4 IP、端口都没有被封，但连接报错 failed to process outbound traffic"></a>4.4 IP、端口都没有被封，但连接报错 failed to process outbound traffic</h3><ol>
+<li><p>首先确定你 VPS 的 V2ray 是正常运行的；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status v2ray</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>最简单的方式是先查看日志；</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/error.log</span><br><span class="line"><span class="built_in">cat</span> /var/log/error.log</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>GFW 采用了其他方式来达到封禁的效果，那么重装是不错的选择。</p>
+<blockquote>
+<p>这种情况的表现就是偶尔能连上，不使用代理时检测代理服务器真连接是可用的并且可以 ping 通，但是一旦使用代理就报<code>failed to process outbound traffic</code>。</p>
+</blockquote>
+<p>重装时， V2ray 端口不要与上一次的一致，修改协议为 Websocket 或者 Vless + Websocket + TLS（需要域名），详细教程：</p>
+<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">https://iyideng.net/black-technology/cgfw/vless-one-click-script-building-and-using-tutorial.html</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>推荐阅读 GFW 封禁原理，正常流程先封端口，再封 IP，所以在某些特殊日期会出现大部份服务器 IP 都被封的情况。</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Proxy</category>
+      </categories>
+      <tags>
+        <tag>Proxy</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客静态资源加速</title>
+    <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
+    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure>
+<p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p>
+<p>于是乎，我用了一个捷径，直接查看同类<code>Butterfly</code>类型的博客，直接<kbd>f12</kbd>在「network」一栏查看请求的同名文件地址，然后迅速<kbd>ctrl</kbd> + <kbd>c</kbd> ， <kbd>ctrl</kbd> + <kbd>v</kbd>换到文件中对应声明的地方，然后控制台不报错了；</p>
+<p>再仔细观察请求的地址，前缀都不太一样，但是<code>npm.elemecdn.com</code>最多，于是又跟着将其他请求不到资源的地址全部换为此前缀，最终效果博客正常加载，但是加载速度很慢，<kbd>f12</kbd>查看「network」一栏发现主要是文字资源和图片龟速下载，于是乎准备冻手；在查看多篇文章后，决定写一写，以便不时之需，看完这篇文章，你将了解到</p>
+<ul>
+<li>什么是静态资源库</li>
+<li>CDN，UNPKG</li>
+<li>npm搭建</li>
+</ul>
+<h2 id="🚕CDN"><a href="#🚕CDN" class="headerlink" title="🚕CDN"></a>🚕CDN</h2><ul>
+<li>全名：<strong>Content Delivery Network</strong>，即内容分发网络；</li>
+<li>由麻省理工学院教授，<strong>Tim Berners-Lee</strong>博士带领研究生<strong>Danny C. Lewin</strong>和其他几位顶级研究人员开发的利用数学运算法则来处理内容的一种动态路由算法技术；</li>
+<li>解决：互联网爆炸式发展，用户越来越多，源服务器承受巨大压力，无法及时响应用户请求；</li>
+<li>原理：建立一个缓存服务器，将内容缓存到终端用户附近，可存放各种类型的资源，如：html、css、js、视频、图片</li>
+</ul>
+<p>详情请看原文：<a href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></p>
+<h2 id="📦NPM"><a href="#📦NPM" class="headerlink" title="📦NPM"></a>📦NPM</h2><ul>
+<li>全名：Node Package Manager，是 Node.js 官方默认程序包管理器</li>
+<li>一个巨大的远程存储库，通过命令行方式可对库中文件进行操作</li>
+<li>主体：<ul>
+<li>package：含有 package.json 文件并发布到 npm 仓库的文件或文件夹</li>
+<li>module：在 node_modules文件夹中能被 Node.js 的 require方法加载到的任何文件或文件夹</li>
+<li>含有 package.json 文件的 module 一定是 package</li>
+</ul>
+</li>
+</ul>
+<h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><p>主要属性：</p>
+<ul>
+<li>Scope：作用域、范围，用于指定发布的包的命名空间，防止与他人的包名冲突</li>
+<li>Accessibility：private 或者 public，与 github 类似</li>
+</ul>
+<h3 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h3><p><strong>前提</strong>：</p>
+<ul>
+<li>已安装 Node.js</li>
+<li>一个 npm 帐号，注册地址：<a href="https://www.npmjs.com/">npm官网</a></li>
+</ul>
+<p>此处只讨论如何发布 unscope 包，发布 scope 包默认是 private 且收费的，鉴于仅用于做资源加速使用，故不做大量篇幅介绍其他方式</p>
+<p><strong>发布</strong>：</p>
+<ol>
+<li><p>在本地新建一个文件夹，用于存放需要加速的文件，如：js、css、image</p>
+</li>
+<li><p>进入该文件夹中，然后输入<code>npm login</code>或者<code>npm adduser</code>登录</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm login //npm adduser</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>如果已经切换 npm 为淘宝镜像源，需要把切换为原本的镜像源 ，否则无法登录</p>
+<p><code>npm config set registry https://www.npmjs.org</code></p>
+</blockquote>
+</li>
+<li><p>初始化本地仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>发布的包名不能与他人发布的包名重复，不然会发布失败</p>
+</blockquote>
+</li>
+<li><p>在文件夹中添加需要上传的文件，使用以下命令上传</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
+<p>发布的板本为 1.0.0，发布成功后即可在 npm 官网登录帐号查看或者</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;@version/</span><br><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;/</span><br></pre></td></tr></table></figure>
+<ul>
+<li>默认不带板本号查看的板本是 1.0.0，但下载或使用的是最新板本</li>
+<li>可以直接使用 url 的方式使用仓库内文件，且速度很快，意为着可以实现资源访问加速</li>
+<li>板本更新24小时内允许删除</li>
+</ul>
+</li>
+</ol>
+<p><strong>迭代</strong>：</p>
+<p>如果添加、修改、删除仓库文件后要发布，需要修改 package.json 内的版本号（递增）再发布即可，每次更新独立，即以前版本的文件依然还在</p>
+<p><strong>废弃</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;@version &#x27;message&#x27; --force</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>被废弃的包代表此包已不再维护，但是包内文件依然可以使用和安装</p>
+</blockquote>
+<p><strong>删除</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure>
+<p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p>
+<p><strong>参考</strong>：</p>
+<ul>
+<li><a href="https://juejin.cn/post/7076724865083899935">收藏了！国内高速前端 Unpkg CDN 替代方案</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></li>
+<li><a href="https://segmentfault.com/a/1190000017461666">npm发布包教程</a></li>
+<li><a href="https://imbhj.com/4fb1ec61/">使用 npm 搭建一个简易图床</a></li>
+</ul>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+        <category>静态资源加速</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+        <tag>教程</tag>
+        <tag>npm</tag>
+        <tag>cdn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>MYSQL 学习笔记</title>
     <url>/2023/02/01/xP85b98dSc/</url>
     <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="1-数据库概述"><a href="#1-数据库概述" class="headerlink" title="1. 数据库概述"></a>1. 数据库概述</h2><h3 id="1-1-为什么使用数据库"><a href="#1-1-为什么使用数据库" class="headerlink" title="1.1 为什么使用数据库"></a>1.1 为什么使用数据库</h3><p>持久化：将内存中的数据保存在关系型或者非关系型数据库中，方便下一次使用。</p>
@@ -2153,7 +2607,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <li>MySQL可以允许运行于多个系统上，并且支持多种语言。这些编程语言包括C、C++、Python、Java、Perl、PHP 和 Ruby 等。</li>
 </ul>
 <h4 id="1-5-1-MYSQL-发展史"><a href="#1-5-1-MYSQL-发展史" class="headerlink" title="1.5.1 MYSQL 发展史"></a>1.5.1 MYSQL 发展史</h4><p>MySQL的历史就是整个互联网的发展史。互联网业务从社交领域、电商领域到金融领域的发展，推动着应用对数据库的需求提升，对传统的数据库服务能力提出了挑战。高并发、高性能、高可用、轻资源、易维护、易扩展的需求，促进了MySQL的长足发展。</p>
-<p><img src="\img\postimg\xP85b98dSc\image-20210730161043856.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/image-20210730161043856.png"/></p>
 <h4 id="1-5-2-关于-MYSQL-8-0"><a href="#1-5-2-关于-MYSQL-8-0" class="headerlink" title="1.5.2 关于 MYSQL 8.0"></a>1.5.2 关于 MYSQL 8.0</h4><p><code>MySQL从5.7版本直接跳跃发布了8.0版本</code>，可见这是一个令人兴奋的里程碑版本。MySQL 8版本在功能上做了显著的改进与增强，开发者对MySQL的源代码进行了重构，最突出的一点是多MySQL Optimizer优化器进行了改进。不仅在速度上得到了改善，还为用户带来了更好的性能和更棒的体验。</p>
 <h4 id="1-5-3-为什么选择-MYSQL"><a href="#1-5-3-为什么选择-MYSQL" class="headerlink" title="1.5.3 为什么选择 MYSQL"></a>1.5.3 为什么选择 MYSQL</h4><p>为什么如此多的厂商要选用 MySQL？大概总结的原因主要有以下几点：    </p>
 <ol>
@@ -2190,7 +2644,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 </li>
 <li><p><strong>列式数据库</strong></p>
 <p>列式数据库是相对于行式存储的数据库，Oracle、MySQL、SQL Server 等数据库都是采用的行式存储（Row-based），而列式数据库是将数据按照列存储到数据库中，这样做的好处是可以大量降低系统的 I/O，适合于分布式文件系统，不足在于功能相对有限。典型产品：HBase等。</p>
-<p><img src="\img\postimg\xP85b98dSc\image-20211020173921726.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/image-20211020173921726.png"/></p>
 </li>
 <li><p><strong>图形数据库</strong></p>
 <p>图形数据库，利用了图这种数据结构存储了实体（对象）之间的关系。图形数据库最典型的例子就是社交网络中人与人的关系，数据模型主要是以节点和边（关系）来实现，特点在于能高效地解决复杂的关系问题。</p>
@@ -3100,7 +3554,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <p><strong>丢失更新解决方案二：乐观锁</strong></p>
 <p>乐观锁的原理：给表添加一个 version 字段，进行数据修改时，判断 version 字段是否与原来的一致，只有一致才能修改成功，否则失败。</p>
 <h2 id="4-进阶篇"><a href="#4-进阶篇" class="headerlink" title="4. 进阶篇"></a>4. 进阶篇</h2><h3 id="4-1-存储引擎"><a href="#4-1-存储引擎" class="headerlink" title="4.1 存储引擎"></a>4.1 存储引擎</h3><p>MYSQL 体系结构</p>
-<p><img src="\img\postimg\xP85b98dSc\MySQL体系结构_20220315034329549927.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/MySQL体系结构_20220315034329549927.png"/></p>
 <ul>
 <li><p>连接层：</p>
 <p>最上层是一些客户端和链接服务，主要完成一些类似于连接处理、授权认证、及相关的安全方案。服务器也会为安全接入的每个客户端验证它所具有的操作权限。</p>
@@ -3136,7 +3590,7 @@ f(n)=n+(n-1)+(n-2)+...+1=\frac{n(n+1)}{2}=\frac{n^{2}}{2}+\frac{n}{2}</script><p
 <p>从idb文件提取表结构数据：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ibd2sdi xxx.ibd</span><br></pre></td></tr></table></figure>
 <p><strong>InnoDB 逻辑存储结构：</strong></p>
-<p><img src="\img\postimg\xP85b98dSc\逻辑存储结构_20220316030616590001.png"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/逻辑存储结构_20220316030616590001.png"/></p>
 <ul>
 <li><p><strong>表空间(tablespace)</strong>：所有的数据都被逻辑地存放在表空间中，同一个数据库的表可以共享一个表空间也可以拥有各自私有的表空间，私有表空间存储数据、索引、和插入缓冲BitMap页，其他的数据如回滚（undo）信息、系统事务信息等还是存储在共享表空间里；</p>
 </li>
@@ -3386,7 +3840,7 @@ long_query_time=2 # 设置慢查询日志的时间为2秒
 <h5 id="4-3-1-1-B-Tree（B-Tree）"><a href="#4-3-1-1-B-Tree（B-Tree）" class="headerlink" title="4.3.1.1 B Tree（B-Tree）"></a>4.3.1.1 B Tree（B-Tree）</h5><blockquote>
 <p>B-tree 是一种多路自平衡搜索树，它类似普通的二叉树，但是 B-tree 允许每个节点有更多的子节点</p>
 </blockquote>
-<p><img src="\img\postimg\xP85b98dSc\b-tree.svg" width="100%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/b-tree.svg" width="100%"/></p>
 <blockquote>
 <p>上图中 max-degree=3（每个节点最大子节点/指针个数为3）</p>
 </blockquote>
@@ -3395,7 +3849,7 @@ long_query_time=2 # 设置慢查询日志的时间为2秒
 <li>数据分布在各个节点中，所以搜索可能在非叶子节点结束；</li>
 <li>原理为根据主键进行二分查找，如果命中则结束。</li>
 </ul>
-<h5 id="4-3-1-2-B-Tree"><a href="#4-3-1-2-B-Tree" class="headerlink" title="4.3.1.2 B+Tree"></a>4.3.1.2 B+Tree</h5><p><img src="\img\postimg\xP85b98dSc\b+tree.svg" width="100%"/></p>
+<h5 id="4-3-1-2-B-Tree"><a href="#4-3-1-2-B-Tree" class="headerlink" title="4.3.1.2 B+Tree"></a>4.3.1.2 B+Tree</h5><p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/b+tree.svg" width="100%"/></p>
 <p>B+Tree 的特点（与B-Tree 的区别）：</p>
 <blockquote>
 <p><a href="https://blog.csdn.net/XiaoGong1688/article/details/100150759">https://blog.csdn.net/XiaoGong1688/article/details/100150759</a></p>
@@ -3406,7 +3860,7 @@ long_query_time=2 # 设置慢查询日志的时间为2秒
 <li>因为非叶子节点不存储数据，所以同样大小的磁盘页可以容纳更多的节点，查询的 I/O 次数也更少；</li>
 </ul>
 <h5 id="4-3-1-3-Hash"><a href="#4-3-1-3-Hash" class="headerlink" title="4.3.1.3 Hash"></a>4.3.1.3 Hash</h5><p>哈希索引基于 hash 表，采用 hash 算法计算出 索引列（创建 hash索引时指定）的 hashcode（也就是 key），而值为指针，指向数据在内存中的地址，如果两个或多个索引列计算出的 hashcode 一样，这就产生了 hash 碰撞（hash 冲突），mysql 使用 链地址法 来解决这个冲突。</p>
-<p><img src="\img\postimg\xP85b98dSc\Hash索引原理图_20220317143226150679.png" width="100%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/Hash索引原理图_20220317143226150679.png" width="100%"/></p>
 <p>特点：</p>
 <ul>
 <li>Hash索引只能用于等值查询（=、in），不支持范围查询（betwwn、&gt;、&lt;、…）；</li>
@@ -3484,8 +3938,8 @@ long_query_time=2 # 设置慢查询日志的时间为2秒
 </tbody>
 </table>
 </div>
-<p><img src="\img\postimg\xP85b98dSc\原理图_20220318194454880073.png" width="100%"/></p>
-<p><img src="\img\postimg\xP85b98dSc\演示图_20220319215403721066.png" width="100%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/原理图_20220318194454880073.png" width="100%"/></p>
+<p><img src="https://npm.elemecdn.com/liuduix-assets/img/postimg/xP85b98dSc/演示图_20220319215403721066.png" width="100%"/></p>
 <p>聚集索引选取规则：</p>
 <ul>
 <li>如果存在主键，主键索引就是聚集索引；</li>
@@ -3821,206 +4275,6 @@ long_query_time=2 # 设置慢查询日志的时间为2秒
       </categories>
       <tags>
         <tag>MYSQL</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>自建代理服务器（Cross The GFW）脚本与常见问题解决方案</title>
-    <url>/2023/01/12/zJiQJ3wQymv/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>自建代理服务器没有啥其他优势，两个字「安全」。另外，如果你没有找到比较好一点的节点（一般免费的节点经常变动以提升网站流量），那么自建就是不错的选择，如果钱包充足，你可以在你的软路由上设置你自建的代理，当然这种方式需要代理服务器一直开着（如果选择的是 Vultr，目前最低配置 「1 Core 1 GB  2TB」一个月 6$），具体怎么自建在下面推荐的网站，这儿主要是记录脚本和一些常用的问题解决方案。</p>
-<h2 id="1-推荐阅读"><a href="#1-推荐阅读" class="headerlink" title="1. 推荐阅读"></a>1. 推荐阅读</h2><ol>
-<li><p>一灯不是和尚：<a href="https://iyideng.net/">https://iyideng.net/</a></p>
-<blockquote>
-<p>了解高效上网的前世今生以及如何自建和配置服务器</p>
-</blockquote>
-</li>
-<li><p>灯得：<a href="https://getdeng.com/">https://getdeng.com/</a></p>
-<blockquote>
-<p>好用节点分享</p>
-</blockquote>
-</li>
-<li><p>官方文档与各种协议说明：<a href="https://www.v2fly.org/">https://www.v2fly.org/</a></p>
-</li>
-</ol>
-<h2 id="2-脚本"><a href="#2-脚本" class="headerlink" title="2. 脚本"></a>2. 脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">bash &lt;(curl -s -L https://git.io/v2ray.sh)</span><br></pre></td></tr></table></figure>
-<h2 id="3-代理模式"><a href="#3-代理模式" class="headerlink" title="3. 代理模式"></a>3. 代理模式</h2><blockquote>
-<p>推荐阅读：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">&gt;https://baiyunju.cc/7285</span><br><span class="line">&gt;https://vimcaw.github.io/blog/2018/03/12/Shadowsocks(R)%E8%AE%BE%E7%BD%AE%EF%BC%9A%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E3%80%81PAC%E3%80%81%E4%BB%A3%E7%90%86%E8%A7%84%E5%88%99/#代理流程图</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h3 id="3-1-系统代理"><a href="#3-1-系统代理" class="headerlink" title="3.1 系统代理"></a>3.1 系统代理</h3><p>开启系统代理后，系统其他软件可以<strong>直接调用系统代理设置（部份软件默认选择使用系统代理）</strong>，<strong>有些时候需要在软件中设置代理</strong>。</p>
-<h3 id="3-2-PAC-模式"><a href="#3-2-PAC-模式" class="headerlink" title="3.2  PAC 模式"></a>3.2  PAC 模式</h3><p>PAC 模式会在系统代理设置一个 PAC 脚本文件，让系统通过这个文件自动选择每一个连接是否启用代理服务器，以及选择哪一个代理服务器，这种模式下一般访问国内网站（在文件记录中）不会使用代理，而访问国外网站会使用代理。</p>
-<blockquote>
-<p>V2rayN 高板本已经取消了这种配置模式，改为 「绕过大陆」、[黑名单] 和 [全局] 模式</p>
-</blockquote>
-<h3 id="3-3-全局模式"><a href="#3-3-全局模式" class="headerlink" title="3.3  全局模式"></a>3.3  全局模式</h3><p>所有跟随系统代理设置的软件（一般是浏览器）都会使用这个代理服务器</p>
-<h3 id="3-4-绕过大陆（Whitelist）"><a href="#3-4-绕过大陆（Whitelist）" class="headerlink" title="3.4  绕过大陆（Whitelist）"></a>3.4  绕过大陆（Whitelist）</h3><p>白名单模式，除开在白名单内的所有流量都走代理。</p>
-<h3 id="3-5-黑名单（Blacklist）"><a href="#3-5-黑名单（Blacklist）" class="headerlink" title="3.5 黑名单（Blacklist）"></a>3.5 黑名单（Blacklist）</h3><p>黑名单模式，在黑名单内的访问才走代理。</p>
-<blockquote>
-<p>代理的本质是我们去获取互联网中某台电脑的资源（网页，文件，图片等等）时，因为某些原因（你懂的）我们直接去获取是获取不到的，这时通过代理服务器去获取，然后将内容再转回给我们，需要知道的是，代理服务器既然代理了流量，也就具有所有权限去处理这些数据，比如：窜改返回的数据，返回给你钓鱼网站，获取你加密后的密码再破解等等，所以野生的节点会存在安全问题。</p>
-</blockquote>
-<h2 id="4-常见问题"><a href="#4-常见问题" class="headerlink" title="4. 常见问题"></a>4. 常见问题</h2><blockquote>
-<p>首先，我使用的 Vultr 的 VPS，Windows 客户端是 V2rayN，手机客户端是 V2rayNG，并没有使用带伪装的 V2ray（就目前来说，使用不带伪装的方式可能第二天就不能用了），一是因为还要买一个域名解析到服务器，稍微比较麻烦，二是囊中羞涩，一般没需要我就销毁服务器了。</p>
-<p>下面出现的问题，默认你的配置是正确的，使用了支持的客户端并且客户端板本和服务器 V2ray 板本相差不大。</p>
-</blockquote>
-<h3 id="4-1-VPS-和-客户端时间不同步，导致连接不上"><a href="#4-1-VPS-和-客户端时间不同步，导致连接不上" class="headerlink" title="4.1 VPS 和 客户端时间不同步，导致连接不上"></a>4.1 VPS 和 客户端时间不同步，导致连接不上</h3><ol>
-<li><p>安装 NTP 服务；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y ntp</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>设置开机自启并开启 NTP；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> ntpd</span><br><span class="line">systemctl start ntpd</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>同步时间服务器。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ntpdate pool.ntp.org</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="4-2-V2ray、HTTP、HTTPS-端口未开启"><a href="#4-2-V2ray、HTTP、HTTPS-端口未开启" class="headerlink" title="4.2 V2ray、HTTP、HTTPS 端口未开启"></a>4.2 V2ray、HTTP、HTTPS 端口未开启</h3><ol>
-<li><p>检查服务器是否开启了防火墙；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status firewalld</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>如果开启了防火墙，放行 V2ray 的端口；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=443/tcp --permanent</span><br><span class="line">firewall-cmd --zone=public --add-port=<span class="variable">$&#123;V2ray 端口&#125;</span>/tcp --permanent</span><br><span class="line">firewall-cmd --reload <span class="comment"># 配置立即生效</span></span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-<h3 id="4-3-IP-或者-端口被封"><a href="#4-3-IP-或者-端口被封" class="headerlink" title="4.3 IP 或者 端口被封"></a>4.3 IP 或者 端口被封</h3><ol>
-<li><p>使用 ping 命令检查 IP 是否被封。</p>
-</li>
-<li><p>检查 V2ray 端口是否可以访问；</p>
-<p>客户端执行以下命令</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">telnet ip port <span class="comment"># 请换为你的服务器 IP 和 V2ray 端口</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果返回中包含<code>Escape character is &#39;^]&#39;</code>则代表端口访问正常</p>
-</blockquote>
-</li>
-<li><p>使用在线网站检测。</p>
-<p><a href="https://tcp.ping.pe/">https://tcp.ping.pe/</a></p>
-<p>输入格式：ip:port</p>
-<blockquote>
-<p>如果其他国家的可以连接，而<code>China</code>字样的报红大概率是封了。</p>
-</blockquote>
-<p><img src="\img\postimg\zJiQJ3wQymv\image-20230112235636378.png"/></p>
-</li>
-</ol>
-<h3 id="4-4-IP、端口都没有被封，但连接报错-failed-to-process-outbound-traffic"><a href="#4-4-IP、端口都没有被封，但连接报错-failed-to-process-outbound-traffic" class="headerlink" title="4.4 IP、端口都没有被封，但连接报错 failed to process outbound traffic"></a>4.4 IP、端口都没有被封，但连接报错 failed to process outbound traffic</h3><ol>
-<li><p>首先确定你 VPS 的 V2ray 是正常运行的；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl status v2ray</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>最简单的方式是先查看日志；</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cat</span> /var/log/error.log</span><br><span class="line"><span class="built_in">cat</span> /var/log/error.log</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>GFW 采用了其他方式来达到封禁的效果，那么重装是不错的选择。</p>
-<blockquote>
-<p>这种情况的表现就是偶尔能连上，不使用代理时检测代理服务器真连接是可用的并且可以 ping 通，但是一旦使用代理就报<code>failed to process outbound traffic</code>。</p>
-</blockquote>
-<p>重装时， V2ray 端口不要与上一次的一致，修改协议为 Websocket 或者 Vless + Websocket + TLS（需要域名），详细教程：</p>
-<figure class="highlight txt"><table><tr><td class="code"><pre><span class="line">https://iyideng.net/black-technology/cgfw/vless-one-click-script-building-and-using-tutorial.html</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>推荐阅读 GFW 封禁原理，正常流程先封端口，再封 IP，所以在某些特殊日期会出现大部份服务器 IP 都被封的情况。</p>
-</blockquote>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Proxy</category>
-      </categories>
-      <tags>
-        <tag>Proxy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客静态资源加速</title>
-    <url>/2022/05/19/%E5%8D%9A%E5%AE%A2%E9%9D%99%E6%80%81%E8%B5%84%E6%BA%90%E5%8A%A0%E9%80%9F/</url>
-    <content><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="🍕起因"><a href="#🍕起因" class="headerlink" title="🍕起因"></a>🍕起因</h2><p>在搭建属于自己的博客时，发现一个很严重的问题，使用的 jsdeiver CDN 由于访问不到在控制台报错。由于当时不太明白到底发生了什么，陷入了恐慌；遂决定在主题<code>butterfly</code>源码中查看到底是在哪个地方引用了这些文件，功夫不负有心人，最终发现是在</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[BlogRoot]/themes/Butterfly/source/scripts/events/config.js</span><br></pre></td></tr></table></figure>
-<p>找到了相关声明，当然只是找到也是没多大用处的，怎么改，改为什么成了我现在面临的难题；</p>
-<p>于是乎，我用了一个捷径，直接查看同类<code>Butterfly</code>类型的博客，直接<kbd>f12</kbd>在「network」一栏查看请求的同名文件地址，然后迅速<kbd>ctrl</kbd> + <kbd>c</kbd> ， <kbd>ctrl</kbd> + <kbd>v</kbd>换到文件中对应声明的地方，然后控制台不报错了；</p>
-<p>再仔细观察请求的地址，前缀都不太一样，但是<code>npm.elemecdn.com</code>最多，于是又跟着将其他请求不到资源的地址全部换为此前缀，最终效果博客正常加载，但是加载速度很慢，<kbd>f12</kbd>查看「network」一栏发现主要是文字资源和图片龟速下载，于是乎准备冻手；在查看多篇文章后，决定写一写，以便不时之需，看完这篇文章，你将了解到</p>
-<ul>
-<li>什么是静态资源库</li>
-<li>CDN，UNPKG</li>
-<li>npm搭建</li>
-</ul>
-<h2 id="🚕CDN"><a href="#🚕CDN" class="headerlink" title="🚕CDN"></a>🚕CDN</h2><ul>
-<li>全名：<strong>Content Delivery Network</strong>，即内容分发网络；</li>
-<li>由麻省理工学院教授，<strong>Tim Berners-Lee</strong>博士带领研究生<strong>Danny C. Lewin</strong>和其他几位顶级研究人员开发的利用数学运算法则来处理内容的一种动态路由算法技术；</li>
-<li>解决：互联网爆炸式发展，用户越来越多，源服务器承受巨大压力，无法及时响应用户请求；</li>
-<li>原理：建立一个缓存服务器，将内容缓存到终端用户附近，可存放各种类型的资源，如：html、css、js、视频、图片</li>
-</ul>
-<p>详情请看原文：<a href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></p>
-<h2 id="📦NPM"><a href="#📦NPM" class="headerlink" title="📦NPM"></a>📦NPM</h2><ul>
-<li>全名：Node Package Manager，是 Node.js 官方默认程序包管理器</li>
-<li>一个巨大的远程存储库，通过命令行方式可对库中文件进行操作</li>
-<li>主体：<ul>
-<li>package：含有 package.json 文件并发布到 npm 仓库的文件或文件夹</li>
-<li>module：在 node_modules文件夹中能被 Node.js 的 require方法加载到的任何文件或文件夹</li>
-<li>含有 package.json 文件的 module 一定是 package</li>
-</ul>
-</li>
-</ul>
-<h3 id="Package"><a href="#Package" class="headerlink" title="Package"></a><strong>Package</strong></h3><p>主要属性：</p>
-<ul>
-<li>Scope：作用域、范围，用于指定发布的包的命名空间，防止与他人的包名冲突</li>
-<li>Accessibility：private 或者 public，与 github 类似</li>
-</ul>
-<h3 id="发布包"><a href="#发布包" class="headerlink" title="发布包"></a>发布包</h3><p><strong>前提</strong>：</p>
-<ul>
-<li>已安装 Node.js</li>
-<li>一个 npm 帐号，注册地址：<a href="https://www.npmjs.com/">npm官网</a></li>
-</ul>
-<p>此处只讨论如何发布 unscope 包，发布 scope 包默认是 private 且收费的，鉴于仅用于做资源加速使用，故不做大量篇幅介绍其他方式</p>
-<p><strong>发布</strong>：</p>
-<ol>
-<li><p>在本地新建一个文件夹，用于存放需要加速的文件，如：js、css、image</p>
-</li>
-<li><p>进入该文件夹中，然后输入<code>npm login</code>或者<code>npm adduser</code>登录</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm login //npm adduser</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>如果已经切换 npm 为淘宝镜像源，需要把切换为原本的镜像源 ，否则无法登录</p>
-<p><code>npm config set registry https://www.npmjs.org</code></p>
-</blockquote>
-</li>
-<li><p>初始化本地仓库</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm init</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>发布的包名不能与他人发布的包名重复，不然会发布失败</p>
-</blockquote>
-</li>
-<li><p>在文件夹中添加需要上传的文件，使用以下命令上传</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm publish</span><br></pre></td></tr></table></figure>
-<p>发布的板本为 1.0.0，发布成功后即可在 npm 官网登录帐号查看或者</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;@version/</span><br><span class="line">https://npm.elemecdn.com/&lt;pkg&gt;/</span><br></pre></td></tr></table></figure>
-<ul>
-<li>默认不带板本号查看的板本是 1.0.0，但下载或使用的是最新板本</li>
-<li>可以直接使用 url 的方式使用仓库内文件，且速度很快，意为着可以实现资源访问加速</li>
-<li>板本更新24小时内允许删除</li>
-</ul>
-</li>
-</ol>
-<p><strong>迭代</strong>：</p>
-<p>如果添加、修改、删除仓库文件后要发布，需要修改 package.json 内的版本号（递增）再发布即可，每次更新独立，即以前版本的文件依然还在</p>
-<p><strong>废弃</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm deprecate &lt;pkg&gt;@version &#x27;message&#x27; --force</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>被废弃的包代表此包已不再维护，但是包内文件依然可以使用和安装</p>
-</blockquote>
-<p><strong>删除</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm unpublish &lt;pkg&gt;@version --force</span><br><span class="line">npm unpublish &lt;pkg&gt; --force</span><br></pre></td></tr></table></figure>
-<p>删除库包之后，<code>24小时之内</code> 无法再次上传同名的库包到 <code>npm</code>，需要更改包名，或者等过了 <code>24小时之后</code> 再上传</p>
-<p><strong>参考</strong>：</p>
-<ul>
-<li><a href="https://juejin.cn/post/7076724865083899935">收藏了！国内高速前端 Unpkg CDN 替代方案</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/52362950">到底什么是CDN</a></li>
-<li><a href="https://segmentfault.com/a/1190000017461666">npm发布包教程</a></li>
-<li><a href="https://imbhj.com/4fb1ec61/">使用 npm 搭建一个简易图床</a></li>
-</ul>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-        <category>静态资源加速</category>
-      </categories>
-      <tags>
-        <tag>hexo</tag>
-        <tag>教程</tag>
-        <tag>npm</tag>
-        <tag>cdn</tag>
       </tags>
   </entry>
 </search>
